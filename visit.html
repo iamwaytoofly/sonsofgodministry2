@@ -115,27 +115,45 @@
             <h2>Our Location</h2>
             <div class="location-content">
                 <div class="location-map">
-                    <!-- In a real application, this would be an embedded Google Map -->
-                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=Church,Anytown,US&zoom=14&size=600x400&markers=color:red%7CChurch,Anytown,US&key=YOUR_API_KEY" alt="Church location map">
+                    <!-- Embedded Google Map with the church's actual address -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.0088326706!2d-80.04401492346785!3d40.4272782589767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f6c6a8f3f2a7%3A0xc6c1a0f2a0fc3c3c!2s200%20Tabor%20St%2C%20Pittsburgh%2C%20PA%2015204!5e0!3m2!1sen!2sus!4v1692723600000!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0; border-radius: var(--border-radius);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
                 <div class="location-info">
                     <h3>The Sons of God Ministry, Inc.</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 200 Tabor St, Pittsburgh, Pa 15204</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 200 Tabor St, Pittsburgh, PA 15204</p>
                     <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@gracechurch.org</p>
+                    <p><i class="fas fa-envelope"></i> info@sonsofgodministry.org</p>
                     
-                    <h4>Directions</h4>
-                    <p>From Highway 101:</p>
+                    <h4>Get Directions</h4>
+                    <div class="directions-buttons">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=200+Tabor+St,+Pittsburgh,+PA+15204" target="_blank" class="btn-primary"><i class="fas fa-directions"></i> Get Directions</a>
+                        <a href="https://waze.com/ul?ll=40.4272782,-80.0440149&navigate=yes" target="_blank" class="btn-secondary"><i class="fab fa-waze"></i> Navigate with Waze</a>
+                    </div>
+                    
+                    <h4>From Downtown Pittsburgh:</h4>
                     <ol>
-                        <li>Take exit 25 for Main Street</li>
-                        <li>Turn right onto Main Street</li>
-                        <li>Continue for 2 miles</li>
-                        <li>Turn left onto Church Street</li>
-                        <li>Our campus will be on your right</li>
+                        <li>Take PA-65 N/Ohio River Blvd</li>
+                        <li>Turn right onto Tabor St</li>
+                        <li>Our church will be on your right</li>
+                    </ol>
+                    
+                    <h4>From I-79:</h4>
+                    <ol>
+                        <li>Take exit 72 toward Neville Island</li>
+                        <li>Follow Grand Ave and Fleming Ave to Tabor St</li>
+                        <li>Our church will be on your left</li>
                     </ol>
                     
                     <h4>Parking</h4>
-                    <p>Free parking is available in our main lot. Additional parking can be found across the street in the community center lot on Sundays.</p>
+                    <p>Free parking is available in our main lot. Additional street parking can be found along Tabor St on Sundays.</p>
                 </div>
             </div>
         </div>
