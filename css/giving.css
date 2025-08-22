@@ -1,0 +1,263 @@
+/* Giving Page Specific Styles */
+
+/* Giving Hero Section */
+.giving-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white-color);
+    text-align: center;
+    padding: 8rem 0 4rem;
+}
+
+.giving-hero h1 {
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.giving-hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Giving Options Section */
+.giving-options-section {
+    background-color: var(--light-color);
+    padding: 4rem 0;
+}
+
+.giving-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.giving-method {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.giving-method:hover {
+    transform: translateY(-5px);
+}
+
+.method-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Giving Form Section */
+.giving-form-section {
+    padding: 4rem 0;
+}
+
+.giving-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form-section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.amount-options,
+.fund-options,
+.frequency-options,
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.amount-option,
+.fund-option,
+.frequency-option,
+.payment-method {
+    position: relative;
+}
+
+.amount-option input,
+.fund-option input,
+.frequency-option input,
+.payment-method input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.amount-option label,
+.fund-option label,
+.frequency-option label,
+.payment-method label {
+    display: block;
+    padding: 0.75rem;
+    background-color: #f8f8f8;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.amount-option input:checked + label,
+.fund-option input:checked + label,
+.frequency-option input:checked + label,
+.payment-method input:checked + label {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-color: var(--primary-color);
+}
+
+.amount-option label:hover,
+.fund-option label:hover,
+.frequency-option label:hover,
+.payment-method label:hover {
+    border-color: var(--primary-color);
+}
+
+.custom-amount {
+    margin-top: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-group input {
+    width: auto;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}
+
+/* Apple Pay Button */
+.apple-pay-button {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.apple-pay-button:hover {
+    background-color: #333;
+}
+
+/* Why Give Section */
+.why-give-section {
+    background-color: var(--light-color);
+    padding: 4rem 0;
+}
+
+.why-give-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.why-give-text {
+    flex: 1;
+}
+
+.why-give-text ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.why-give-text li {
+    margin-bottom: 0.5rem;
+}
+
+.why-give-text blockquote {
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 4px solid var(--primary-color);
+    margin: 1.5rem 0;
+}
+
+.why-give-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .why-give-content {
+        flex-direction: column;
+    }
+    
+    .why-give-image {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .giving-hero {
+        padding: 6rem 0 3rem;
+    }
+    
+    .amount-options,
+    .fund-options,
+    .frequency-options,
+    .payment-methods {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .giving-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .giving-form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
