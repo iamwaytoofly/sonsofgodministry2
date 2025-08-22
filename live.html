@@ -50,7 +50,14 @@
                 </div>
             </div>
 
-            <div class="video-container">
+            <div class="stream-options">
+                <div class="stream-tabs">
+                    <button class="stream-tab active" data-tab="video">Live Video Stream</button>
+                    <button class="stream-tab" data-tab="zoom">Join Zoom Meeting</button>
+                </div>
+            </div>
+
+            <div class="video-container active" id="video-stream">
                 <div class="video-placeholder">
                     <i class="fas fa-play-circle"></i>
                     <p>Live stream video would appear here</p>
@@ -72,6 +79,36 @@
                         <button class="control-btn"><i class="fas fa-cog"></i></button>
                         <button class="control-btn"><i class="fas fa-expand"></i></button>
                     </div>
+                </div>
+            </div>
+            
+            <div class="zoom-container" id="zoom-meeting">
+                <div class="zoom-info">
+                    <div class="zoom-logo">
+                        <i class="fas fa-video"></i> Zoom Meeting
+                    </div>
+                    <div class="zoom-details">
+                        <h3>Join Our Live Service via Zoom</h3>
+                        <p>Meeting ID: <strong>784 997 1856</strong></p>
+                        <p>Passcode: <strong>Contact church for passcode</strong></p>
+                        <div class="zoom-buttons">
+                            <a href="https://us02web.zoom.us/j/7849971856?pwd=o7jtFMS8fIjYnEx0LciRWJEWrOYcY2.1&omn=83101219598" target="_blank" class="btn-primary zoom-btn">
+                                <i class="fas fa-video"></i> Join Zoom Meeting
+                            </a>
+                            <button class="btn-secondary copy-btn" data-copy="https://us02web.zoom.us/j/7849971856?pwd=o7jtFMS8fIjYnEx0LciRWJEWrOYcY2.1&omn=83101219598"
+                                <i class="fas fa-copy"></i> Copy Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="zoom-instructions">
+                    <h4>How to Join:</h4>
+                    <ol>
+                        <li>Click the "Join Zoom Meeting" button above</li>
+                        <li>If prompted, download and install the Zoom application</li>
+                        <li>Enter the Meeting ID and Passcode when prompted</li>
+                        <li>Please keep your microphone muted during the service</li>
+                    </ol>
                 </div>
             </div>
 
