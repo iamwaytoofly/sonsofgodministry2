@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - The Sons of God Ministry, Inc.</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="small-groups.html">Small Groups</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="visit.html">Visit Us</a></li>
+                    <li><a href="giving.html" class="btn-primary">Give</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Live Stream Banner -->
+    <div class="live-stream-banner">
+        <div class="container">
+            <div class="live-indicator">
+                <span class="pulse"></span> LIVE
+            </div>
+            <div class="stream-text">
+                Sunday Service Streaming Now
+            </div>
+            <a href="live.html" class="btn-stream">
+                <i class="fas fa-play-circle"></i> Watch Live
+            </a>
+        </div>
+    </div>
+
+    <!-- Events Hero -->
+    <section class="events-hero">
+        <div class="container">
+            <h1>Upcoming Events</h1>
+            <p>Join us for worship, fellowship, and community</p>
+        </div>
+    </section>
+
+    <!-- Events Calendar -->
+    <section class="events-calendar">
+        <div class="container">
+            <div class="calendar-header">
+                <h2>Events Calendar</h2>
+                <div class="calendar-controls">
+                    <div class="month-selector">
+                        <button class="month-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <span class="current-month">September 2025</span>
+                        <button class="month-btn next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="view-selector">
+                        <button class="view-btn active" data-view="month">Month</button>
+                        <button class="view-btn" data-view="list">List</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calendar-view month-view active">
+                <!-- Calendar would be dynamically generated in a real implementation -->
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                    
+                    <!-- Week 1 -->
+                    <div class="calendar-day prev-month">31</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    
+                    <!-- Week 2 -->
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    
+                    <!-- Week 3 -->
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day has-event">
+                        15
+                        <div class="event-indicator" data-event="outreach">Community Outreach</div>
+                    </div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    
+                    <!-- Week 4 -->
+                    <div class="calendar-day">21</div>
+                    <div class="calendar-day has-event">
+                        22
+                        <div class="event-indicator" data-event="worship">Worship Night</div>
+                    </div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    
+                    <!-- Week 5 -->
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day next-month">1</div>
+                    <div class="calendar-day next-month">2</div>
+                    <div class="calendar-day next-month">3</div>
+                    <div class="calendar-day next-month">4</div>
+                </div>
+            </div>
+            
+            <div class="calendar-view list-view">
+                <div class="event-list">
+                    <div class="event-list-item" id="outreach">
+                        <div class="event-date">
+                            <span class="month">SEP</span>
+                            <span class="day">15</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Community Outreach</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 9:00 AM - 1:00 PM</p>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Meet at Church Campus</p>
+                            <p class="event-description">Join us as we serve our local community through various outreach projects. We'll be partnering with local organizations to provide food, clothing, and other essential items to those in need. This is a great opportunity to make a tangible difference in our community and show God's love in practical ways.</p>
+                            <div class="event-details">
+                                <h4>What to Bring</h4>
+                                <ul>
+                                    <li>Work gloves</li>
+                                    <li>Water bottle</li>
+                                    <li>Comfortable clothes</li>
+                                    <li>A heart to serve</li>
+                                </ul>
+                                <h4>Registration</h4>
+                                <p>Please sign up in advance so we can plan accordingly.</p>
+                                <a href="#" class="btn-secondary register-btn">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-list-item" id="worship">
+                        <div class="event-date">
+                            <span class="month">SEP</span>
+                            <span class="day">22</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Worship Night</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 7:00 PM - 9:00 PM</p>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
+                            <p class="event-description">Join us for a special evening of praise and worship with our worship team. This will be a time to set aside the busyness of life and focus on encountering God through worship. We'll have extended worship sets, prayer ministry, and moments of reflection.</p>
+                            <div class="event-details">
+                                <h4>What to Expect</h4>
+                                <ul>
+                                    <li>Extended worship sets</li>
+                                    <li>Prayer ministry</li>
+                                    <li>Communion</li>
+                                    <li>Fellowship afterwards</li>
+                                </ul>
+                                <h4>Childcare</h4>
+                                <p>Childcare will be provided for children ages 0-10.</p>
+                                <a href="#" class="btn-secondary register-btn">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="event-list-item" id="family">
+                        <div class="event-date">
+                            <span class="month">OCT</span>
+                            <span class="day">5</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Family Fun Day</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 11:00 AM - 3:00 PM</p>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Church Grounds</p>
+                            <p class="event-description">A day of games, food, and fellowship for the whole family. We'll have bounce houses, face painting, games, and plenty of food. This is a great opportunity to invite friends and neighbors to connect with our church community in a relaxed, fun environment.</p>
+                            <div class="event-details">
+                                <h4>Activities</h4>
+                                <ul>
+                                    <li>Bounce houses</li>
+                                    <li>Face painting</li>
+                                    <li>Games and prizes</li>
+                                    <li>Food trucks</li>
+                                    <li>Live music</li>
+                                </ul>
+                                <h4>Cost</h4>
+                                <p>This event is free and open to the community.</p>
+                                <a href="#" class="btn-secondary register-btn">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recurring Events -->
+    <section class="recurring-events">
+        <div class="container">
+            <h2>Weekly Events</h2>
+            <p class="section-intro">In addition to our special events, we have regular weekly gatherings to help you connect and grow in your faith.</p>
+            
+            <div class="recurring-events-grid">
+                <div class="recurring-event">
+                    <div class="recurring-day">Sunday</div>
+                    <div class="recurring-details">
+                        <h3>Sunday Services</h3>
+                        <p class="recurring-time">9:00 AM & 11:00 AM</p>
+                        <p>Join us for worship, teaching, and community.</p>
+                        <a href="services.html#sunday" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="recurring-event">
+                    <div class="recurring-day">Monday</div>
+                    <div class="recurring-details">
+                        <h3>Men's Prayer</h3>
+                        <p class="recurring-time">6:00 AM</p>
+                        <p>Men gathering to pray for our church, community, and world.</p>
+                        <a href="small-groups.html" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="recurring-event">
+                    <div class="recurring-day">Tuesday</div>
+                    <div class="recurring-details">
+                        <h3>Young Adults</h3>
+                        <p class="recurring-time">7:00 PM</p>
+                        <p>Bible study and fellowship for ages 18-30.</p>
+                        <a href="small-groups.html#young-adults" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="recurring-event">
+                    <div class="recurring-day">Wednesday</div>
+                    <div class="recurring-details">
+                        <h3>Midweek Service</h3>
+                        <p class="recurring-time">7:00 PM</p>
+                        <p>Bible study, prayer, and worship.</p>
+                        <a href="services.html#wednesday" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="recurring-event">
+                    <div class="recurring-day">Thursday</div>
+                    <div class="recurring-details">
+                        <h3>Women's Bible Study</h3>
+                        <p class="recurring-time">10:00 AM</p>
+                        <p>Women gathering to study God's Word and support one another.</p>
+                        <a href="small-groups.html#women" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="recurring-event">
+                    <div class="recurring-day">Friday</div>
+                    <div class="recurring-details">
+                        <h3>Youth Service</h3>
+                        <p class="recurring-time">6:30 PM</p>
+                        <p>Worship, teaching, and activities for grades 6-12.</p>
+                        <a href="services.html#youth" class="btn-tertiary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="event-categories">
+        <div class="container">
+            <h2>Event Categories</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Outreach</h3>
+                    <p>Serving our community</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-music"></i></div>
+                    <h3>Worship</h3>
+                    <p>Special worship events</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-users"></i></div>
+                    <h3>Fellowship</h3>
+                    <p>Building community</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-child"></i></div>
+                    <h3>Family</h3>
+                    <p>Events for all ages</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-bible"></i></div>
+                    <h3>Bible Study</h3>
+                    <p>Growing in God's Word</p>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Missions</h3>
+                    <p>Global impact</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add to Calendar -->
+    <section class="add-calendar">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our church calendar to stay informed about upcoming events.</p>
+            <div class="calendar-buttons">
+                <a href="#" class="calendar-btn google"><i class="fab fa-google"></i> Google Calendar</a>
+                <a href="#" class="calendar-btn apple"><i class="fab fa-apple"></i> Apple Calendar</a>
+                <a href="#" class="calendar-btn outlook"><i class="fab fa-microsoft"></i> Outlook</a>
+            </div>
+            <div class="subscribe-form">
+                <h3>Get Email Notifications</h3>
+                <form>
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>The Sons of God Ministry, Inc.</h3>
+                    <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: info@sonsofgodministry.org</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Service Times</h3>
+                    <p>Sunday: 9:00 AM & 11:00 AM</p>
+                    <p>Wednesday: 7:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="small-groups.html">Small Groups</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="visit.html">Visit Us</a></li>
+                        <li><a href="giving.html">Give</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div class="app-links">
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/events.js"></script>
+</body>
+</html>
