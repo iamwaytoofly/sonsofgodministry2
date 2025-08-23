@@ -45,7 +45,9 @@
                 <ul class="main-nav">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="team.html">Our Team</a></li>
                     <li><a href="services.html">Services</a></li>
+                    <li><a href="small-groups.html">Small Groups</a></li>
                     <li><a href="media.html">Media</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html" class="btn-primary">Give</a></li>
@@ -441,8 +443,9 @@
                 <div class="footer-section">
                     <h3>Stay Updated</h3>
                     <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email Address" required>
+                    <form id="newsletter-form" class="newsletter-form" action="https://formspree.io/f/iamwaytoofly@yahoo.com" method="POST">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                        <input type="hidden" name="_subject" value="New Newsletter Subscription">
                         <button type="submit" class="btn-primary">Subscribe</button>
                     </form>
                 </div>
@@ -488,5 +491,6 @@
 }
 </script>
     <script src="js/tawkto.js"></script>
+    <script src="js/form-handler.js"></script>
 </body>
 </html>
