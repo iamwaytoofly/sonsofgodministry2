@@ -186,46 +186,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call on load and resize
     adjustHeroMargin();
     window.addEventListener('resize', adjustHeroMargin);
-    // ... keep the rest of your JS code ...
-
-function isStreamingBannerTime() {
-  const now = new Date();
-  const day = now.getUTCDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
-  const hour = now.getUTCHours();
-  const minute = now.getUTCMinutes();
-
-  // Helper to check if now is within a time range (startH, startM, endH, endM)
-  function inTimeRange(startH, startM, endH, endM) {
-    const nowMins = hour * 60 + minute;
-    const startMins = startH * 60 + startM;
-    const endMins = endH * 60 + endM;
-    return nowMins >= startMins && nowMins < endMins;
-  }
-
-  // Sunday 10:15-16:00 UTC
-  if (day === 0 && inTimeRange(10, 15, 16, 0)) return true;
-  // Tuesday 19:20-22:00 UTC
-  if (day === 2 && inTimeRange(19, 20, 22, 0)) return true;
-  // Friday 19:20-22:00 UTC
-  if (day === 5 && inTimeRange(19, 20, 22, 0)) return true;
-  return false;
-}
-
-function updateLiveStreamBannerVisibility() {
-    const banner = document.querySelector('.live-stream-banner');
-  if (!banner) return;
-  if (isStreamingBannerTime()) {
-    banner.style.display = 'block';
-  } else {
-    banner.style.display = 'none';
-    // Optionally adjust hero margin if needed
-    const hero = document.querySelector('.hero');
-    if (hero) hero.style.marginTop = '70px';
-  }
-}
-
-updateLiveStreamBannerVisibility();
-setInterval(updateLiveStreamBannerVisibility, 60000);
-
-// ... keep the rest of your JS code ...
+    
 });
