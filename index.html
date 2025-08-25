@@ -617,6 +617,151 @@
         setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
     });
 </script>
-   
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get a reference to the live stream indicator element using its ID.
+        const liveStreamIndicator = document.getElementById('liveStreamIndicator');
+
+        // --- Testing Variables (FOR TESTING ONLY - REMOVE IN PRODUCTION) ---
+        let testMode = false; // Set to true to enable manual testing
+        let testIsLive = false; // Manually set true/false when testMode is true
+
+        // Function to create a temporary test button
+        function createTestButton() {
+            const testContainer = document.createElement('div');
+            testContainer.style.position = 'fixed';
+            testContainer.style.bottom = '10px';
+            testContainer.style.left = '10px';
+            testContainer.style.zIndex = '9999';
+            testContainer.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            testContainer.style.padding = '10px';
+            testContainer.style.borderRadius = '5px';
+            testContainer.style.color = 'white';
+            testContainer.style.fontFamily = 'sans-serif';
+
+            const testModeToggle = document.createElement('input');
+            testModeToggle.type = 'checkbox';
+            testModeToggle.id = 'testModeToggle';
+            testModeToggle.checked = testMode;
+            testModeToggle.style.marginRight = '5px';
+            testModeToggle.onchange = function() {
+                testMode = this.checked;
+                updateTestUI();
+                checkLiveStatus(); // Re-run check when test mode changes
+            };
+
+            const testModeLabel = document.createElement('label');
+            testModeLabel.htmlFor = 'testModeToggle';
+            testModeLabel.textContent = 'Enable Test Mode';
+            testModeLabel.style.marginRight = '15px';
+
+            const liveToggle = document.createElement('button');
+            liveToggle.id = 'liveToggle';
+            liveToggle.style.padding = '5px 10px';
+            liveToggle.style.backgroundColor = '#4CAF50';
+            liveToggle.style.color = 'white';
+            liveToggle.style.border = 'none';
+            liveToggle.style.borderRadius = '3px';
+            liveToggle.style.cursor = 'pointer';
+            liveToggle.onclick = function() {
+                testIsLive = !testIsLive;
+                updateTestUI();
+                checkLiveStatus(); // Re-run check when live status changes
+            };
+
+            testContainer.appendChild(testModeToggle);
+            testContainer.appendChild(testModeLabel);
+            testContainer.appendChild(liveToggle);
+
+            document.body.appendChild(testContainer);
+
+            function updateTestUI() {
+                liveToggle.textContent = testIsLive ? 'Set Offline' : 'Set Live';
+                liveToggle.style.backgroundColor = testIsLive ? '#f44336' : '#4CAF50';
+                liveToggle.disabled = !testMode;
+                if (!testMode) {
+                    liveToggle.style.opacity = '0.5';
+                    liveToggle.style.cursor = 'not-allowed';
+                } else {
+                    liveToggle.style.opacity = '1';
+                    liveToggle.style.cursor = 'pointer';
+                }
+            }
+            updateTestUI(); // Initial UI setup
+        }
+        createTestButton();
+        // --- End Testing Variables ---
+
+
+        /**
+         * Checks the current day and time against the scheduled live stream times
+         * and updates the visibility of the live stream indicator.
+         */
+        function checkLiveStatus() {
+            let isLive = false; // Flag to track if the current time is within a live window
+
+            // If testMode is enabled, override the time-based check
+            if (testMode) {
+                isLive = testIsLive;
+            } else {
+                const now = new Date();
+                const day = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+                const hour = now.getHours();
+                const minutes = now.getMinutes();
+
+                // Convert current time to a single comparable minute value for the day
+                // This simplifies time range checks.
+                const currentMinutesOfDay = hour * 60 + minutes;
+
+                // --- Check for Sunday live stream ---
+                // Sunday: 10:00 AM (600 minutes) - 5:00 PM (1020 minutes)
+                if (day === 0) { // Sunday is day 0
+                    const sundayStartTime = 10 * 60; // 10:00 AM
+                    const sundayEndTime = 17 * 60;   // 5:00 PM (17:00 in 24-hour format)
+                    if (currentMinutesOfDay >= sundayStartTime && currentMinutesOfDay <= sundayEndTime) {
+                        isLive = true;
+                    }
+                }
+                // --- Check for Tuesday live stream ---
+                // Tuesday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
+                else if (day === 2) { // Tuesday is day 2
+                    const tuesdayStartTime = 19 * 60;     // 7:00 PM (19:00)
+                    const tuesdayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
+                    if (currentMinutesOfDay >= tuesdayStartTime && currentMinutesOfDay <= tuesdayEndTime) {
+                        isLive = true;
+                    }
+                }
+                // --- Check for Friday live stream ---
+                // Friday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
+                else if (day === 5) { // Friday is day 5
+                    const fridayStartTime = 19 * 60;     // 7:00 PM (19:00)
+                    const fridayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
+                    if (currentMinutesOfDay >= fridayStartTime && currentMinutesOfDay <= fridayEndTime) {
+                        isLive = true;
+                    }
+                }
+            }
+
+
+            // Update the display style of the live indicator based on the 'isLive' flag.
+            // Using 'flex' instead of 'block' ensures the dot and text are aligned horizontally.
+            if (liveStreamIndicator) {
+                liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
+            }
+        }
+
+        // --- Execution Flow ---
+
+        // 1. Run the check immediately when the page finishes loading.
+        checkLiveStatus();
+
+        // 2. Set up an interval to re-check the live status every minute.
+        // This ensures the indicator appears/disappears automatically without page refresh
+        // as the time crosses the scheduled boundaries.
+        // This interval will continue to run even in test mode, but test mode will override
+        // its results.
+        setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
+    });
+</script>   
 </body>
 </html>
