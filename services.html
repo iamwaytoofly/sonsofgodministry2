@@ -8,6 +8,75 @@
     
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    <!--/* Keyframes for the blinking animation */-->
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    /* Styles for the live indicator container (an <a> tag) */
+    .live-indicator {
+        display: none; /* Hidden by default, JavaScript will show it */
+        background-color: #ef4444; /* Tailwind red-500 equivalent */
+        color: white;
+        padding: 0.35rem 0.75rem; /* Padding for size */
+        border-radius: 9999px; /* Fully rounded pill shape */
+        font-weight: bold;
+        font-size: 0.875rem; /* Smaller font size */
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        position: absolute; /* Position absolutely within its nearest positioned ancestor (your header) */
+        top: 50%; /* Center vertically within the header */
+        right: 1rem; /* Distance from the right edge of the header */
+        transform: translateY(-50%); /* Fine-tune vertical centering */
+        z-index: 1000; /* Ensure it's above other content */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        animation: blink 1.5s infinite; /* Apply blinking animation */
+        display: flex; /* Use flex to align dot and text */
+        align-items: center;
+        gap: 0.3rem; /* Space between dot and text */
+        font-family: "Inter", sans-serif; /* Using Inter font */
+        text-decoration: none; /* Remove default link underline */
+        cursor: pointer; /* Indicate it's clickable */
+        transition: background-color 0.3s ease; /* Smooth transition for hover */
+    }
+
+    .live-indicator:hover {
+        background-color: #dc2626; /* Darker red on hover */
+    }
+
+    /* Style for the blinking red dot */
+    .live-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #fca5a5; /* Lighter red for the dot */
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    /* Responsive adjustments for smaller screens if needed */
+    @media (max-width: 640px) {
+        .live-indicator {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            right: 0.5rem; /* Adjust position for smaller screens */
+            top: 1rem; /* Position higher for smaller, less tall headers */
+            transform: translateY(0); /* Reset vertical transform for top positioning */
+        }
+    }
+</style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
