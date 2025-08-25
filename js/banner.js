@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // you would need a library to handle time zones.
         const sundayStart = 10 * 60; // 10:00 AM
         const sundayEnd = 17 * 60;   // 5:00 PM
+        const mondayStart = 1 * 60; // 10:00 AM
+        const mondayEnd = 24 * 60;   // 5:00 PM
         const tuesdayStart = 19 * 60; // 7:00 PM
         const tuesdayEnd = 22 * 60 + 30; // 10:30 PM
         const fridayStart = 19 * 60; // 7:00 PM
@@ -24,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (dayOfWeek === 0) { // Sunday
             if (currentTimeInMinutes >= sundayStart && currentTimeInMinutes <= sundayEnd) {
+                isLive = true;
+            }
+        if (dayOfWeek === 1) { // Sunday
+            if (currentTimeInMinutes >= mondayStart && currentTimeInMinutes <= mondayEnd) {
                 isLive = true;
             }
         } else if (dayOfWeek === 2) { // Tuesday
