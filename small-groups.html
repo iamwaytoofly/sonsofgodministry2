@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Small Groups - The Sons of God Ministry, Inc.</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/media.css"><!-- reuse card/grid styles -->
+    <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+    .card-form-bg {
+        display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
+    }
+    .card-form-bg.active { display: flex; }
+    .modal-form {
+        background: #fff; border-radius: 8px; padding: 2rem; max-width: 400px; width: 95%; box-shadow: 0 4px 32px rgba(0,0,0,0.18); position: relative;
+    }
+    .modal-form h3 { margin-top: 0; }
+    .modal-form label { display: block; margin: 1em 0 0.3em; }
+    .modal-form input, .modal-form textarea { width: 100%; padding: 0.5em; margin-bottom: 1em; border-radius: 4px; border: 1px solid #ccc; }
+    .modal-form .modal-actions { text-align: right; }
+    .modal-form .btn-primary { margin-right: 0.5em; }
+    .modal-form .close-modal { position: absolute; top: 12px; right: 20px; background: none; border: none; font-size: 1.5em; cursor: pointer; }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
@@ -57,10 +72,29 @@
                         <p>Ages 12-18 • Tuesdays, 7:00 PM • Church Campus</p>
                         <p>Led by Michael & Sarah Johnson</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-youth">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Youth -->
+                <div class="card-form-bg" id="form-join-youth">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Youth Ministry</h3>
+                        <input type="hidden" name="group" value="Youth Ministry">
+                        <label for="joinNameYouth">Your Name</label>
+                        <input type="text" id="joinNameYouth" name="name" required>
+                        <label for="joinEmailYouth">Your Email</label>
+                        <input type="email" id="joinEmailYouth" name="email" required>
+                        <label for="joinMessageYouth">Message (optional)</label>
+                        <textarea id="joinMessageYouth" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Young Adults -->
                 <div class="media-item" data-tab="young-adult">
@@ -72,10 +106,29 @@
                         <p>Ages 18-30 • Fridays, 7:30 PM • North Pittsburgh</p>
                         <p>Led by Jason & Emily Chen</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-youngadult">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Young Adults -->
+                <div class="card-form-bg" id="form-join-youngadult">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Young Adults</h3>
+                        <input type="hidden" name="group" value="Young Adults">
+                        <label for="joinNameYoungAdult">Your Name</label>
+                        <input type="text" id="joinNameYoungAdult" name="name" required>
+                        <label for="joinEmailYoungAdult">Your Email</label>
+                        <input type="email" id="joinEmailYoungAdult" name="email" required>
+                        <label for="joinMessageYoungAdult">Message (optional)</label>
+                        <textarea id="joinMessageYoungAdult" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- College -->
                 <div class="media-item" data-tab="college">
@@ -87,10 +140,29 @@
                         <p>College Age • Thursdays, 8:00 PM • Online</p>
                         <p>Led by Rachel Lee</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-college">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: College -->
+                <div class="card-form-bg" id="form-join-college">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join College Students</h3>
+                        <input type="hidden" name="group" value="College Students">
+                        <label for="joinNameCollege">Your Name</label>
+                        <input type="text" id="joinNameCollege" name="name" required>
+                        <label for="joinEmailCollege">Your Email</label>
+                        <input type="email" id="joinEmailCollege" name="email" required>
+                        <label for="joinMessageCollege">Message (optional)</label>
+                        <textarea id="joinMessageCollege" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Men -->
                 <div class="media-item" data-tab="men">
@@ -102,10 +174,29 @@
                         <p>Men • Wednesdays, 6:30 PM • South Area</p>
                         <p>Led by John Miller</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-men">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Men -->
+                <div class="card-form-bg" id="form-join-men">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Men's Fellowship</h3>
+                        <input type="hidden" name="group" value="Men's Fellowship">
+                        <label for="joinNameMen">Your Name</label>
+                        <input type="text" id="joinNameMen" name="name" required>
+                        <label for="joinEmailMen">Your Email</label>
+                        <input type="email" id="joinEmailMen" name="email" required>
+                        <label for="joinMessageMen">Message (optional)</label>
+                        <textarea id="joinMessageMen" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Women -->
                 <div class="media-item" data-tab="women">
@@ -117,10 +208,29 @@
                         <p>Women • Mondays, 6:00 PM • Church Campus</p>
                         <p>Led by Susan Park</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-women">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Women -->
+                <div class="card-form-bg" id="form-join-women">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Women's Bible Study</h3>
+                        <input type="hidden" name="group" value="Women's Bible Study">
+                        <label for="joinNameWomen">Your Name</label>
+                        <input type="text" id="joinNameWomen" name="name" required>
+                        <label for="joinEmailWomen">Your Email</label>
+                        <input type="email" id="joinEmailWomen" name="email" required>
+                        <label for="joinMessageWomen">Message (optional)</label>
+                        <textarea id="joinMessageWomen" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Couples -->
                 <div class="media-item" data-tab="couples">
@@ -132,10 +242,29 @@
                         <p>Couples • Saturdays, 5:00 PM • East Area</p>
                         <p>Led by David & Linda Smith</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-couples">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Couples -->
+                <div class="card-form-bg" id="form-join-couples">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Married Couples</h3>
+                        <input type="hidden" name="group" value="Married Couples">
+                        <label for="joinNameCouples">Your Name</label>
+                        <input type="text" id="joinNameCouples" name="name" required>
+                        <label for="joinEmailCouples">Your Email</label>
+                        <input type="email" id="joinEmailCouples" name="email" required>
+                        <label for="joinMessageCouples">Message (optional)</label>
+                        <textarea id="joinMessageCouples" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Parents -->
                 <div class="media-item" data-tab="parents">
@@ -147,10 +276,29 @@
                         <p>Parents • Sundays, 10:30 AM • West Area</p>
                         <p>Led by Marcus & Rachel Young</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-parents">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Parents -->
+                <div class="card-form-bg" id="form-join-parents">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Parents Group</h3>
+                        <input type="hidden" name="group" value="Parents Group">
+                        <label for="joinNameParents">Your Name</label>
+                        <input type="text" id="joinNameParents" name="name" required>
+                        <label for="joinEmailParents">Your Email</label>
+                        <input type="email" id="joinEmailParents" name="email" required>
+                        <label for="joinMessageParents">Message (optional)</label>
+                        <textarea id="joinMessageParents" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Seniors -->
                 <div class="media-item" data-tab="seniors">
@@ -162,10 +310,29 @@
                         <p>Seniors • Thursdays, 10:00 AM • Church Campus</p>
                         <p>Led by Betty Clark</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-seniors">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
+                </div>
+                <!-- Join Group Form Modal: Seniors -->
+                <div class="card-form-bg" id="form-join-seniors">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Seniors Fellowship</h3>
+                        <input type="hidden" name="group" value="Seniors Fellowship">
+                        <label for="joinNameSeniors">Your Name</label>
+                        <input type="text" id="joinNameSeniors" name="name" required>
+                        <label for="joinEmailSeniors">Your Email</label>
+                        <input type="email" id="joinEmailSeniors" name="email" required>
+                        <label for="joinMessageSeniors">Message (optional)</label>
+                        <textarea id="joinMessageSeniors" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
                 </div>
                 <!-- Bible Study -->
                 <div class="media-item" data-tab="bible-study">
@@ -177,12 +344,31 @@
                         <p>Open to All • Tuesdays, 8:00 PM • Online</p>
                         <p>Led by Pastor Greg Adams</p>
                         <div class="group-actions">
-                            <a href="#" class="btn-secondary">Join Group</a>
+                            <a href="#" class="btn-secondary join-group-link" data-form="join-biblestudy">Join Group</a>
                             <a href="#" class="btn-tertiary">Contact Leader</a>
                         </div>
                     </div>
                 </div>
-                <!-- Placeholder for Expansion -->
+                <!-- Join Group Form Modal: Bible Study -->
+                <div class="card-form-bg" id="form-join-biblestudy">
+                    <form class="modal-form" autocomplete="off">
+                        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+                        <h3>Request Info / Join Tuesday Bible Study</h3>
+                        <input type="hidden" name="group" value="Tuesday Bible Study">
+                        <label for="joinNameBibleStudy">Your Name</label>
+                        <input type="text" id="joinNameBibleStudy" name="name" required>
+                        <label for="joinEmailBibleStudy">Your Email</label>
+                        <input type="email" id="joinEmailBibleStudy" name="email" required>
+                        <label for="joinMessageBibleStudy">Message (optional)</label>
+                        <textarea id="joinMessageBibleStudy" name="message" rows="3" placeholder="Tell us a bit about yourself or your inquiry..."></textarea>
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-primary">Submit</button>
+                            <button type="button" class="btn-tertiary close-modal">Cancel</button>
+                        </div>
+                        <div class="form-response" style="margin-top:1em;display:none;"></div>
+                    </form>
+                </div>
+                <!-- Placeholder for Expansion (no join form) -->
                 <div class="media-item" data-tab="placeholder">
                     <div class="media-thumbnail">
                         <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80" alt="New Group Coming Soon">
@@ -250,6 +436,39 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Open modal
+        document.querySelectorAll('.join-group-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var formId = 'form-' + link.getAttribute('data-form');
+                document.getElementById(formId).classList.add('active');
+            });
+        });
+        // Close modal
+        document.querySelectorAll('.close-modal').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                btn.closest('.card-form-bg').classList.remove('active');
+            });
+        });
+        // Handle form submit for all join forms
+        document.querySelectorAll('.modal-form').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var responseBox = form.querySelector('.form-response');
+                responseBox.style.display = 'block';
+                responseBox.style.color = 'green';
+                responseBox.textContent = 'Thank you! Your interest has been submitted. The group leader will contact you soon.';
+                setTimeout(function(){
+                    form.closest('.card-form-bg').classList.remove('active');
+                    responseBox.style.display = 'none';
+                }, 1800);
+            });
+        });
+    });
+    </script>
     <script src="js/small-groups.js"></script>
 </body>
 </html>
