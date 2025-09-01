@@ -1,59 +1,247 @@
- <!-- Example of affected section for "Young Adults" (to be changed to "Youth Ministry") and "College Students Group" (to become "Young Adult Ministry") -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Small Groups | Sons of God Ministry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome & Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Sons of God Ministry</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="small-groups.html" class="active">Small Groups</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Youth Ministry Group -->
-<div id="youth-ministry" class="group-item" data-type="youth-ministry" data-day="tuesday" data-location="church">
-    <div class="group-header">
-        <h3>Youth Ministry</h3>
-        <span class="group-tag">Ages 12-30</span>
-    </div>
-    <div class="group-details">
-        <div class="group-info">
-            <p><i class="far fa-calendar-alt"></i> Tuesdays at 7:00 PM</p>
-            <p><i class="fas fa-map-marker-alt"></i> Church Campus - Room 201</p>
-            <p><i class="fas fa-user"></i> Led by: Michael & Sarah Johnson</p>
-            <p class="group-description">Connect with others ages 12-30 for fellowship, Bible study, and community service. This semester we're studying the book of James and what it means to live out our faith in practical ways.</p>
-            <div class="group-actions">
-                <a href="#" class="btn-secondary join-group" data-group="Youth Ministry">Join This Group</a>
-                <a href="#" class="btn-tertiary contact-leader" data-leader="Michael & Sarah Johnson">Contact Leaders</a>
+    <!-- Hero Banner -->
+    <section class="hero-smallgroups">
+        <div class="container">
+            <h1>Find Your Small Group</h1>
+            <p>Connect. Grow. Belong. Discover community and spiritual growth through our diverse small groups.</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="group-filters">
+        <div class="container">
+            <form id="filters-form">
+                <label for="group-type">Group Type:</label>
+                <select id="group-type">
+                    <option value="all">All Groups</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="youth">Youth</option>
+                    <option value="young-adult">Young Adults</option>
+                    <option value="college">College Students</option>
+                    <option value="couples">Married Couples</option>
+                    <option value="parents">Parents</option>
+                    <option value="seniors">Seniors</option>
+                    <option value="bible-study">Bible Study</option>
+                </select>
+                <label for="group-day">Day:</label>
+                <select id="group-day">
+                    <option value="all">Any Day</option>
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                </select>
+                <label for="group-location">Location:</label>
+                <select id="group-location">
+                    <option value="all">Any Location</option>
+                    <option value="church">Church Campus</option>
+                    <option value="north">North</option>
+                    <option value="south">South</option>
+                    <option value="east">East</option>
+                    <option value="west">West</option>
+                    <option value="online">Online</option>
+                </select>
+            </form>
+        </div>
+    </section>
+
+    <!-- Small Groups Grid -->
+    <section class="groups-list">
+        <div class="container grid">
+
+            <!-- Example Youth Group -->
+            <div class="group-card" data-type="youth" data-day="tuesday" data-location="church">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Youth Group">
+                <div class="group-content">
+                    <h3>Youth Ministry</h3>
+                    <span class="group-tag">Ages 12-18</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Tuesdays, 7:00 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> Church Campus</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Michael & Sarah Johnson</p>
+                    <p>Grow in faith and friendship! Games, Bible study, and service.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="group-image">
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Youth Ministry">
-        </div>
-    </div>
-</div>
 
-<!-- Young Adult Ministry (formerly "College Students Group") -->
-<div class="group-item" data-type="young-adult-ministry" data-day="friday" data-location="north">
-    <div class="group-header">
-        <h3>Young Adult Ministry</h3>
-        <span class="group-tag">Ages 18-30</span>
-    </div>
-    <div class="group-details">
-        <div class="group-info">
-            <p><i class="far fa-calendar-alt"></i> Fridays at 7:30 PM</p>
-            <p><i class="fas fa-map-marker-alt"></i> North Pittsburgh - Near University</p>
-            <p><i class="fas fa-user"></i> Led by: Jason & Emily Chen</p>
-            <p class="group-description">A community specifically for young adults (ages 18-30) to connect, grow in faith, and navigate the unique challenges of early adulthood. We combine Bible study with practical discussions about living out your faith in college and beyond.</p>
-            <div class="group-actions">
-                <a href="#" class="btn-secondary join-group" data-group="Young Adult Ministry">Join This Group</a>
-                <a href="#" class="btn-tertiary contact-leader" data-leader="Jason & Emily Chen">Contact Leaders</a>
+            <!-- Example Young Adults -->
+            <div class="group-card" data-type="young-adult" data-day="friday" data-location="north">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Young Adults">
+                <div class="group-content">
+                    <h3>Young Adults</h3>
+                    <span class="group-tag">Ages 18-30</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Fridays, 7:30 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> North Pittsburgh</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Jason & Emily Chen</p>
+                    <p>Community for young adults to connect, study, and serve together.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="group-image">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Young Adult Ministry">
-        </div>
-    </div>
-</div>
 
-<!-- Filters Section -->
-<select id="group-type">
-    <option value="all">All Groups</option>
-    <option value="men">Men</option>
-    <option value="women">Women</option>
-    <option value="youth-ministry">Youth Ministry</option>
-    <option value="young-adult-ministry">Young Adult Ministry</option>
-    <option value="couples">Married Couples</option>
-    <option value="parents">Parents</option>
-    <option value="seniors">Seniors</option>
-</select>
+            <!-- Example College Students -->
+            <div class="group-card" data-type="college" data-day="thursday" data-location="online">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="College Group">
+                <div class="group-content">
+                    <h3>College Students Group</h3>
+                    <span class="group-tag">College Age</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Thursdays, 8:00 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> Online</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Rachel Lee</p>
+                    <p>Weekly encouragement, discussion, and study for college students.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Men's Group -->
+            <div class="group-card" data-type="men" data-day="wednesday" data-location="south">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Men's Group">
+                <div class="group-content">
+                    <h3>Men's Fellowship</h3>
+                    <span class="group-tag">Men</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Wednesdays, 6:30 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> South Area</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> John Miller</p>
+                    <p>Brotherhood, support, and faith-building for men of all ages.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Women's Group -->
+            <div class="group-card" data-type="women" data-day="monday" data-location="church">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Women's Group">
+                <div class="group-content">
+                    <h3>Women's Bible Study</h3>
+                    <span class="group-tag">Women</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Mondays, 6:00 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> Church Campus</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Susan Park</p>
+                    <p>Encouragement and fellowship for women in all life stages.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Married Couples -->
+            <div class="group-card" data-type="couples" data-day="saturday" data-location="east">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Couples Group">
+                <div class="group-content">
+                    <h3>Married Couples</h3>
+                    <span class="group-tag">Couples</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Saturdays, 5:00 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> East Area</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> David & Linda Smith</p>
+                    <p>Strengthen your marriage with Christ-centered community and wisdom.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Parents Group -->
+            <div class="group-card" data-type="parents" data-day="sunday" data-location="west">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Parents Group">
+                <div class="group-content">
+                    <h3>Parents Group</h3>
+                    <span class="group-tag">Parents</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Sundays, 10:30 AM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> West Area</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Marcus & Rachel Young</p>
+                    <p>Support and guidance for parents raising children in faith.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Seniors Group -->
+            <div class="group-card" data-type="seniors" data-day="thursday" data-location="church">
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Seniors Group">
+                <div class="group-content">
+                    <h3>Seniors Fellowship</h3>
+                    <span class="group-tag">Seniors</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Thursdays, 10:00 AM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> Church Campus</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Betty Clark</p>
+                    <p>Friendship, worship, and encouragement for seniors 60+.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder: Bible Study Group -->
+            <div class="group-card" data-type="bible-study" data-day="tuesday" data-location="online">
+                <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=600&q=80" alt="Bible Study Group">
+                <div class="group-content">
+                    <h3>Tuesday Bible Study</h3>
+                    <span class="group-tag">Open to All</span>
+                    <p class="group-meta"><i class="far fa-calendar-alt"></i> Tuesdays, 8:00 PM</p>
+                    <p class="group-meta"><i class="fas fa-map-marker-alt"></i> Online</p>
+                    <p class="group-meta"><i class="fas fa-user"></i> Pastor Greg Adams</p>
+                    <p>In-depth Bible exploration group, no experience necessary.</p>
+                    <div class="group-actions">
+                        <a href="#" class="btn-secondary">Join Group</a>
+                        <a href="#" class="btn-tertiary">Contact Leader</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Sons of God Ministry. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Optional JS for filtering/groups -->
+    <script src="js/small-groups.js"></script>
+</body>
+</html>
