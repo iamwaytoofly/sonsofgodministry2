@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+
+  
+      document.addEventListener('DOMContentLoaded', function() {
     // Group Filtering
     const filterButton = document.querySelector('.filter-button');
     const groupTypeSelect = document.getElementById('group-type');
@@ -12,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedLocation = locationSelect.value;
         
         groupItems.forEach(item => {
+            // --- Requested Changes: Support new group-type values for "youth-ministry" and "young-adult-ministry"
             const typeMatch = selectedType === 'all' || item.getAttribute('data-type') === selectedType;
             const dayMatch = selectedDay === 'all' || item.getAttribute('data-day') === selectedDay;
             const locationMatch = selectedLocation === 'all' || item.getAttribute('data-location') === selectedLocation;
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             firstVisibleGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
-    
+
     // Group Join Modal
     const joinButtons = document.querySelectorAll('.join-group');
     const groupSignupModal = document.getElementById('group-signup-modal');
