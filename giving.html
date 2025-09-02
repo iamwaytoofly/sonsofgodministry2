@@ -2,357 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Giving - The Sons of God Ministry, Inc.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    
     <link rel="stylesheet" href="css/giving.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+        </div>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#media-preview">Media</a></li>
+                <li><a href="index.html#small-groups">Groups</a></li>
+                <li><a href="visit.html">Visit Us</a></li>
+                <li><a href="giving.html" class="btn-primary active">Give</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="index.html">Home</a></li>
+        </nav>
+    </div>
+</header>
+
+<section class="giving-hero">
+    <div class="container">
+        <h1>Secure Online Giving</h1>
+        <p>Your generosity enables our church to carry out our mission.</p>
+    </div>
+</section>
+
+<!-- Existing giving content -->
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section"><h3>The Sons of God Ministry, Inc.</h3><p>200 Tabor St.<br>Pittsburgh, PA 15204</p></div>
+            <div class="footer-section"><h3>Service Times</h3><p>Sunday: 9:00 AM & 11:00 AM</p><p>Wednesday: 7:00 PM</p></div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#events">Events</a></li>
-                    <li><a href="index.html#plan-visit">Plan Your Visit</a></li>
-                    <li><a href="giving.html" class="active btn-primary">Give</a></li>
+                    <li><a href="index.html#media-preview">Media</a></li>
+                    <li><a href="index.html#small-groups">Groups</a></li>
+                    <li><a href="visit.html">Visit Us</a></li>
+                    <li><a href="giving.html">Give</a></li>
                 </ul>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Giving Hero Section -->
-    <section class="giving-hero">
-        <div class="container">
-            <h1>Secure Online Giving</h1>
-            <p>Your generosity enables our church to carry out our mission in our community and around the world.</p>
-        </div>
-    </section>
-
-    <!-- Giving Options Section -->
-    <section class="giving-options-section">
-        <div class="container">
-            <h2>Ways to Give</h2>
-            <div class="giving-methods">
-                <div class="giving-method">
-                    <div class="method-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Credit/Debit Card</h3>
-                    <p>Make a secure donation using your credit or debit card.</p>
-                </div>
-                <div class="giving-method">
-                    <div class="method-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3>ACH/Bank Transfer</h3>
-                    <p>Give directly from your bank account with no processing fees.</p>
-                </div>
-                <div class="giving-method">
-                    <div class="method-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Text to Give</h3>
-                    <p>Text any amount to (555) 123-4567 to give quickly and securely.</p>
-                </div>
-                <div class="giving-method">
-                    <div class="method-icon">
-                        <i class="fab fa-apple"></i>
-                    </div>
-                    <h3>Apple Pay</h3>
-                    <p>Use Apple Pay for quick and convenient giving.</p>
-                </div>
             </div>
+            <div class="footer-section"><h3>Connect</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+            <div class="footer-section"><h3>Stay Updated</h3><form action="https://formspree.io/f/xdklnnbg" method="POST"><input type="email" name="email" required placeholder="Your Email Address"><button type="submit">Subscribe</button></form></div>
         </div>
-    </section>
-
-    <!-- Giving Form Section -->
-    <section class="giving-form-section">
-        <div class="container">
-            <div class="giving-form-container">
-                <h2>Make a Donation</h2>
-                <form id="giving-form" class="giving-form">
-                    <!-- Amount Selection -->
-                    <div class="form-section">
-                        <h3>Select Amount</h3>
-                        <div class="amount-options">
-                            <div class="amount-option">
-                                <input type="radio" id="amount-25" name="amount" value="25">
-                                <label for="amount-25">$25</label>
-                            </div>
-                            <div class="amount-option">
-                                <input type="radio" id="amount-50" name="amount" value="50">
-                                <label for="amount-50">$50</label>
-                            </div>
-                            <div class="amount-option">
-                                <input type="radio" id="amount-100" name="amount" value="100" checked>
-                                <label for="amount-100">$100</label>
-                            </div>
-                            <div class="amount-option">
-                                <input type="radio" id="amount-250" name="amount" value="250">
-                                <label for="amount-250">$250</label>
-                            </div>
-                            <div class="amount-option">
-                                <input type="radio" id="amount-500" name="amount" value="500">
-                                <label for="amount-500">$500</label>
-                            </div>
-                            <div class="amount-option">
-                                <input type="radio" id="amount-other" name="amount" value="other">
-                                <label for="amount-other">Other</label>
-                            </div>
-                        </div>
-                        <div class="custom-amount" id="custom-amount-container" style="display: none;">
-                            <label for="custom-amount">Custom Amount ($)</label>
-                            <input type="number" id="custom-amount" name="custom-amount" min="1" step="1">
-                        </div>
-                    </div>
-
-                    <!-- Fund Selection -->
-                    <div class="form-section">
-                        <h3>Select Fund</h3>
-                        <div class="fund-options">
-                            <div class="fund-option">
-                                <input type="radio" id="fund-tithes" name="fund" value="tithes" checked>
-                                <label for="fund-tithes">Tithes & Offerings</label>
-                            </div>
-                            <div class="fund-option">
-                                <input type="radio" id="fund-missions" name="fund" value="missions">
-                                <label for="fund-missions">Missions</label>
-                            </div>
-                            <div class="fund-option">
-                                <input type="radio" id="fund-building" name="fund" value="building">
-                                <label for="fund-building">Building Fund</label>
-                            </div>
-                            <div class="fund-option">
-                                <input type="radio" id="fund-benevolence" name="fund" value="benevolence">
-                                <label for="fund-benevolence">Benevolence</label>
-                            </div>
-                            <div class="fund-option">
-                                <input type="radio" id="fund-youth" name="fund" value="youth">
-                                <label for="fund-youth">Youth Ministry</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Frequency Selection -->
-                    <div class="form-section">
-                        <h3>Giving Frequency</h3>
-                        <div class="frequency-options">
-                            <div class="frequency-option">
-                                <input type="radio" id="frequency-once" name="frequency" value="once" checked>
-                                <label for="frequency-once">One Time</label>
-                            </div>
-                            <div class="frequency-option">
-                                <input type="radio" id="frequency-weekly" name="frequency" value="weekly">
-                                <label for="frequency-weekly">Weekly</label>
-                            </div>
-                            <div class="frequency-option">
-                                <input type="radio" id="frequency-biweekly" name="frequency" value="biweekly">
-                                <label for="frequency-biweekly">Bi-Weekly</label>
-                            </div>
-                            <div class="frequency-option">
-                                <input type="radio" id="frequency-monthly" name="frequency" value="monthly">
-                                <label for="frequency-monthly">Monthly</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Personal Information -->
-                    <div class="form-section">
-                        <h3>Your Information</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" name="first-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" name="last-name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone (Optional)</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-
-                    <!-- Payment Information (in a real application, this would be handled by a secure payment processor) -->
-                    <div class="form-section">
-                        <h3>Payment Method</h3>
-                        <div class="payment-methods">
-                            <div class="payment-method">
-                                <input type="radio" id="payment-card" name="payment-method" value="card" checked>
-                                <label for="payment-card">Credit/Debit Card</label>
-                            </div>
-                            <div class="payment-method">
-                                <input type="radio" id="payment-ach" name="payment-method" value="ach">
-                                <label for="payment-ach">ACH/Bank Transfer</label>
-                            </div>
-                            <div class="payment-method">
-                                <input type="radio" id="payment-apple" name="payment-method" value="apple">
-                                <label for="payment-apple">Apple Pay</label>
-                            </div>
-                        </div>
-
-                        <!-- Credit Card Fields (would be replaced by a secure payment form in production) -->
-                        <div id="card-fields">
-                            <div class="form-group">
-                                <label for="card-number">Card Number</label>
-                                <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="expiry">Expiration Date</label>
-                                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="cvv">CVV</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="123">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ACH Fields (hidden by default) -->
-                        <div id="ach-fields" style="display: none;">
-                            <div class="form-group">
-                                <label for="routing-number">Routing Number</label>
-                                <input type="text" id="routing-number" name="routing-number">
-                            </div>
-                            <div class="form-group">
-                                <label for="account-number">Account Number</label>
-                                <input type="text" id="account-number" name="account-number">
-                            </div>
-                            <div class="form-group">
-                                <label for="account-type">Account Type</label>
-                                <select id="account-type" name="account-type">
-                                    <option value="checking">Checking</option>
-                                    <option value="savings">Savings</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Apple Pay (would be replaced by Apple Pay button in production) -->
-                        <div id="apple-pay-fields" style="display: none;">
-                            <div class="apple-pay-button">
-                                <i class="fab fa-apple"></i> Pay
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="cover-fees" name="cover-fees">
-                            <label for="cover-fees">Cover processing fees (3%)</label>
-                        </div>
-                    </div>
-
-                    <div class="giving-security">
-                        <i class="fas fa-lock"></i>
-                        <p>All transactions are secure and encrypted</p>
-                    </div>
-
-                    <button type="submit" class="btn-primary btn-large">Complete Donation</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Give Section -->
-    <section class="why-give-section">
-        <div class="container">
-            <h2>Why We Give</h2>
-            <div class="why-give-content">
-                <div class="why-give-text">
-                    <p>At The Sons of God Ministry, Inc., we believe that giving is an act of worship. When we give, we acknowledge that everything we have comes from God, and we express our gratitude by giving back a portion of what He has given us.</p>
-                    <p>Your generosity helps us:</p>
-                    <ul>
-                        <li>Support our local community through outreach programs</li>
-                        <li>Fund mission trips and global initiatives</li>
-                        <li>Maintain our facilities for worship and fellowship</li>
-                        <li>Provide resources for children, youth, and adult ministries</li>
-                        <li>Assist those in need through our benevolence fund</li>
-                    </ul>
-                    <p>Thank you for partnering with us in ministry through your faithful giving.</p>
-                    <blockquote>
-                        "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7
-                    </blockquote>
-                </div>
-                <div class="why-give-image">
-                    <img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Community outreach">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>The Sons of God Ministry, Inc.</h3>
-                    <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Email: info@sonsofgodministry.org</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Service Times</h3>
-                    <p>Sunday: 9:00 AM & 11:00 AM</p>
-                    <p>Wednesday: 7:00 PM</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#events">Events</a></li>
-                        <li><a href="index.html#plan-visit">Plan Your Visit</a></li>
-                        <li><a href="giving.html">Give</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-spotify"></i></a>
-                    </div>
-                    <div class="footer-section">
-                    <h3>Stay Updated</h3>
-                    <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
-                    <form action="https://formspree.io/f/xdklnnbg" method="POST">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-                </div>
-              </div>
-               
-            <div class="footer-bottom">
-                <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-    <script src="js/giving.js"></script>
-
+        <div class="footer-bottom"><p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p></div>
+    </div>
+</footer>
+<script src="js/script.js"></script>
 </body>
 </html>
