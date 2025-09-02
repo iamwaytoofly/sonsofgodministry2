@@ -10,44 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
     <style>
-        /* Light inline helpers (can be moved to giving.css) */
         .giving-section { padding: 3rem 0; }
         .giving-intro { max-width: 780px; margin: 0 auto 2rem; text-align: center; }
-        .giving-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center; margin-top: 1.5rem; }
-        .giving-card-grid { display: grid; gap: 1.75rem; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); margin-top: 2.5rem; }
-        .giving-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 1.5rem 1.4rem 1.65rem;
-            box-shadow: 0 4px 14px -2px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            gap: .65rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .giving-card:before {
-            content:"";
-            position:absolute;
-            inset:0;
-            background: radial-gradient(circle at 85% -10%,rgba(99,102,241,0.15),transparent 60%);
-            opacity:.6;
-            pointer-events:none;
-        }
-        .giving-card h3 { margin:0; font-size:1.05rem; letter-spacing:.5px; }
-        .giving-card p { margin:0; font-size:.9rem; line-height:1.35rem; color:#444; }
-        .giving-badge {
-            font-size:.65rem;
+        .giving-actions { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:1.75rem; }
+        .square-button {
+            background:#2563eb;
+            border:none;
+            color:#fff;
             font-weight:600;
-            text-transform:uppercase;
-            letter-spacing:.08em;
-            background:#f3f4f6;
-            color:#374151;
-            padding:.3rem .55rem;
+            font-size:0.95rem;
+            padding:0.95rem 1.75rem;
             border-radius:999px;
-            display:inline-block;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:.55rem;
+            box-shadow:0 6px 16px -4px rgba(37,99,235,.45);
+            transition:background .25s, transform .25s;
+            position:relative;
         }
+        .square-button.secondary {
+            background:#6d28d9;
+            box-shadow:0 6px 16px -4px rgba(109,40,217,.45);
+        }
+        .square-button:hover { background:#1d4ed8; transform:translateY(-2px); }
+        .square-button.secondary:hover { background:#5b21b6; }
+        .square-button:active { transform:translateY(0); }
         .secure-note {
             margin-top: 1.25rem;
             font-size:.75rem;
@@ -58,23 +46,40 @@
             justify-content:center;
         }
         .secure-note i { color:#059669; }
-        .square-button {
-            background:#2563eb;
-            border:none;
-            color:#fff;
-            font-weight:600;
-            font-size:1rem;
-            padding:1rem 2rem;
-            border-radius:999px;
-            text-decoration:none;
-            display:inline-flex;
-            align-items:center;
+        .giving-card-grid { display:grid; gap:1.75rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:2.5rem; }
+        .giving-card {
+            background:#ffffff;
+            border:1px solid #e5e7eb;
+            border-radius:14px;
+            padding:1.45rem 1.35rem 1.6rem;
+            box-shadow:0 4px 14px -2px rgba(0,0,0,0.05);
+            display:flex;
+            flex-direction:column;
             gap:.6rem;
-            box-shadow:0 8px 18px -6px rgba(37,99,235,0.5);
-            transition:background .25s, transform .25s;
+            position:relative;
+            overflow:hidden;
         }
-        .square-button:hover { background:#1d4ed8; transform:translateY(-2px); }
-        .square-button:active { transform:translateY(0); }
+        .giving-card:before {
+            content:"";
+            position:absolute;
+            inset:0;
+            background:radial-gradient(circle at 85% -10%,rgba(99,102,241,0.16),transparent 60%);
+            opacity:.55;
+            pointer-events:none;
+        }
+        .giving-card h3 { margin:0; font-size:1.05rem; letter-spacing:.4px; }
+        .giving-card p { margin:0; font-size:.9rem; line-height:1.35rem; color:#434343; }
+        .giving-badge {
+            font-size:.62rem;
+            font-weight:600;
+            text-transform:uppercase;
+            letter-spacing:.09em;
+            background:#f3f4f6;
+            color:#374151;
+            padding:.32rem .6rem;
+            border-radius:999px;
+            display:inline-block;
+        }
         .alt-links { margin-top:2rem; display:flex; flex-direction:column; gap:.6rem; align-items:center; font-size:.85rem; }
         .alt-links a { color:#2563eb; text-decoration:none; }
         .alt-links a:hover { text-decoration:underline; }
@@ -89,7 +94,8 @@
             pointer-events:none;
         }
         @media (max-width:640px){
-            .square-button { width:100%; justify-content:center; }
+            .square-button { flex:1 1 100%; justify-content:center; }
+            .square-button.secondary { flex:1 1 100%; }
         }
     </style>
 </head>
@@ -127,12 +133,17 @@
     <div class="container">
         <div class="giving-intro">
             <h2>Give Online</h2>
-            <p>Your faithful giving supports ministry, outreach, missions, and care for those in need. You can make a one‑time gift or set up recurring giving securely through our Square checkout.</p>
+            <p>Your faithful giving supports ministry, outreach, missions, and care for those in need. You can make a one‑time gift or set up recurring giving securely through our Square checkout pages.</p>
             <div class="giving-actions">
-                <a href="https://square.link/u/FNqJtURE" target="_blank" rel="noopener noreferrer" class="square-button" aria-label="Give securely through Square (opens in a new tab)">
+                <a href="https://square.link/u/FNqJtURE" target="_blank" rel="noopener noreferrer" class="square-button" aria-label="Give securely through Square - Tithes (opens in a new tab)">
                     <i class="fas fa-heart"></i>
-                    Give Now
-                    <i class="fas fa-arrow-right" style="font-size:.85rem;opacity:.85;"></i>
+                    Tithes
+                    <i class="fas fa-arrow-right" style="font-size:.8rem;opacity:.85;"></i>
+                </a>
+                <a href="https://square.link/u/zOGpqLPi" target="_blank" rel="noopener noreferrer" class="square-button secondary" aria-label="Give securely through Square - Offering (opens in a new tab)">
+                    <i class="fas fa-gift"></i>
+                    Offering
+                    <i class="fas fa-arrow-right" style="font-size:.8rem;opacity:.85;"></i>
                 </a>
             </div>
             <div class="secure-note">
@@ -143,24 +154,24 @@
 
         <div class="giving-card-grid">
             <div class="giving-card">
-                <span class="giving-badge">One-Time</span>
-                <h3>Make an Immediate Impact</h3>
-                <p>Support a current need or special initiative with a single secure gift processed through Square.</p>
+                <span class="giving-badge">Tithes</span>
+                <h3>Support Ongoing Ministry</h3>
+                <p>Tithes sustain core worship services, pastoral care, discipleship, and daily operations.</p>
             </div>
             <div class="giving-card">
-                <span class="giving-badge">Recurring</span>
-                <h3>Consistent Support</h3>
-                <p>Set up a pattern of generosity that helps us plan ministry, outreach, and missions more effectively.</p>
+                <span class="giving-badge">Offering</span>
+                <h3>Above & Beyond</h3>
+                <p>Offerings accelerate special outreach, events, projects, and needs beyond regular ministry.</p>
             </div>
             <div class="giving-card">
                 <span class="giving-badge">Missions</span>
-                <h3>Global & Local Outreach</h3>
-                <p>Fuel evangelism, community compassion efforts, and international partnerships.</p>
+                <h3>Local & Global Reach</h3>
+                <p>Extend the Gospel through community compassion and international partnerships.</p>
             </div>
             <div class="giving-card">
-                <span class="giving-badge">Vision</span>
-                <h3>Future Growth</h3>
-                <p>Invest in next‑phase ministry expansion, facility improvements, and digital reach.</p>
+                <span class="giving-badge">Growth</span>
+                <h3>Future Development</h3>
+                <p>Invest in facility improvements, technology, and expanded ministry capacity.</p>
             </div>
         </div>
 
@@ -188,19 +199,8 @@
                     <li><a href="giving.html">Give</a></li>
                 </ul>
             </div>
-            <div class="footer-section"><h3>Connect</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Stay Updated</h3>
-                <form action="https://formspree.io/f/xdklnnbg" method="POST">
-                    <input type="email" name="email" required placeholder="Your Email Address">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+            <div class="footer-section"><h3>Connect</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+            <div class="footer-section"><h3>Stay Updated</h3><form action="https://formspree.io/f/xdklnnbg" method="POST"><input type="email" name="email" required placeholder="Your Email Address"><button type="submit">Subscribe</button></form></div>
         </div>
         <div class="footer-bottom"><p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p></div>
     </div>
