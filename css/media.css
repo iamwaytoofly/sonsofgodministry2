@@ -1,20 +1,21 @@
 /* Media Page Specific Styles
-   Nav flush directly under header, hero removed, sticky top:0.
+   Nav flush directly under header, hero removed, sticky with dynamic offset via CSS var.
+   Option 1 (Dynamic): top uses --media-nav-top set by JS, fallback 72px to avoid initial flash.
 */
 
 /* Hide (legacy) hero */
 .media-hero { display: none !important; }
 
-/* Sticky Media Navigation – flush */
+/* Sticky Media Navigation – flush under fixed header (dynamic offset) */
 .media-navigation {
     position: sticky;
-    top: 0;
+    top: var(--media-nav-top, 72px); /* Fallback equals approximate header (and banner) height */
     background-color: var(--white-color);
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #e3e6e9;
     box-shadow: none;
-    z-index: 100;
+    z-index: 900; /* Below header (1000) but above page content */
 }
 
 .media-nav-tabs {
