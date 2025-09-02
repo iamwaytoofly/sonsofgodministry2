@@ -1,34 +1,43 @@
 /* Media Page Specific Styles
-   Nav flush directly under header, hero removed, sticky with dynamic offset via CSS var.
-   Option 1 (Dynamic): top uses --media-nav-top set by JS, fallback 72px to avoid initial flash.
+   Clean solution: single-row horizontally scrollable tabs under fixed header.
+   Dynamic offset (header + optional live stream banner) set via CSS var --media-nav-top.
+   Fallback (120px) prevents initial overlap before JS measures.
 */
 
-/* Hide (legacy) hero */
 .media-hero { display: none !important; }
 
-/* Sticky Media Navigation – flush under fixed header (dynamic offset) */
+/* Sticky Media Navigation */
 .media-navigation {
     position: sticky;
-    top: var(--media-nav-top, 72px); /* Fallback equals approximate header (and banner) height */
+    top: var(--media-nav-top, 120px); /* Fallback ensures no overlap flash */
     background-color: var(--white-color);
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #e3e6e9;
     box-shadow: none;
-    z-index: 900; /* Below header (1000) but above page content */
+    z-index: 900; /* Below fixed header (1000) but above content */
 }
 
+/* Tab Row */
 .media-nav-tabs {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 0;
-    padding: 0;
+    padding: 0 0.75rem;
     min-height: 44px;
     background: var(--white-color);
+    /* Horizontal scroll (no wrapping) */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
 }
+.media-nav-tabs::-webkit-scrollbar { display: none; }
 
 .media-nav-tab {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     padding: 0.55rem 1rem;
@@ -37,17 +46,41 @@
     color: var(--dark-color);
     border-bottom: 2px solid transparent;
     transition: var(--transition);
+    white-space: nowrap;
+    scroll-snap-align: center;
 }
-
 .media-nav-tab i {
     font-size: 0.9rem;
     margin-right: 0.4rem;
 }
-
 .media-nav-tab:hover { color: var(--primary-color); }
 .media-nav-tab.active {
     color: var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
+}
+
+/* Optional subtle gradient edges to hint scroll (can remove if undesired) */
+.media-navigation {
+    position: sticky;
+    overflow: visible;
+}
+.media-navigation::before,
+.media-navigation::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+.media-navigation::before {
+    left: 0;
+    background: linear-gradient(to right, var(--white-color), rgba(255,255,255,0));
+}
+.media-navigation::after {
+    right: 0;
+    background: linear-gradient(to left, var(--white-color), rgba(255,255,255,0));
 }
 
 /* Content sections */
@@ -66,7 +99,6 @@
     flex-wrap: wrap;
     gap: 1rem;
 }
-
 .section-header h2 { margin-bottom: 0; text-align: left; }
 
 .search-filter { display: flex; gap: 1rem; }
@@ -77,16 +109,13 @@
     border-radius: 30px;
     overflow: hidden;
 }
-
 .search-box input {
     border: none;
     padding: 0.75rem 1rem;
     width: 250px;
     font-family: 'Inter', sans-serif;
 }
-
 .search-box input:focus { outline: none; }
-
 .search-box button {
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -95,7 +124,6 @@
     cursor: pointer;
     transition: var(--transition);
 }
-
 .search-box button:hover { background-color: var(--secondary-color); }
 
 .filter-dropdown select {
@@ -565,13 +593,8 @@
         padding:1rem;
     }
 }
+
 @media (max-width: 768px) {
-    .media-nav-tabs { flex-wrap:wrap; }
-    .media-nav-tab {
-        flex:1;
-        min-width:120px;
-        justify-content:center;
-    }
     .section-header { flex-direction:column; align-items:flex-start; }
     .search-filter { width:100%; flex-direction:column; }
     .search-box { width:100%; }
@@ -586,6 +609,7 @@
     .subscription-form input { border-radius:30px; margin-bottom:1rem; }
     .subscription-form button { border-radius:30px; padding:0.75rem 1.5rem; }
 }
+
 @media (max-width: 576px) {
     .media-nav-tab { padding:0.5rem 0.75rem; }
     .player-content { margin:10% auto; width:95%; }
