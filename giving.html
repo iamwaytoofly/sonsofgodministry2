@@ -58,7 +58,11 @@
             gap:.6rem;
             position:relative;
             overflow:hidden;
+            text-decoration:none;
+            color:inherit;
+            transition: box-shadow .25s, transform .25s;
         }
+        .giving-card:hover { box-shadow:0 8px 22px -4px rgba(0,0,0,0.12); transform:translateY(-3px); }
         .giving-card:before {
             content:"";
             position:absolute;
@@ -80,6 +84,8 @@
             border-radius:999px;
             display:inline-block;
         }
+        .card-link-indicator { position:absolute; top:10px; right:10px; font-size:.7rem; color:#6b7280; }
+        .giving-card:hover .card-link-indicator { color:#374151; }
         .alt-links { margin-top:2rem; display:flex; flex-direction:column; gap:.6rem; align-items:center; font-size:.85rem; }
         .alt-links a { color:#2563eb; text-decoration:none; }
         .alt-links a:hover { text-decoration:underline; }
@@ -153,11 +159,12 @@
         </div>
 
         <div class="giving-card-grid">
-            <div class="giving-card">
+            <a class="giving-card" href="https://square.link/u/FNqJtURE" target="_blank" rel="noopener noreferrer" aria-label="Give Tithes via Square">
                 <span class="giving-badge">Tithes</span>
                 <h3>Support Ongoing Ministry</h3>
                 <p>Tithes sustain core worship services, pastoral care, discipleship, and daily operations.</p>
-            </div>
+                <span class="card-link-indicator"><i class="fas fa-external-link-alt"></i></span>
+            </a>
             <div class="giving-card">
                 <span class="giving-badge">Offering</span>
                 <h3>Above & Beyond</h3>
