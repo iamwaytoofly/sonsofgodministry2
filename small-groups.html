@@ -48,7 +48,6 @@
         @media (max-width:640px){
             .groups-filter-bar { flex-direction:column; align-items:stretch; }
         }
-        /* Instruction comment is placed in HTML below for maintainers */
     </style>
 </head>
 <body>
@@ -103,17 +102,8 @@
 
         <div id="noResults" class="search-empty">No groups match your search yet. Try different filters.</div>
 
-        <!--
-          MAINTAINER INSTRUCTIONS:
-          To add a new group card:
-          1. Copy one of the .group-card blocks below.
-          2. Update title, description, day/time, and tags.
-          3. Keep tags semantic (e.g., "Study", "Prayer", "Men", "Women", "Young Adults").
-          4. Ensure an accessible alt attribute for the image.
-        -->
-
         <div class="groups-grid" id="groupsGrid">
-            <!-- Core Existing Groups -->
+            <!-- Existing and placeholder cards (unchanged content) -->
             <div class="group-card" data-day="Tuesday" data-type="study">
                 <div class="group-image">
                     <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Young Adults Group">
@@ -159,7 +149,7 @@
                 </div>
             </div>
 
-            <!-- Placeholders -->
+            <!-- Placeholders preserved -->
             <div class="group-card placeholder" data-day="Wednesday" data-type="prayer">
                 <div class="group-image">
                     <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=800&q=80" alt="Prayer Group Placeholder">
