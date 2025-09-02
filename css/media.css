@@ -73,6 +73,16 @@
 .media-content-section.active {
     display: block;
 }
+/* Compact Media Nav (vertical only) */
+.media-nav-tabs {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.media-nav-tab {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
 
 .section-header {
     display: flex;
