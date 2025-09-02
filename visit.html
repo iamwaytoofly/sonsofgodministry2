@@ -5,509 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan Your Visit - The Sons of God Ministry, Inc.</title>
     <link rel="stylesheet" href="css/styles.css">
-    
     <link rel="stylesheet" href="css/visit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-    /* Keyframes for the blinking animation */
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
-
-    /* Styles for the live indicator container (an <a> tag) */
-    .live-indicator {
-        display: none; /* Hidden by default, JavaScript will show it */
-        background-color: #ef4444; /* Tailwind red-500 equivalent */
-        color: white;
-        padding: 0.35rem 0.75rem; /* Padding for size */
-        border-radius: 9999px; /* Fully rounded pill shape */
-        font-weight: bold;
-        font-size: 0.875rem; /* Smaller font size */
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        position: absolute; /* Position absolutely within its nearest positioned ancestor (your header) */
-        top: 50%; /* Center vertically within the header */
-        right: 1rem; /* Distance from the right edge of the header */
-        transform: translateY(-50%); /* Fine-tune vertical centering */
-        z-index: 1000; /* Ensure it's above other content */
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-        animation: blink 1.5s infinite; /* Apply blinking animation */
-        display: flex; /* Use flex to align dot and text */
-        align-items: center;
-        gap: 0.3rem; /* Space between dot and text */
-        font-family: "Inter", sans-serif; /* Using Inter font */
-        text-decoration: none; /* Remove default link underline */
-        cursor: pointer; /* Indicate it's clickable */
-        transition: background-color 0.3s ease; /* Smooth transition for hover */
-    }
-
-    .live-indicator:hover {
-        background-color: #dc2626; /* Darker red on hover */
-    }
-
-    /* Style for the blinking red dot */
-    .live-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #fca5a5; /* Lighter red for the dot */
-        border-radius: 50%;
-        display: inline-block;
-    }
-
-    /* Responsive adjustments for smaller screens if needed */
-    @media (max-width: 640px) {
-        .live-indicator {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            right: 0.5rem; /* Adjust position for smaller screens */
-            top: 1rem; /* Position higher for smaller, less tall headers */
-            transform: translateY(0); /* Reset vertical transform for top positioning */
-        }
-    }
-</style>
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
-    
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+        </div>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#media-preview">Media</a></li>
+                <li><a href="index.html#small-groups">Groups</a></li>
+                <li><a href="visit.html" class="active">Visit Us</a></li>
+                <li><a href="giving.html" class="btn-primary">Give</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
-            <!-- The Live Stream Indicator is an <a> tag that will be shown/hidden by JavaScript. -->
-            <!-- IMPORTANT: REPLACE "your-live-page.html" with the ACTUAL URL of your live stream page. -->
-            <!-- This <a> tag MUST be placed inside your website's main <header> tag. -->
-            <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator">
-                <span class="live-dot"></span> LIVE
-            </a>
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="index.html">Home</a></li>
+        </nav>
+    </div>
+</header>
+
+<section class="visit-hero">
+    <div class="container">
+        <h1>Plan Your Visit</h1>
+        <p>We'd love to welcome you this week!</p>
+    </div>
+</section>
+
+<!-- Existing visit page body content -->
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Sons of God Ministry, Inc.</h3>
+                <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
+            </div>
+            <div class="footer-section">
+                <h3>Service Times</h3>
+                <p>Sunday: 9:00 AM & 11:00 AM</p>
+                <p>Wednesday: 7:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#events">Events</a></li>
-                    <li><a href="visit.html" class="active">Visit Us</a></li>
-                    <li><a href="giving.html" class="btn-primary">Give</a></li>
+                    <li><a href="index.html#media-preview">Media</a></li>
+                    <li><a href="index.html#small-groups">Groups</a></li>
+                    <li><a href="visit.html">Visit Us</a></li>
+                    <li><a href="giving.html">Give</a></li>
                 </ul>
-                <div class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Visit Hero Section -->
-    <section class="visit-hero">
-        <div class="container">
-            <h1>Plan Your Visit</h1>
-            <p>We're excited to welcome you to The Sons of God Ministry, Inc.!</p>
-        </div>
-    </section>
-
-    <!-- What to Expect Section -->
-    <section class="what-to-expect">
-        <div class="container">
-            <h2>What to Expect</h2>
-            <div class="expect-grid">
-                <div class="expect-item">
-                    <div class="expect-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Service Length</h3>
-                    <p>Our services typically last about 75 minutes and include worship, announcements, and a message from God's Word.</p>
-                </div>
-                <div class="expect-item">
-                    <div class="expect-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3>Worship Style</h3>
-                    <p>Our worship is contemporary with a mix of modern worship songs and traditional hymns led by our worship team.</p>
-                </div>
-                <div class="expect-item">
-                    <div class="expect-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3>What to Wear</h3>
-                    <p>Come as you are! Some dress casually while others prefer more formal attire. We want you to feel comfortable.</p>
-                </div>
-                <div class="expect-item">
-                    <div class="expect-icon">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <h3>Children</h3>
-                    <p>We offer age-appropriate children's ministry programs during all of our services for infants through 5th grade.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Service Times Section -->
-    <section class="service-times">
-        <div class="container">
-            <h2>Service Times</h2>
-            <div class="times-grid">
-                <div class="time-card">
-                    <div class="time-day">Sunday</div>
-                    <div class="time-details">
-                        <p><strong>9:00 AM</strong> - Traditional Service</p>
-                        <p><strong>11:00 AM</strong> - Contemporary Service</p>
-                        <p><strong>6:00 PM</strong> - Evening Service</p>
-                    </div>
-                </div>
-                <div class="time-card">
-                    <div class="time-day">Wednesday</div>
-                    <div class="time-details">
-                        <p><strong>7:00 PM</strong> - Midweek Bible Study</p>
-                        <p><strong>7:00 PM</strong> - Youth Group (6th-12th Grade)</p>
-                    </div>
-                </div>
-                <div class="time-card">
-                    <div class="time-day">Friday</div>
-                    <div class="time-details">
-                        <p><strong>6:30 PM</strong> - Young Adults (18-30)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section class="location-section">
-        <div class="container">
-            <h2>Our Location</h2>
-            <div class="location-content">
-                <div class="location-map">
-                    <!-- Embedded Google Map with the church's actual address -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.0088326706!2d-80.04401492346785!3d40.4272782589767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8834f6c6a8f3f2a7%3A0xc6c1a0f2a0fc3c3c!2s200%20Tabor%20St%2C%20Pittsburgh%2C%20PA%2015204!5e0!3m2!1sen!2sus!4v1692723600000!5m2!1sen!2sus" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0; border-radius: var(--border-radius);" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-                <div class="location-info">
-                    <h3>The Sons of God Ministry, Inc.</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 200 Tabor St, Pittsburgh, PA 15204</p>
-                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@sonsofgodministry.org</p>
-                    
-                    <h4>Get Directions</h4>
-                    <div class="directions-buttons">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=200+Tabor+St,+Pittsburgh,+PA+15204" target="_blank" class="btn-primary"><i class="fas fa-directions"></i> Get Directions</a>
-                        <a href="https://waze.com/ul?ll=40.4272782,-80.0440149&navigate=yes" target="_blank" class="btn-secondary"><i class="fab fa-waze"></i> Navigate with Waze</a>
-                    </div>
-                    
-                    <h4>From Downtown Pittsburgh:</h4>
-                    <ol>
-                        <li>Take PA-65 N/Ohio River Blvd</li>
-                        <li>Turn right onto Tabor St</li>
-                        <li>Our church will be on your right</li>
-                    </ol>
-                    
-                    <h4>From I-79:</h4>
-                    <ol>
-                        <li>Take exit 72 toward Neville Island</li>
-                        <li>Follow Grand Ave and Fleming Ave to Tabor St</li>
-                        <li>Our church will be on your left</li>
-                    </ol>
-                    
-                    <h4>Parking</h4>
-                    <p>Free parking is available in our main lot. Additional street parking can be found along Tabor St on Sundays.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Plan Your Visit Form Section -->
-    <section class="visit-form-section">
-        <div class="container">
-            <h2>Let Us Know You're Coming</h2>
-            <p class="section-intro">Fill out the form below, and we'll have someone ready to greet you when you arrive.</p>
-            
-            <div class="form-container">
-                <form action="https://formspree.io/f/xgvlwgvl" method="POST">
-    <!-- Your form fields here -->
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last-name" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="visit-date">When Are You Planning to Visit?</label>
-                        <input type="date" id="visit-date" name="visit-date" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service-time">Which Service?</label>
-                        <select id="service-time" name="service-time" required>
-                            <option value="">Select a service time</option>
-                            <option value="sunday-9am">Sunday 9:00 AM</option>
-                            <option value="sunday-11am">Sunday 11:00 AM</option>
-                            <option value="sunday-6pm">Sunday 6:00 PM</option>
-                            <option value="wednesday-7pm">Wednesday 7:00 PM</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Will You Be Bringing Children?</label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="children-yes" name="children" value="yes">
-                                <label for="children-yes">Yes</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="children-no" name="children" value="no" checked>
-                                <label for="children-no">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="children-details" class="form-group" style="display: none;">
-                        <label for="children-count">How Many Children?</label>
-                        <select id="children-count" name="children-count">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5+">5 or more</option>
-                        </select>
-                        
-                        <label for="children-ages">Ages (Optional)</label>
-                        <input type="text" id="children-ages" name="children-ages" placeholder="e.g., 3, 5, 7">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="questions">Questions or Special Needs</label>
-                        <textarea id="questions" name="questions" rows="4"></textarea>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="prayer-request" name="prayer-request">
-                        <label for="prayer-request">I would like someone to pray with me during my visit</label>
-                    </div>
-                    
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="newsletter" name="newsletter" checked>
-                        <label for="newsletter">Sign me up for the church newsletter</label>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary btn-large">Submit</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What should I wear?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>There is no dress code at The Sons of God Ministry, Inc. Some people dress casually in jeans and t-shirts, while others prefer to wear more formal attire. We want you to feel comfortable, so come as you are!</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Where do I park?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We have a large parking lot with designated visitor parking spaces near the main entrance. Look for the "First-Time Visitor" signs. If our lot is full, additional parking is available across the street at the community center on Sundays.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What about my children?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer age-appropriate children's ministry programs during all of our services for infants through 5th grade. Our children's area is secure, and all volunteers undergo background checks. When you arrive, visit our children's check-in area, and our team will help get your children registered.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How long are the services?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our services typically last about 75 minutes. They include worship through music, announcements about church events, and a message from God's Word.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Will I be asked to give money?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>As a guest, you are not expected to give. We do receive an offering during our services as part of our worship, but this is for our regular attendees. Feel free to let the offering plate pass by when it comes to you.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you have programs for teenagers?</h3>
-                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! Our youth ministry serves students in 6th-12th grade and meets on Wednesday nights at 7:00 PM. Teens are also encouraged to attend our regular Sunday services with their families.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>The Sons of God Ministry, Inc.</h3>
-                    <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Email: info@sonsofgodministry.org</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Service Times</h3>
-                    <p>Sunday: 9:00 AM & 11:00 AM</p>
-                    <p>Wednesday: 7:00 PM</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#events">Events</a></li>
-                        <li><a href="visit.html">Plan Your Visit</a></li>
-                        <li><a href="giving.html">Give</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-spotify"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
+            <div class="footer-section">
                 <h3>Stay Updated</h3>
-                <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
                 <form action="https://formspree.io/f/xdklnnbg" method="POST">
                     <input type="email" name="email" placeholder="Your Email Address" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
-            </div>
-                
-            <div class="footer-bottom">
-                <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
-            </div>
         </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-    <script src="js/visit.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get a reference to the live stream indicator element using its ID.
-        const liveStreamIndicator = document.getElementById('liveStreamIndicator');
-
-        /**
-         * Checks the current day and time against the scheduled live stream times
-         * and updates the visibility of the live stream indicator.
-         */
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-            const hour = now.getHours();
-            const minutes = now.getMinutes();
-
-            // Convert current time to a single comparable minute value for the day
-            // This simplifies time range checks.
-            const currentMinutesOfDay = hour * 60 + minutes;
-
-            let isLive = false; // Flag to track if the current time is within a live window
-
-            // --- Check for Sunday live stream ---
-            // Sunday: 10:00 AM (600 minutes) - 5:00 PM (1020 minutes)
-            if (day === 0) { // Sunday is day 0
-                const sundayStartTime = 10 * 60; // 10:00 AM
-                const sundayEndTime = 17 * 60;   // 5:00 PM (17:00 in 24-hour format)
-                if (currentMinutesOfDay >= sundayStartTime && currentMinutesOfDay <= sundayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Tuesday live stream ---
-            // Tuesday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 2) { // Tuesday is day 2
-                const tuesdayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const tuesdayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= tuesdayStartTime && currentMinutesOfDay <= tuesdayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Friday live stream ---
-            // Friday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 5) { // Friday is day 5
-                const fridayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const fridayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= fridayStartTime && currentMinutesOfDay <= fridayEndTime) {
-                    isLive = true;
-                }
-            }
-
-            // Update the display style of the live indicator based on the 'isLive' flag.
-            // Using 'flex' instead of 'block' ensures the dot and text are aligned horizontally.
-            if (liveStreamIndicator) {
-                liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
-            }
-        }
-
-        // --- Execution Flow ---
-
-        // 1. Run the check immediately when the page finishes loading.
-        checkLiveStatus();
-
-        // 2. Set up an interval to re-check the live status every minute.
-        // This ensures the indicator appears/disappears automatically without page refresh
-        // as the time crosses the scheduled boundaries.
-        setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
-    });
-</script>
-
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="js/script.js"></script>
 </body>
 </html>
