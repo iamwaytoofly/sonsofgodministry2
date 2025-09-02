@@ -3,12 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const mediaTabs = document.querySelectorAll('.media-nav-tab');
     const mediaContentSections = document.querySelectorAll('.media-content-section');
 
-    function activateTab(tabEl) {
+    function activateTab(tabEl, pushHash = true) {
+        if (!tabEl) return;
         mediaTabs.forEach(t => t.classList.remove('active'));
         tabEl.classList.add('active');
         const id = tabEl.getAttribute('data-tab');
         mediaContentSections.forEach(sec => sec.classList.toggle('active', sec.id === id));
-        window.location.hash = id;
+        if (pushHash) window.location.hash = id;
     }
 
     mediaTabs.forEach(tab => {
@@ -22,7 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const initialHash = window.location.hash.substring(1);
     if (initialHash) {
         const match = document.querySelector(`.media-nav-tab[data-tab="${initialHash}"]`);
-        if (match) activateTab(match);
+        if (match) activateTab(match, false);
+    } else if (mediaTabs.length) {
+        // Ensure first tab active if none
+        activateTab(mediaTabs[0], false);
     }
 
     /* ========= SERMON FILTER & SEARCH ========= */
@@ -35,8 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const term = sermonSearch ? sermonSearch.value.toLowerCase() : '';
         sermonItems.forEach(item => {
             const seriesMatch = selectedSeries === 'all' || item.getAttribute('data-series') === selectedSeries;
-            const title = (item.querySelector('h4') || {}).textContent || '';
-            const searchMatch = !term || title.toLowerCase().includes(term);
+            const titleEl = item.querySelector('h4');
+            const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+            const searchMatch = !term || title.includes(term);
             item.style.display = (seriesMatch && searchMatch) ? 'block' : 'none';
         });
     }
@@ -50,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
         musicSearch.addEventListener('input', function() {
             const val = this.value.toLowerCase();
             musicItems.forEach(item => {
-                const title = (item.querySelector('h4') || {}).textContent.toLowerCase();
+                const titleEl = item.querySelector('h4');
+                const title = titleEl ? titleEl.textContent.toLowerCase() : '';
                 item.style.display = (!val || title.includes(val)) ? 'block' : 'none';
             });
         });
@@ -63,8 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
         podcastSearch.addEventListener('input', function() {
             const term = this.value.toLowerCase();
             podcastItems.forEach(item => {
-                const title = (item.querySelector('h4') || {}).textContent.toLowerCase();
-                const desc = (item.querySelector('.episode-description') || {}).textContent.toLowerCase();
+                const titleEl = item.querySelector('h4');
+                const descEl = item.querySelector('.episode-description');
+                const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+                const desc = descEl ? descEl.textContent.toLowerCase() : '';
                 item.style.display = (!term || title.includes(term) || desc.includes(term)) ? 'flex' : 'none';
             });
         });
@@ -77,13 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
         devotionalSearch.addEventListener('input', function() {
             const term = this.value.toLowerCase();
             devotionalItems.forEach(item => {
-                const title = (item.querySelector('h4') || {}).textContent.toLowerCase();
+                const titleEl = item.querySelector('h4');
+                const title = titleEl ? titleEl.textContent.toLowerCase() : '';
                 item.style.display = (!term || title.includes(term)) ? 'block' : 'none';
             });
         });
     }
 
-    /* ========= MEDIA PLAYER (DEMO) ========= */
+    /* ========= MEDIA PLAYER (DEMO ONLY) ========= */
     const mediaPlayer = document.getElementById('media-player');
     const playerTitle = document.getElementById('player-title');
     const closePlayer = document.querySelector('.close-player');
@@ -97,13 +106,22 @@ document.addEventListener('DOMContentLoaded', function() {
             let title = 'Media';
             if (el.classList.contains('play-btn')) {
                 const episode = el.closest('.episode-item');
-                if (episode) title = (episode.querySelector('h4') || {}).textContent || title;
+                if (episode) {
+                    const t = episode.querySelector('h4');
+                    if (t) title = t.textContent;
+                }
             } else if (el.classList.contains('video-container')) {
                 const fm = el.closest('.featured-media');
-                if (fm) title = (fm.querySelector('h3') || {}).textContent || title;
+                if (fm) {
+                    const t = fm.querySelector('h3');
+                    if (t) title = t.textContent;
+                }
             } else {
                 const parent = el.closest('.media-item, .series-item, .album-item');
-                if (parent) title = (parent.querySelector('h4') || {}).textContent || title;
+                if (parent) {
+                    const t = parent.querySelector('h4');
+                    if (t) title = t.textContent;
+                }
             }
             openPlayer(title);
         });
@@ -175,6 +193,46 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(progressInterval);
     }
 
-    /* ========= REMOVED adjustNavPosition =========
-       The nav is now sticky at top:0 via CSS; no JS offset needed. */
+    /* ========= DYNAMIC NAV OFFSET (Header + Live Banner) ========= */
+    (function setupDynamicNavOffset() {
+        const header = document.querySelector('header');
+        const banner = document.querySelector('.live-stream-banner');
+        const nav = document.querySelector('.media-navigation');
+        if (!header || !nav) return;
+
+        function setNavOffset() {
+            const headerH = header.getBoundingClientRect().height;
+            const bannerVisible = banner && window.getComputedStyle(banner).display !== 'none';
+            const bannerH = bannerVisible ? banner.getBoundingClientRect().height : 0;
+            const total = headerH + bannerH;
+            nav.style.setProperty('--media-nav-top', total + 'px');
+        }
+
+        // Events
+        window.addEventListener('resize', setNavOffset);
+        window.addEventListener('orientationchange', setNavOffset);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) setTimeout(setNavOffset, 50);
+        });
+
+        // ResizeObserver for header & banner
+        if ('ResizeObserver' in window) {
+            const ro = new ResizeObserver(setNavOffset);
+            ro.observe(header);
+            if (banner) ro.observe(banner);
+        }
+
+        // MutationObserver for banner style/class changes
+        if (banner) {
+            const mo = new MutationObserver(setNavOffset);
+            mo.observe(banner, { attributes: true, attributeFilter: ['style', 'class'] });
+        }
+
+        // Font loading adjustments
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => setTimeout(setNavOffset, 30));
+        }
+
+        setNavOffset();
+    })();
 });
