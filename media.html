@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- (Optional) Minor inline overrides specific to this page can go here, but main overrides are in media.css -->
 </head>
 <body>
     <!-- Header -->
@@ -42,7 +40,7 @@
         </div>
     </header>
 
-    <!-- MEDIA NAVIGATION (moved directly under header) -->
+    <!-- Sticky Media Navigation (flush under header) -->
     <section class="media-navigation">
         <div class="container">
             <div class="media-nav-tabs">
@@ -62,13 +60,14 @@
         </div>
     </section>
 
-    <!-- HERO NOW BELOW MENU (margin removed, padding adjusted) -->
+    <!-- (Hero removed – kept commented for reference)
     <section class="media-hero">
         <div class="container">
             <h1>Media Resources</h1>
             <p>Watch, listen, and grow in your faith</p>
         </div>
     </section>
+    -->
 
     <!-- Sermons Section -->
     <section id="sermons" class="media-content-section active">
@@ -105,7 +104,7 @@
                     <span class="featured-label">Latest Sermon</span>
                     <h3>Walking in Faith During Difficult Times</h3>
                     <p class="featured-meta">Pastor Johnson • August 15, 2025</p>
-                    <p class="featured-description">In this powerful message, Pastor Johnson explores how we can maintain our faith and trust in God even when facing life's most challenging circu[...]</p>
+                    <p class="featured-description">In this powerful message, Pastor Johnson explores how we can maintain our faith and trust in God even when facing life's most challenging circumstances.</p>
                     <div class="featured-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-play"></i> Watch Now</a>
                         <a href="#" class="btn-secondary"><i class="fas fa-download"></i> Download</a>
@@ -265,7 +264,7 @@
                     <span class="featured-label">Latest Praise Dance</span>
                     <h3>Praise Dance Night Live: Glory & Praise</h3>
                     <p class="featured-meta">Worship Team • July 25, 2025</p>
-                    <p class="featured-description">Experience the powerful worship from our recent Praise Dance Night event. Our team leads the congregation in songs of praise and worship, creating a[...]</p>
+                    <p class="featured-description">Experience the powerful worship from our recent Praise Dance Night event. Our team leads the congregation in songs of praise and worship.</p>
                     <div class="featured-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-play"></i> Watch Now</a>
                         <a href="#" class="btn-secondary"><i class="fas fa-music"></i> Listen</a>
@@ -399,7 +398,7 @@
                     <span class="featured-label">Latest Episode</span>
                     <h3>Faith Talks: Navigating Life's Transitions</h3>
                     <p class="featured-meta">Pastor Johnson & Team • August 10, 2025</p>
-                    <p class="featured-description">In this episode, Pastor Johnson and the team discuss how to navigate major life transitions with faith and grace. Whether it's a career change,[...]</p>
+                    <p class="featured-description">In this episode, Pastor Johnson and the team discuss how to navigate major life transitions with faith and grace.</p>
                     <div class="featured-actions">
                         <a href="#" class="btn-primary"><i class="fas fa-play"></i> Listen Now</a>
                         <a href="#" class="btn-secondary"><i class="fas fa-download"></i> Download</a>
@@ -510,12 +509,12 @@
                     </div>
                     <div class="devotional-content">
                         <h3>Finding Strength in Weakness</h3>
-                        <p class="scripture">"But he said to me, 'My grace is sufficient for you, for my power is made perfect in weakness.' Therefore I will boast all the more gladly about my we[...]</p>
-                        <p class="devotional-text">In a world that celebrates strength and self-sufficiency, God's economy works differently. Paul learned that his weakness was actually the condu[...]</p>
-                        <p class="devotional-text">Today, instead of hiding your weaknesses or feeling ashamed of them, bring them before God. Surrender your inadequacies to Him and watch how His[...]</p>
+                        <p class="scripture">"My grace is sufficient for you, for my power is made perfect in weakness."</p>
+                        <p class="devotional-text">In a world that celebrates strength and self-sufficiency, God's economy works differently.</p>
+                        <p class="devotional-text">Bring your weaknesses before God and watch how His strength is revealed.</p>
                         <div class="devotional-prayer">
                             <h4>Prayer</h4>
-                            <p>Lord, I acknowledge my weaknesses before You today. Thank You that Your strength is made perfect in my weakness. Help me to depend on You fully and to see my limita[...]</p>
+                            <p>Lord, I acknowledge my weaknesses before You today. Let Your strength be made perfect in them.</p>
                         </div>
                         <div class="devotional-actions">
                             <a href="#" class="btn-tertiary"><i class="fas fa-share-alt"></i> Share</a>
@@ -589,7 +588,7 @@
             <div class="app-promo-content">
                 <div class="app-promo-text">
                     <h2>Take Our Media With You</h2>
-                    <p>Download our mobile app to access sermons, music, podcasts, and devotionals on the go. Available for iOS and Android devices.</p>
+                    <p>Download our mobile app to access sermons, music, podcasts, and devotionals on the go.</p>
                     <div class="app-buttons">
                         <a href="#" class="app-button">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
@@ -708,19 +707,6 @@
             }
             checkLiveStatus();
             setInterval(checkLiveStatus, 60000);
-
-            // Simple tab switch (if not already handled in media.js)
-            document.addEventListener('click', function(e) {
-                const tab = e.target.closest('.media-nav-tab');
-                if (!tab) return;
-                e.preventDefault();
-                const target = tab.getAttribute('data-tab');
-                document.querySelectorAll('.media-nav-tab').forEach(el => el.classList.remove('active'));
-                tab.classList.add('active');
-                document.querySelectorAll('.media-content-section').forEach(sec => {
-                    sec.classList.toggle('active', sec.id === target);
-                });
-            });
         });
     </script>
 </body>
