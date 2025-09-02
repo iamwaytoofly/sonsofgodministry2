@@ -1,65 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Media - The Sons of God Ministry, Inc.</title>
+
+    <!-- Core Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Live indicator styles (unchanged) */
-        @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
+        /* -------------------------------------------------
+           Live Indicator (unchanged)
+        -------------------------------------------------- */
+        @keyframes blink {0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
         .live-indicator {
-            display: none;
-            background-color: #ef4444;
-            color: white;
-            padding: 0.35rem 0.75rem;
-            border-radius: 9999px;
-            font-weight: bold;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            position: absolute;
-            top: 50%;
-            right: 1rem;
-            transform: translateY(-50%);
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            animation: blink 1.5s infinite;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-family: "Inter", sans-serif;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color .3s ease;
+            display:none;
+            background:#ef4444;
+            color:#fff;
+            padding:.35rem .75rem;
+            border-radius:9999px;
+            font-weight:600;
+            font-size:.75rem;
+            letter-spacing:.05em;
+            position:absolute;
+            top:50%;
+            right:1rem;
+            transform:translateY(-50%);
+            z-index:1000;
+            box-shadow:0 2px 8px rgba(0,0,0,.2);
+            animation:blink 1.5s infinite;
+            display:flex;
+            align-items:center;
+            gap:.3rem;
+            font-family:Inter,sans-serif;
+            text-decoration:none;
+            cursor:pointer;
+            transition:background-color .3s;
         }
-        .live-indicator:hover { background-color: #dc2626; }
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #fca5a5;
-            border-radius: 50%;
-            display: inline-block;
+        .live-indicator:hover{background:#dc2626}
+        .live-dot{width:8px;height:8px;background:#fca5a5;border-radius:50%}
+        @media (max-width:640px){
+            .live-indicator{padding:.25rem .5rem;font-size:.65rem;right:.5rem;top:1rem;transform:translateY(0)}
         }
-        @media (max-width: 640px) {
-            .live-indicator {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.75rem;
-                right: 0.5rem;
-                top: 1rem;
-                transform: translateY(0);
-            }
+
+        /* -------------------------------------------------
+           ULTRA COMPACT MEDIA NAV BAR
+           - Removes hero (gap)
+           - Minimal padding around menu
+           - Neutralizes JS positioning
+        -------------------------------------------------- */
+        .media-hero { display:none !important; }
+
+        header + .media-navigation,
+        .media-navigation {
+            margin:0 !important;
+            padding:0 !important;
+            position:static !important;
+            top:auto !important;
+            border:none;
         }
+
+        .media-navigation .container {
+            margin:0 !important;
+            padding:0 !important;
+        }
+
+        .media-nav-tabs {
+            padding:0.25rem 0.75rem !important; /* very small vertical padding */
+            gap:1.25rem;
+            background:#f9f9f9;
+            border:1px solid #e6e6e6;
+        }
+
+        .media-nav-tab {
+            padding:0.30rem 0.55rem !important;
+            font-size:0.9rem;
+            line-height:1.1;
+            border-radius:4px;
+        }
+
+        .media-nav-tab i {
+            font-size:0.85rem;
+            margin-right:0.30rem;
+        }
+
+        .media-nav-tab.active::after {
+            bottom:-3px !important;
+            height:2px;
+        }
+
+        /* Optional: tighten top of first content section a little */
+        #sermons.media-content-section { padding-top:1.25rem; }
+
+        /* If global sections add large top margins, ensure none here */
+        .media-content-section:first-of-type { margin-top:0 !important; }
+
+        /* Slightly reduce vertical space before Past Sermons grid if needed */
+        .past-media { margin-top:2rem; }
+
+        /* You can remove the subtle border if undesired:
+           .media-nav-tabs { border:none; }
+        */
     </style>
+
     <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
@@ -91,33 +137,23 @@
         </div>
     </header>
 
-    <!-- Media Hero (restored) -->
-    <section class="media-hero">
-        <div class="container">
-            <h1>Media Resources</h1>
-            <p>Watch, listen, and grow in your faith</p>
-        </div>
-    </section>
+    <!-- Hero intentionally removed to eliminate gap -->
 
-    <!-- Media Navigation -->
+    <!-- Ultra Compact Media Navigation -->
     <section class="media-navigation">
         <div class="container">
             <div class="media-nav-tabs">
                 <a href="#sermons" class="media-nav-tab active" data-tab="sermons">
-                    <i class="fas fa-video"></i>
-                    <span>Sermons</span>
+                    <i class="fas fa-video"></i><span>Sermons</span>
                 </a>
                 <a href="#music" class="media-nav-tab" data-tab="music">
-                    <i class="fas fa-music"></i>
-                    <span>Praise Dance</span>
+                    <i class="fas fa-music"></i><span>Praise Dance</span>
                 </a>
                 <a href="#podcasts" class="media-nav-tab" data-tab="podcasts">
-                    <i class="fas fa-microphone-alt"></i>
-                    <span>Podcasts</span>
+                    <i class="fas fa-microphone-alt"></i><span>Podcasts</span>
                 </a>
                 <a href="#devotionals" class="media-nav-tab" data-tab="devotionals">
-                    <i class="fas fa-book-open"></i>
-                    <span>Devotionals</span>
+                    <i class="fas fa-book-open"></i><span>Devotionals</span>
                 </a>
             </div>
         </div>
@@ -149,7 +185,7 @@
             <div class="featured-media">
                 <div class="featured-video">
                     <div class="video-container">
-                        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Featured Sermon">
+                        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1350&q=80" alt="Featured Sermon">
                         <div class="play-overlay">
                             <i class="fas fa-play-circle"></i>
                         </div>
@@ -174,7 +210,7 @@
                 <div class="series-grid">
                     <div class="series-item" data-series="faith">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">38:24</span>
                         </div>
@@ -185,7 +221,7 @@
                     </div>
                     <div class="series-item" data-series="faith">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">42:17</span>
                         </div>
@@ -196,7 +232,7 @@
                     </div>
                     <div class="series-item" data-series="faith">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">40:05</span>
                         </div>
@@ -207,7 +243,7 @@
                     </div>
                     <div class="series-item" data-series="faith">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">37:42</span>
                         </div>
@@ -225,7 +261,7 @@
                 <div class="media-grid">
                     <div class="media-item" data-series="purpose">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1519834089823-9a1f8e5a4cff?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1519834089823-9a1f8e5a4cff?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">45:12</span>
                         </div>
@@ -236,7 +272,7 @@
                     </div>
                     <div class="media-item" data-series="purpose">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1519677584237-752f8853252e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1519677584237-752f8853252e?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">39:58</span>
                         </div>
@@ -247,7 +283,7 @@
                     </div>
                     <div class="media-item" data-series="prayer">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1476820865390-c52aeebb9891?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1476820865390-c52aeebb9891?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">41:23</span>
                         </div>
@@ -258,7 +294,7 @@
                     </div>
                     <div class="media-item" data-series="prayer">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">36:47</span>
                         </div>
@@ -269,7 +305,7 @@
                     </div>
                     <div class="media-item" data-series="relationships">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">43:15</span>
                         </div>
@@ -280,7 +316,7 @@
                     </div>
                     <div class="media-item" data-series="relationships">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
+                            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80" alt="Sermon Thumbnail">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">38:39</span>
                         </div>
@@ -314,7 +350,7 @@
             <div class="featured-media">
                 <div class="featured-video">
                     <div class="video-container">
-                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Featured Praise Dance">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1350&q=80" alt="Featured Praise Dance">
                         <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
                     </div>
                 </div>
@@ -337,7 +373,7 @@
                 <div class="albums-grid">
                     <div class="album-item">
                         <div class="album-cover">
-                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Album Cover">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Album Cover">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <div class="album-details">
@@ -347,7 +383,7 @@
                     </div>
                     <div class="album-item">
                         <div class="album-cover">
-                            <img src="https://images.unsplash.com/photo-1470019693664-1d202d2c0907?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Album Cover">
+                            <img src="https://images.unsplash.com/photo-1470019693664-1d202d2c0907?auto=format&fit=crop&w=600&q=80" alt="Album Cover">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <div class="album-details">
@@ -357,7 +393,7 @@
                     </div>
                     <div class="album-item">
                         <div class="album-cover">
-                            <img src="https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Album Cover">
+                            <img src="https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?auto=format&fit=crop&w=600&q=80" alt="Album Cover">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <div class="album-details">
@@ -367,7 +403,7 @@
                     </div>
                     <div class="album-item">
                         <div class="album-cover">
-                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Album Cover">
+                            <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80" alt="Album Cover">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <div class="album-details">
@@ -384,7 +420,7 @@
                 <div class="media-grid">
                     <div class="media-item">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
+                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">32:45</span>
                         </div>
@@ -395,7 +431,7 @@
                     </div>
                     <div class="media-item">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
+                            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">28:17</span>
                         </div>
@@ -406,7 +442,7 @@
                     </div>
                     <div class="media-item">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
+                            <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">35:22</span>
                         </div>
@@ -417,7 +453,7 @@
                     </div>
                     <div class="media-item">
                         <div class="media-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1508695666381-69deeaa78ccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
+                            <img src="https://images.unsplash.com/photo-1508695666381-69deeaa78ccb?auto=format&fit=crop&w=600&q=80" alt="Praise Dance Session">
                             <div class="play-button"><i class="fas fa-play"></i></div>
                             <span class="duration">30:18</span>
                         </div>
@@ -451,7 +487,7 @@
             <div class="featured-media">
                 <div class="featured-video">
                     <div class="podcast-cover">
-                        <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Featured Podcast">
+                        <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&w=1350&q=80" alt="Featured Podcast">
                         <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
                     </div>
                 </div>
@@ -664,7 +700,7 @@
                     </div>
                 </div>
                 <div class="app-promo-image">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mobile App">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1350&q=80" alt="Mobile App">
                 </div>
             </div>
         </div>
@@ -718,7 +754,6 @@
                     </form>
                 </div>
             </div>
-            </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
             </div>
@@ -754,6 +789,7 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="js/script.js"></script>
     <script src="js/media.js"></script>
     <script>
@@ -765,13 +801,23 @@
                 const day = now.getDay();
                 const minutesToday = now.getHours() * 60 + now.getMinutes();
                 let isLive = false;
-                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;      // Sunday 10:00-17:00
-                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Tuesday 19:00-22:30
-                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Friday 19:00-22:30
+                // Sunday 10:00 - 17:00
+                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;
+                // Tuesday 19:00 - 22:30
+                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
+                // Friday 19:00 - 22:30
+                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
                 if (liveStreamIndicator) liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
             }
             checkLiveStatus();
             setInterval(checkLiveStatus, 60000);
+
+            /* Neutralize any JS that might attempt to offset nav based on a hero/banner */
+            const nav = document.querySelector('.media-navigation');
+            if (nav) {
+                nav.style.top = 'auto';
+                nav.style.position = 'static';
+            }
         });
     </script>
 </body>
