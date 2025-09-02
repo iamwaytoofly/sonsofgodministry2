@@ -19,100 +19,97 @@
     <meta property="twitter:title" content="The Sons of God Ministry, Inc. | Pittsburgh, PA">
     <meta property="twitter:description" content="A place to belong, believe, and become. Join our vibrant faith community in Pittsburgh.">
     <meta property="twitter:image" content="images/logo/logo.png">
+
     <link rel="stylesheet" href="css/styles.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Inline additions: smooth scrolling + anchor offset for fixed header -->
     <style>
-    <!--/* Keyframes for the blinking animation */-->
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
+        html { scroll-behavior: smooth; }
+        /* Adjust this value if your fixed header + any live banner changes height */
+        #services { scroll-margin-top: 120px; }
 
-    /* Styles for the live indicator container (an <a> tag) */
-    .live-indicator {
-        display: none; /* Hidden by default, JavaScript will show it */
-        background-color: #ef4444; /* Tailwind red-500 equivalent */
-        color: white;
-        padding: 0.35rem 0.75rem; /* Padding for size */
-        border-radius: 9999px; /* Fully rounded pill shape */
-        font-weight: bold;
-        font-size: 0.875rem; /* Smaller font size */
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        position: absolute; /* Position absolutely within its nearest positioned ancestor (your header) */
-        top: 50%; /* Center vertically within the header */
-        right: 1rem; /* Distance from the right edge of the header */
-        transform: translateY(-50%); /* Fine-tune vertical centering */
-        z-index: 1000; /* Ensure it's above other content */
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-        animation: blink 1.5s infinite; /* Apply blinking animation */
-        display: flex; /* Use flex to align dot and text */
-        align-items: center;
-        gap: 0.3rem; /* Space between dot and text */
-        font-family: "Inter", sans-serif; /* Using Inter font */
-        text-decoration: none; /* Remove default link underline */
-        cursor: pointer; /* Indicate it's clickable */
-        transition: background-color 0.3s ease; /* Smooth transition for hover */
-    }
-
-    .live-indicator:hover {
-        background-color: #dc2626; /* Darker red on hover */
-    }
-
-    /* Style for the blinking red dot */
-    .live-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #fca5a5; /* Lighter red for the dot */
-        border-radius: 50%;
-        display: inline-block;
-    }
-
-    /* Responsive adjustments for smaller screens if needed */
-    @media (max-width: 640px) {
-        .live-indicator {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            right: 0.5rem; /* Adjust position for smaller screens */
-            top: 1rem; /* Position higher for smaller, less tall headers */
-            transform: translateY(0); /* Reset vertical transform for top positioning */
+        /* Existing live indicator styles (retained) */
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
-    }
-</style>
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
-    
-    <!-- Google Analytics -->
+        .live-indicator {
+            display: none;
+            background-color: #ef4444;
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            animation: blink 1.5s infinite;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-family: "Inter", sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .live-indicator:hover { background-color: #dc2626; }
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #fca5a5;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        @media (max-width: 640px) {
+            .live-indicator {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                right: 0.5rem;
+                top: 1rem;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+
+    <!-- Google Analytics (replace G-XXXXXXXXXX with real ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', 'G-XXXXXXXXXX');
     </script>
-    
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+                <a href="index.html">
+                    <img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img">
+                    <span class="logo-text">The Sons of God Ministry</span>
+                </a>
             </div>
-            <!-- The Live Stream Indicator is an <a> tag that will be shown/hidden by JavaScript. -->
-            <!-- IMPORTANT: REPLACE "your-live-page.html" with the ACTUAL URL of your live stream page. -->
-            <!-- This <a> tag MUST be placed inside your website's main <header> tag. -->
             <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator">
-                 <span class="live-dot"></span> LIVE
+                <span class="live-dot"></span> LIVE
             </a>
             <nav>
                 <ul class="main-nav">
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#media-preview">Media</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#media-preview">Media</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html" class="btn-primary">Give</a></li>
                 </ul>
@@ -123,24 +120,27 @@
         </div>
     </header>
 
-                <!--Live Stream Banner -->
-                <!--<div class="live-stream-banner">
-                    <div class="container">
-                        <div class="live-indicator">
-                            <span class="pulse"></span> LIVE
-                        </div>
-                        <div class="stream-text">
-                            Sunday Service Streaming Now
-                        </div>
-                        <a href="live.html" class="btn-stream">
-                            <i class="fas fa-play-circle"></i> Watch Live
-                        </a>
-                    </div>
-                </div>-->
+    <!-- Optional Live Stream Banner (currently commented) -->
+    <!--
+    <div class="live-stream-banner">
+        <div class="container">
+            <div class="live-indicator">
+                <span class="pulse"></span> LIVE
+            </div>
+            <div class="stream-text">
+                Sunday Service Streaming Now
+            </div>
+            <a href="live.html" class="btn-stream">
+                <i class="fas fa-play-circle"></i> Watch Live
+            </a>
+        </div>
+    </div>
+    -->
+
     <!-- Hero Section with Slideshow -->
     <section class="hero">
         <div class="slideshow-container">
-            <!-- Slides will be inserted by JavaScript -->
+            <!-- Slides inserted by JavaScript -->
         </div>
         <div class="hero-content">
             <div class="hero-logo">
@@ -205,7 +205,7 @@
                 <div class="service-card">
                     <h3>Evangelistic Service</h3>
                     <p>Fridays at 7:30 PM</p>
-                    <p>Various Ministers & Topicss</p>
+                    <p>Various Ministers & Topics</p>
                     <a href="services.html#youth" class="btn-tertiary">Learn More</a>
                 </div>
             </div>
@@ -217,7 +217,6 @@
         <div class="container">
             <h2>Connect in Small Groups</h2>
             <p class="section-intro">Find your community and grow together in faith</p>
-            
             <div class="groups-grid">
                 <div class="group-card">
                     <div class="group-image">
@@ -230,7 +229,7 @@
                         <a href="small-groups.html#young-adults" class="btn-tertiary">Learn More</a>
                     </div>
                 </div>
-                
+
                 <div class="group-card">
                     <div class="group-image">
                         <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Married Couples Group">
@@ -242,7 +241,7 @@
                         <a href="small-groups.html#couples" class="btn-tertiary">Learn More</a>
                     </div>
                 </div>
-                
+
                 <div class="group-card">
                     <div class="group-image">
                         <img src="https://images.unsplash.com/photo-1536337005238-94b997371b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Women's Bible Study">
@@ -255,7 +254,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="groups-cta">
                 <a href="small-groups.html" class="btn-primary">View All Groups</a>
             </div>
@@ -271,7 +270,7 @@
                 <button class="media-tab" data-tab="music">Music</button>
                 <button class="media-tab" data-tab="podcasts">Podcasts/Blogs</button>
             </div>
-            
+
             <div class="media-content active" id="sermons-content">
                 <div class="media-grid">
                     <div class="media-item">
@@ -286,7 +285,7 @@
                             <p>Pastor Johnson • August 15, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sermon Thumbnail">
@@ -299,7 +298,7 @@
                             <p>Pastor Johnson • August 8, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sermon Thumbnail">
@@ -317,9 +316,8 @@
                     <a href="media.html#sermons" class="btn-secondary">View All Sermons</a>
                 </div>
             </div>
-            
+
             <div class="media-content" id="music-content">
-                <!-- Music content will be shown when tab is clicked -->
                 <div class="media-grid">
                     <div class="media-item">
                         <div class="media-thumbnail">
@@ -333,7 +331,7 @@
                             <p>Worship Team • July 25, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1470019693664-1d202d2c0907?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Music Thumbnail">
@@ -346,7 +344,7 @@
                             <p>Worship Team • July 18, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Music Thumbnail">
@@ -364,9 +362,8 @@
                     <a href="media.html#music" class="btn-secondary">View All Music</a>
                 </div>
             </div>
-            
+
             <div class="media-content" id="podcasts-content">
-                <!-- Podcasts content will be shown when tab is clicked -->
                 <div class="media-grid">
                     <div class="media-item">
                         <div class="media-thumbnail">
@@ -380,7 +377,7 @@
                             <p>Pastor Johnson & Team • August 10, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Podcast Thumbnail">
@@ -393,7 +390,7 @@
                             <p>Pastor Johnson & Team • August 3, 2025</p>
                         </div>
                     </div>
-                    
+
                     <div class="media-item">
                         <div class="media-thumbnail">
                             <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Podcast Thumbnail">
@@ -500,14 +497,14 @@
                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
                         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
                     </div>
-                    <<div class="footer-section">
+                </div>
+                <div class="footer-section">
                     <h3>Stay Updated</h3>
                     <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
                     <form action="https://formspree.io/f/xdklnnbg" method="POST">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <button type="submit">Subscribe</button>
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                        <button type="submit">Subscribe</button>
                     </form>
-                </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -518,251 +515,87 @@
 
     <script src="js/script.js"></script>
 
-<!-- Schema.org markup for Church Organization -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Church",
-  "name": "The Sons of God Ministry, Inc.",
-  "url": "https://www.sonsofgodministry.org",
-  "logo": "https://www.sonsofgodministry.org/images/logo/logo.png",
-  "image": "https://www.sonsofgodministry.org/images/slideshow/church-1.jpg",
-  "description": "The Sons of God Ministry is a vibrant, Spirit-filled community where people from all walks of life come together to experience God's love and grow in their faith journey.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "200 Tabor St.",
-    "addressLocality": "Pittsburgh",
-    "addressRegion": "PA",
-    "postalCode": "15204",
-    "addressCountry": "US"
-  },
-  "telephone": "(555) 123-4567",
-  "email": "info@sonsofgodministry.org",
-  "openingHours": [
-    "Su 09:00-12:30",
-    "We 19:00-21:00",
-    "Fr 18:30-20:30"
-  ],
-  "sameAs": [
-    "https://www.facebook.com/sonsofgodministry",
-    "https://www.instagram.com/sonsofgodministry",
-    "https://www.youtube.com/sonsofgodministry"
-  ]
+    <!-- Schema.org markup for Church Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "The Sons of God Ministry, Inc.",
+      "url": "https://www.sonsofgodministry.org",
+      "logo": "https://www.sonsofgodministry.org/images/logo/logo.png",
+      "image": "https://www.sonsofgodministry.org/images/slideshow/church-1.jpg",
+      "description": "The Sons of God Ministry is a vibrant, Spirit-filled community where people from all walks of life come together to experience God's love and grow in their faith journey.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "200 Tabor St.",
+        "addressLocality": "Pittsburgh",
+        "addressRegion": "PA",
+        "postalCode": "15204",
+        "addressCountry": "US"
+      },
+      "telephone": "(555) 123-4567",
+      "email": "info@sonsofgodministry.org",
+      "openingHours": [
+        "Su 09:00-12:30",
+        "Tu 19:00-22:30",
+        "Fr 19:00-22:30"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/sonsofgodministry",
+        "https://www.instagram.com/sonsofgodministry",
+        "https://www.youtube.com/sonsofgodministry"
+      ]
+    }
     </script>
-}
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get a reference to the live stream indicator element using its ID.
-        const liveStreamIndicator = document.getElementById('liveStreamIndicator');
 
-        /**
-         * Checks the current day and time against the scheduled live stream times
-         * and updates the visibility of the live stream indicator.
-         */
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-            const hour = now.getHours();
-            const minutes = now.getMinutes();
+    <!-- Live Stream Indicator Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const liveStreamIndicator = document.getElementById('liveStreamIndicator');
 
-            // Convert current time to a single comparable minute value for the day
-            // This simplifies time range checks.
-            const currentMinutesOfDay = hour * 60 + minutes;
-
-            let isLive = false; // Flag to track if the current time is within a live window
-
-            // --- Check for Sunday live stream ---
-            // Sunday: 10:00 AM (600 minutes) - 5:00 PM (1020 minutes)
-            if (day === 0) { // Sunday is day 0
-                const sundayStartTime = 10 * 60; // 10:00 AM
-                const sundayEndTime = 17 * 60;   // 5:00 PM (17:00 in 24-hour format)
-                if (currentMinutesOfDay >= sundayStartTime && currentMinutesOfDay <= sundayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Tuesday live stream ---
-            // Tuesday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 2) { // Tuesday is day 2
-                const tuesdayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const tuesdayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= tuesdayStartTime && currentMinutesOfDay <= tuesdayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Friday live stream ---
-            // Friday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 5) { // Friday is day 5
-                const fridayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const fridayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= fridayStartTime && currentMinutesOfDay <= fridayEndTime) {
-                    isLive = true;
-                }
-            }
-
-            // Update the display style of the live indicator based on the 'isLive' flag.
-            // Using 'flex' instead of 'block' ensures the dot and text are aligned horizontally.
-            if (liveStreamIndicator) {
-                liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
-            }
-        }
-
-        // --- Execution Flow ---
-
-        // 1. Run the check immediately when the page finishes loading.
-        checkLiveStatus();
-
-        // 2. Set up an interval to re-check the live status every minute.
-        // This ensures the indicator appears/disappears automatically without page refresh
-        // as the time crosses the scheduled boundaries.
-        setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
-    });
-</script>
-<!--ztest mode Commented out.-->
-<!--<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get a reference to the live stream indicator element using its ID.
-        const liveStreamIndicator = document.getElementById('liveStreamIndicator');
-
-        // --- Testing Variables (FOR TESTING ONLY - REMOVE IN PRODUCTION) ---
-        let testMode = false; // Set to true to enable manual testing
-        let testIsLive = false; // Manually set true/false when testMode is true
-
-        // Function to create a temporary test button
-        function createTestButton() {
-            const testContainer = document.createElement('div');
-            testContainer.style.position = 'fixed';
-            testContainer.style.bottom = '10px';
-            testContainer.style.left = '10px';
-            testContainer.style.zIndex = '9999';
-            testContainer.style.backgroundColor = 'rgba(0,0,0,0.7)';
-            testContainer.style.padding = '10px';
-            testContainer.style.borderRadius = '5px';
-            testContainer.style.color = 'white';
-            testContainer.style.fontFamily = 'sans-serif';
-
-            const testModeToggle = document.createElement('input');
-            testModeToggle.type = 'checkbox';
-            testModeToggle.id = 'testModeToggle';
-            testModeToggle.checked = testMode;
-            testModeToggle.style.marginRight = '5px';
-            testModeToggle.onchange = function() {
-                testMode = this.checked;
-                updateTestUI();
-                checkLiveStatus(); // Re-run check when test mode changes
-            };
-
-            const testModeLabel = document.createElement('label');
-            testModeLabel.htmlFor = 'testModeToggle';
-            testModeLabel.textContent = 'Enable Test Mode';
-            testModeLabel.style.marginRight = '15px';
-
-            const liveToggle = document.createElement('button');
-            liveToggle.id = 'liveToggle';
-            liveToggle.style.padding = '5px 10px';
-            liveToggle.style.backgroundColor = '#4CAF50';
-            liveToggle.style.color = 'white';
-            liveToggle.style.border = 'none';
-            liveToggle.style.borderRadius = '3px';
-            liveToggle.style.cursor = 'pointer';
-            liveToggle.onclick = function() {
-                testIsLive = !testIsLive;
-                updateTestUI();
-                checkLiveStatus(); // Re-run check when live status changes
-            };
-
-            testContainer.appendChild(testModeToggle);
-            testContainer.appendChild(testModeLabel);
-            testContainer.appendChild(liveToggle);
-
-            document.body.appendChild(testContainer);
-
-            function updateTestUI() {
-                liveToggle.textContent = testIsLive ? 'Set Offline' : 'Set Live';
-                liveToggle.style.backgroundColor = testIsLive ? '#f44336' : '#4CAF50';
-                liveToggle.disabled = !testMode;
-                if (!testMode) {
-                    liveToggle.style.opacity = '0.5';
-                    liveToggle.style.cursor = 'not-allowed';
-                } else {
-                    liveToggle.style.opacity = '1';
-                    liveToggle.style.cursor = 'pointer';
-                }
-            }
-            updateTestUI(); // Initial UI setup
-        }
-        createTestButton();
-        // --- End Testing Variables ---
-
-
-        /**
-         * Checks the current day and time against the scheduled live stream times
-         * and updates the visibility of the live stream indicator.
-         */
-        function checkLiveStatus() {
-            let isLive = false; // Flag to track if the current time is within a live window
-
-            // If testMode is enabled, override the time-based check
-            if (testMode) {
-                isLive = testIsLive;
-            } else {
+            function checkLiveStatus() {
                 const now = new Date();
-                const day = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+                const day = now.getDay();
                 const hour = now.getHours();
                 const minutes = now.getMinutes();
-
-                // Convert current time to a single comparable minute value for the day
-                // This simplifies time range checks.
                 const currentMinutesOfDay = hour * 60 + minutes;
 
-                // --- Check for Sunday live stream ---
-                // Sunday: 10:00 AM (600 minutes) - 5:00 PM (1020 minutes)
-                if (day === 0) { // Sunday is day 0
-                    const sundayStartTime = 10 * 60; // 10:00 AM
-                    const sundayEndTime = 17 * 60;   // 5:00 PM (17:00 in 24-hour format)
-                    if (currentMinutesOfDay >= sundayStartTime && currentMinutesOfDay <= sundayEndTime) {
-                        isLive = true;
-                    }
+                let isLive = false;
+
+                // Sunday 10:00 AM - 5:00 PM
+                if (day === 0) {
+                    const start = 10 * 60;
+                    const end = 17 * 60;
+                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
                 }
-                // --- Check for Tuesday live stream ---
-                // Tuesday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-                else if (day === 2) { // Tuesday is day 2
-                    const tuesdayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                    const tuesdayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                    if (currentMinutesOfDay >= tuesdayStartTime && currentMinutesOfDay <= tuesdayEndTime) {
-                        isLive = true;
-                    }
+                // Tuesday 7:00 PM - 10:30 PM
+                else if (day === 2) {
+                    const start = 19 * 60;
+                    const end = 22 * 60 + 30;
+                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
                 }
-                // --- Check for Friday live stream ---
-                // Friday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-                else if (day === 5) { // Friday is day 5
-                    const fridayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                    const fridayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                    if (currentMinutesOfDay >= fridayStartTime && currentMinutesOfDay <= fridayEndTime) {
-                        isLive = true;
-                    }
+                // Friday 7:00 PM - 10:30 PM
+                else if (day === 5) {
+                    const start = 19 * 60;
+                    const end = 22 * 60 + 30;
+                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
+                }
+
+                if (liveStreamIndicator) {
+                    liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
                 }
             }
 
+            checkLiveStatus();
+            setInterval(checkLiveStatus, 60 * 1000);
+        });
+    </script>
 
-            // Update the display style of the live indicator based on the 'isLive' flag.
-            // Using 'flex' instead of 'block' ensures the dot and text are aligned horizontally.
-            if (liveStreamIndicator) {
-                liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
-            }
-        }
-
-        // --- Execution Flow ---
-
-        // 1. Run the check immediately when the page finishes loading.
-        checkLiveStatus();
-
-        // 2. Set up an interval to re-check the live status every minute.
-        // This ensures the indicator appears/disappears automatically without page refresh
-        // as the time crosses the scheduled boundaries.
-        // This interval will continue to run even in test mode, but test mode will override
-        // its results.
-        setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
-    });
-</script>-->   
+    <!-- (Optional) Test Mode Live Indicator Code (commented out) -->
+    <!--
+    <script>
+        // Test harness if needed; omitted for production.
+    </script>
+    -->
 </body>
 </html>
