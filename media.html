@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Existing inline live-indicator styles (unchanged) -->
     <style>
+        /* Live indicator styles (unchanged) */
         @keyframes blink {
             0% { opacity: 1; }
             50% { opacity: 0.4; }
@@ -58,54 +58,10 @@
                 transform: translateY(0);
             }
         }
-
-        /* =========================================================
-           OPTION B OVERRIDES
-           - Remove gap between header and tab bar
-           - Hide hero (or collapse) so navigation sits directly below header
-           - Make tab bar about 2/3 its previous height
-           ========================================================= */
-        body.media-option-b .media-hero {
-            display: none !important;             /* Completely remove the hero section visually */
-        }
-        body.media-option-b .media-navigation {
-            position: static !important;
-            top: auto !important;
-            margin: 0;
-            padding: 0;
-        }
-        /* Ensure no residual margin/padding from containers adds a white band */
-        body.media-option-b header + .media-navigation,
-        body.media-option-b .media-navigation .container {
-            margin-top: 0 !important;
-            padding-top: 0 !important;
-        }
-        body.media-option-b .media-nav-tabs {
-            padding: .30rem 1rem; /* Thinner vertical padding */
-            gap: 1.1rem;
-        }
-        body.media-option-b .media-nav-tab {
-            padding: .35rem .75rem;
-            font-size: .9rem;
-            line-height: 1.15;
-        }
-        body.media-option-b .media-nav-tab i {
-            font-size: .85rem;
-            margin-right: .3rem;
-        }
-        /* If original CSS applied box-shadows / borders that increased visual height, you can further reduce:
-        body.media-option-b .media-nav-tabs { box-shadow: none; }
-        */
-
-        /* Optional: tighten first content section top spacing now that hero is gone */
-        body.media-option-b #sermons.media-content-section {
-            padding-top: 1.25rem;
-        }
     </style>
-
     <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
-<body class="media-option-b">
+<body>
     <!-- Header -->
     <header>
         <div class="container">
@@ -134,16 +90,15 @@
         </div>
     </header>
 
-    <!-- HERO REMOVED (kept markup commented for reference)
+    <!-- Media Hero (restored) -->
     <section class="media-hero">
         <div class="container">
             <h1>Media Resources</h1>
             <p>Watch, listen, and grow in your faith</p>
         </div>
     </section>
-    -->
 
-    <!-- Media Navigation (now directly under header per Option B) -->
+    <!-- Media Navigation -->
     <section class="media-navigation">
         <div class="container">
             <div class="media-nav-tabs">
@@ -801,7 +756,7 @@
     <script src="js/script.js"></script>
     <script src="js/media.js"></script>
     <script>
-        /* Live indicator script unchanged */
+        /* Live indicator script */
         document.addEventListener('DOMContentLoaded', function() {
             const liveStreamIndicator = document.getElementById('liveStreamIndicator');
             function checkLiveStatus() {
@@ -809,24 +764,13 @@
                 const day = now.getDay();
                 const minutesToday = now.getHours() * 60 + now.getMinutes();
                 let isLive = false;
-                // Sunday 10:00 - 17:00
-                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;
-                // Tuesday 19:00 - 22:30
-                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
-                // Friday 19:00 - 22:30
-                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
+                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;      // Sunday 10:00-17:00
+                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Tuesday 19:00-22:30
+                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Friday 19:00-22:30
                 if (liveStreamIndicator) liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
             }
             checkLiveStatus();
             setInterval(checkLiveStatus, 60000);
-        });
-
-        /* Neutralize any JS in media.js that might reposition navigation for a hero/banner */
-        document.addEventListener('DOMContentLoaded', function() {
-            const nav = document.querySelector('.media-navigation');
-            if (nav) {
-                nav.style.top = 'auto';
-            }
         });
     </script>
 </body>
