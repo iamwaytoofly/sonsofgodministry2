@@ -4,20 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statement of Faith - The Sons of God Ministry, Inc.</title>
+    <meta name="description" content="Statement of Faith of The Sons of God Ministry: Scripture, the Trinity, Jesus Christ, salvation, the Holy Spirit, the Church, resurrection and Christian hope.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background:#fff; }
+        header { position:fixed; top:0; left:0; width:100%; z-index:1000; background:#fff; }
+        main { max-width:1050px; margin:140px auto 3rem; padding:0 1.25rem 2rem; }
+        .page-intro { text-align:center; margin-bottom:2.5rem; }
+        .page-intro h1 { margin-bottom:.5rem; }
+        .beliefs-toc { display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; margin:0 0 2.25rem; }
+        .beliefs-toc a { font-size:.72rem; letter-spacing:.05em; padding:.45rem .75rem; border:1px solid var(--primary-color,#1d4ed8); border-radius:18px; text-decoration:none; font-weight:600; color:var(--primary-color,#1d4ed8); transition:.25s; }
+        .beliefs-toc a:hover, .beliefs-toc a:focus { background:var(--primary-color,#1d4ed8); color:#fff; }
+        section.belief { margin-bottom:2.25rem; }
+        section.belief h2 { font-size:1.35rem; display:flex; align-items:center; gap:.55rem; margin:.2rem 0 .75rem; }
+        section.belief p { line-height:1.6; margin:.65rem 0; }
+        .scripture { font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:#555; margin-top:.4rem; }
+        blockquote { border-left:4px solid var(--primary-color,#1d4ed8); padding:.9rem 1rem; background:#f5f9ff; font-style:italic; margin:1.2rem 0; }
+        .divider { height:1px; background:linear-gradient(90deg,transparent,#d4dce6,transparent); margin:2.4rem 0 2rem; }
+        .confession { background:#0f172a; color:#fff; padding:1.75rem 1.25rem; border-radius:10px; box-shadow:0 4px 18px -6px rgba(0,0,0,.2); }
+        .confession h2 { color:#fff; margin-top:0; }
+        .confession p { margin:.85rem 0; }
+        .last-updated { text-align:center; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#666; margin-top:3rem; }
+        section[id] { scroll-margin-top:130px; }
+        @media(min-width:900px){ .beliefs-columns { columns:2; column-gap:2.5rem; } .beliefs-columns section.belief { break-inside:avoid; } }
+    </style>
 </head>
-<body>
+<body id="top">
 <header>
     <div class="container">
         <div class="logo">
-            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+            <a href="index.html#top"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
         </div>
         <nav>
             <ul class="main-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#top">Home</a></li>
                 <li><a href="index.html#about" class="active">About</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#media-preview">Media</a></li>
@@ -25,55 +48,108 @@
                 <li><a href="visit.html">Visit Us</a></li>
                 <li><a href="giving.html" class="btn-primary">Give</a></li>
             </ul>
-            <div class="menu-toggle">
+            <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="about-hero">
-    <div class="container">
+<main>
+    <div class="page-intro">
         <h1>Statement of Faith</h1>
-        <p>Rooted in Scripture. Centered on Christ. Guided by the Spirit.</p>
+        <p>Rooted in Scripture. Centered on Christ. Guided by the Holy Spirit. Lived out in love.</p>
+        <blockquote>"Contend for the faith that was once for all delivered to the saints." (Jude 3)</blockquote>
     </div>
-</section>
 
-<section class="statement-of-faith">
-    <div class="container">
-        <h2>What We Believe</h2>
-        <div class="beliefs-grid">
-            <div class="belief-item">
-                <h3>Scripture</h3>
-                <p>The Holy Bible is the inspired and infallible Word of God and supreme authority.</p>
-            </div>
-            <div class="belief-item">
-                <h3>The Trinity</h3>
-                <p>One God eternally existent in three Persons: Father, Son, and Holy Spirit.</p>
-            </div>
-            <div class="belief-item">
-                <h3>Jesus Christ</h3>
-                <p>Fully God and fully man, born of a virgin, lived a sinless life, died a substitutionary death, bodily rose, ascended, and will return.</p>
-            </div>
-            <div class="belief-item">
-                <h3>Salvation</h3>
-                <p>By grace through faith in Jesus Christ alone; not by human works or merit.</p>
-            </div>
-            <div class="belief-item">
-                <h3>Holy Spirit</h3>
-                <p>Indwells, empowers, convicts, guides, teaches, and distributes gifts to believers.</p>
-            </div>
-            <div class="belief-item">
-                <h3>The Church</h3>
-                <p>The universal body of Christ called to worship, discipleship, fellowship, and mission.</p>
-            </div>
-            <div class="belief-item">
-                <h3>Resurrection & Hope</h3>
-                <p>We await Christ's return, the resurrection of the dead, final judgment, and eternal life with God.</p>
-            </div>
-        </div>
+    <nav class="beliefs-toc" aria-label="Statement of Faith Sections">
+        <a href="#scripture">Scripture</a>
+        <a href="#trinity">The Trinity</a>
+        <a href="#jesus">Jesus Christ</a>
+        <a href="#salvation">Salvation</a>
+        <a href="#holy-spirit">Holy Spirit</a>
+        <a href="#church">The Church</a>
+        <a href="#resurrection">Resurrection & Hope</a>
+        <a href="#practices">Christian Life</a>
+        <a href="#mission">Mission</a>
+        <a href="#confession">Our Confession</a>
+    </nav>
+
+    <div class="beliefs-columns">
+        <section id="scripture" class="belief">
+            <h2><i class="fas fa-book-open"></i> Scripture</h2>
+            <p>We believe the Holy Bible—sixty-six canonical books of the Old and New Testaments—is the inspired, infallible, authoritative Word of God. Given by the Holy Spirit through human authors, it is without error in all that it affirms in the original manuscripts and is the supreme and final authority for doctrine, character, and conduct.</p>
+            <p>The Word of God is living and active, fully sufficient for teaching, correcting, training in righteousness, and equipping believers for every good work. We reject any doctrine that contradicts or adds to Scripture's completed revelation.</p>
+            <p class="scripture">2 Tim 3:16–17; 2 Pet 1:20–21; Ps 19:7–11; Heb 4:12</p>
+        </section>
+
+        <section id="trinity" class="belief">
+            <h2><i class="fas fa-infinity"></i> The Trinity</h2>
+            <p>We believe in one eternal God, infinite in holiness, wisdom, power, love, and sovereignty—who exists eternally in three co-equal, co-eternal, and consubstantial Persons: Father, Son, and Holy Spirit. These three are distinct yet never divided, sharing one divine essence.</p>
+            <p class="scripture">Deut 6:4; Matt 28:19; 2 Cor 13:14; Eph 4:4–6</p>
+        </section>
+
+        <section id="jesus" class="belief">
+            <h2><i class="fas fa-cross"></i> Jesus Christ</h2>
+            <p>We believe Jesus Christ is the eternal Son of God, fully God and fully man. Conceived by the Holy Spirit and born of the virgin Mary, He lived a sinless life, proclaimed the Kingdom, performed mighty works, and offered Himself as the perfect, substitutionary atoning sacrifice for the sins of the world through His death on the cross.</p>
+            <p>He rose bodily on the third day, ascended into heaven, is seated at the right hand of the Father, and will return in glory to judge the living and the dead and to consummate His everlasting Kingdom.</p>
+            <p class="scripture">John 1:1–14; Col 1:15–20; Heb 1:1–4; 1 Cor 15:3–8</p>
+        </section>
+
+        <section id="salvation" class="belief">
+            <h2><i class="fas fa-heart"></i> Salvation</h2>
+            <p>We believe all people are created in God's image yet are fallen in Adam, spiritually dead, and incapable of saving themselves. Salvation is wholly by grace through faith in Jesus Christ alone—apart from works—resulting in forgiveness, justification, regeneration, adoption, sanctification, and future glorification.</p>
+            <p>True saving faith produces repentance, obedience, and transformation by the Holy Spirit. Those who are in Christ are secure, being kept by God's power for an inheritance that will never fade.</p>
+            <p class="scripture">Eph 2:1–9; Rom 5:1–11; Titus 3:4–7; 1 Pet 1:3–5</p>
+        </section>
+
+        <section id="holy-spirit" class="belief">
+            <h2><i class="fas fa-dove"></i> The Holy Spirit</h2>
+            <p>We believe the Holy Spirit glorifies Christ, convicts the world of sin, righteousness, and judgment, and applies the benefits of Christ's work to believers. He regenerates, indwells, seals, empowers for holy living and witness, distributes spiritual gifts, guides into truth, and produces the fruit of the Spirit.</p>
+            <p>We affirm the ongoing ministry and gifts of the Spirit in the Church today, to be exercised in love, order, humility, and discernment according to Scripture.</p>
+            <p class="scripture">John 16:7–15; Acts 1:8; 1 Cor 12:4–11; Gal 5:22–25</p>
+        </section>
+
+        <section id="church" class="belief">
+            <h2><i class="fas fa-church"></i> The Church</h2>
+            <p>We believe the universal Church is the redeemed people of God of all ages, cultures, and nations—Christ's Body and Bride. The local church is a visible expression of that Body, gathered for worship, Word, prayer, fellowship, discipleship, equipping, service, and mission. Christ is the sole Head of the Church.</p>
+            <p>The unity of believers transcends ethnicity, culture, social status, and background; we are one in Christ and called to love, holiness, reconciliation, and mission.</p>
+            <p class="scripture">Matt 16:18; Acts 2:42–47; 1 Cor 12:12–27; Eph 4:11–16</p>
+        </section>
+
+        <section id="resurrection" class="belief">
+            <h2><i class="fas fa-cloud"></i> Resurrection & Hope</h2>
+            <p>We believe in the bodily resurrection of Jesus Christ as the firstfruits of those who will be raised. We await His visible, personal return, the resurrection of the dead, final judgment, the eternal joy of the redeemed in God's presence, and the eternal separation of the unrepentant from God.</p>
+            <p>This blessed hope fuels perseverance, purity, and faithful service in this present age.</p>
+            <p class="scripture">1 Cor 15:20–26; 1 Thess 4:13–18; Rev 21:1–5</p>
+        </section>
+
+        <section id="practices" class="belief">
+            <h2><i class="fas fa-hands-helping"></i> Christian Life & Practice</h2>
+            <p>We believe every believer is called to a life of worship, holiness, prayer, generosity, compassion, justice, evangelism, and Spirit-led service. The Christian life is communal—not isolated—and flourishes through mutual encouragement, accountability, and sacrificial love.</p>
+            <p>We uphold marriage (between one man and one woman) and family as God-ordained institutions, the sanctity of all human life, and the call to care for the vulnerable and oppressed.</p>
+            <p class="scripture">Rom 12:1–13; Mic 6:8; Jas 1:27; Heb 10:23–25</p>
+        </section>
+
+        <section id="mission" class="belief">
+            <h2><i class="fas fa-globe"></i> Mission & Witness</h2>
+            <p>We believe the Church is commissioned by Christ to make disciples of all nations—proclaiming the gospel, baptizing, teaching obedience, and demonstrating the Kingdom through Spirit-empowered love, mercy, and justice.</p>
+            <p>Every believer is a missionary ambassador in their sphere of influence, called to embody and announce the good news of the Kingdom.</p>
+            <p class="scripture">Matt 28:18–20; Acts 1:8; 2 Cor 5:17–21</p>
+        </section>
     </div>
-</section>
+
+    <div class="divider"></div>
+
+    <section id="confession" class="confession">
+        <h2><i class="fas fa-seedling"></i> Our Confession of Hope</h2>
+        <p>We confess Jesus Christ as Lord—crucified, risen, ascended, and coming again. We renounce the darkness of this age and embrace the light of His Kingdom. We stand upon the unchanging Word of God and depend wholly on the Holy Spirit for life, power, holiness, and mission.</p>
+        <p>With believers throughout the world and across generations we proclaim: one Lord, one faith, one baptism, one God and Father of all, who is over all, through all, and in all.</p>
+        <p>To Him be glory in the Church and in Christ Jesus throughout all generations, forever and ever. Amen.</p>
+    </section>
+
+    <div class="last-updated">Last updated: September 2025</div>
+</main>
 
 <footer>
     <div class="container">
