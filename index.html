@@ -27,10 +27,16 @@
     <!-- Inline additions: smooth scrolling + anchor offset for fixed header -->
     <style>
         html { scroll-behavior: smooth; }
-        /* Adjust this value if your fixed header + any live banner changes height */
-        #services { scroll-margin-top: 120px; }
+        /* Apply offset for all in-page sections targeted from nav */
+        #about,
+        #services,
+        #media-preview,
+        #small-groups,
+        #events,
+        #verse-of-day {
+            scroll-margin-top: 120px;
+        }
 
-        /* Existing live indicator styles (retained) */
         @keyframes blink {
             0% { opacity: 1; }
             50% { opacity: 0.4; }
@@ -107,9 +113,9 @@
             <nav>
                 <ul class="main-nav">
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#media-preview">Media</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#media-preview">Media</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html" class="btn-primary">Give</a></li>
                 </ul>
@@ -119,23 +125,6 @@
             </nav>
         </div>
     </header>
-
-    <!-- Optional Live Stream Banner (currently commented) -->
-    <!--
-    <div class="live-stream-banner">
-        <div class="container">
-            <div class="live-indicator">
-                <span class="pulse"></span> LIVE
-            </div>
-            <div class="stream-text">
-                Sunday Service Streaming Now
-            </div>
-            <a href="live.html" class="btn-stream">
-                <i class="fas fa-play-circle"></i> Watch Live
-            </a>
-        </div>
-    </div>
-    -->
 
     <!-- Hero Section with Slideshow -->
     <section class="hero">
@@ -150,7 +139,7 @@
             <p>A place to belong, believe, and become</p>
             <div class="hero-buttons">
                 <a href="visit.html" class="btn-primary">Plan Your Visit</a>
-                <a href="#services" class="btn-primary">Service Times</a>
+                <a href="index.html#services" class="btn-primary">Service Times</a>
             </div>
         </div>
     </section>
@@ -261,6 +250,8 @@
         </div>
     </section>
 
+    <!-- Alias for legacy #media links -->
+    <div id="media"></div>
     <!-- Media Section Preview -->
     <section id="media-preview" class="media-preview-section">
         <div class="container">
@@ -477,9 +468,9 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="media.html">Media</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#media-preview">Media</a></li>
                         <li><a href="visit.html">Visit Us</a></li>
                         <li><a href="giving.html">Give</a></li>
                     </ul>
@@ -562,23 +553,12 @@
 
                 let isLive = false;
 
-                // Sunday 10:00 AM - 5:00 PM
                 if (day === 0) {
-                    const start = 10 * 60;
-                    const end = 17 * 60;
-                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
-                }
-                // Tuesday 7:00 PM - 10:30 PM
-                else if (day === 2) {
-                    const start = 19 * 60;
-                    const end = 22 * 60 + 30;
-                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
-                }
-                // Friday 7:00 PM - 10:30 PM
-                else if (day === 5) {
-                    const start = 19 * 60;
-                    const end = 22 * 60 + 30;
-                    if (currentMinutesOfDay >= start && currentMinutesOfDay <= end) isLive = true;
+                    if (currentMinutesOfDay >= 600 && currentMinutesOfDay <= 1020) isLive = true;
+                } else if (day === 2) {
+                    if (currentMinutesOfDay >= 1140 && currentMinutesOfDay <= 1350) isLive = true;
+                } else if (day === 5) {
+                    if (currentMinutesOfDay >= 1140 && currentMinutesOfDay <= 1350) isLive = true;
                 }
 
                 if (liveStreamIndicator) {
@@ -590,12 +570,5 @@
             setInterval(checkLiveStatus, 60 * 1000);
         });
     </script>
-
-    <!-- (Optional) Test Mode Live Indicator Code (commented out) -->
-    <!--
-    <script>
-        // Test harness if needed; omitted for production.
-    </script>
-    -->
 </body>
 </html>
