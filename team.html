@@ -7,13 +7,11 @@
     <meta name="description" content="Meet the dedicated team of pastors, leaders, and staff who serve at The Sons of God Ministry in Pittsburgh, PA.">
     <meta name="keywords" content="church team, ministry leaders, pastors, church staff, Sons of God Ministry, Pittsburgh">
     <meta name="author" content="The Sons of God Ministry, Inc.">
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sonsofgodministry.org/team.html">
     <meta property="og:title" content="Meet Our Team - The Sons of God Ministry, Inc.">
     <meta property="og:description" content="Meet the dedicated team of pastors, leaders, and staff who serve at The Sons of God Ministry in Pittsburgh, PA.">
     <meta property="og:image" content="images/logo/logo.png">
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.sonsofgodministry.org/team.html">
     <meta property="twitter:title" content="Meet Our Team - The Sons of God Ministry, Inc.">
@@ -23,552 +21,85 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/team.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-    <!--/* Keyframes for the blinking animation */-->
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
-
-    /* Styles for the live indicator container (an <a> tag) */
-    .live-indicator {
-        display: none; /* Hidden by default, JavaScript will show it */
-        background-color: #ef4444; /* Tailwind red-500 equivalent */
-        color: white;
-        padding: 0.35rem 0.75rem; /* Padding for size */
-        border-radius: 9999px; /* Fully rounded pill shape */
-        font-weight: bold;
-        font-size: 0.875rem; /* Smaller font size */
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        position: absolute; /* Position absolutely within its nearest positioned ancestor (your header) */
-        top: 50%; /* Center vertically within the header */
-        right: 1rem; /* Distance from the right edge of the header */
-        transform: translateY(-50%); /* Fine-tune vertical centering */
-        z-index: 1000; /* Ensure it's above other content */
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-        animation: blink 1.5s infinite; /* Apply blinking animation */
-        display: flex; /* Use flex to align dot and text */
-        align-items: center;
-        gap: 0.3rem; /* Space between dot and text */
-        font-family: "Inter", sans-serif; /* Using Inter font */
-        text-decoration: none; /* Remove default link underline */
-        cursor: pointer; /* Indicate it's clickable */
-        transition: background-color 0.3s ease; /* Smooth transition for hover */
-    }
-
-    .live-indicator:hover {
-        background-color: #dc2626; /* Darker red on hover */
-    }
-
-    /* Style for the blinking red dot */
-    .live-dot {
-        width: 8px;
-        height: 8px;
-        background-color: #fca5a5; /* Lighter red for the dot */
-        border-radius: 50%;
-        display: inline-block;
-    }
-
-    /* Responsive adjustments for smaller screens if needed */
-    @media (max-width: 640px) {
-        .live-indicator {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            right: 0.5rem; /* Adjust position for smaller screens */
-            top: 1rem; /* Position higher for smaller, less tall headers */
-            transform: translateY(0); /* Reset vertical transform for top positioning */
-        }
-    }
-</style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"><span class="logo-text">The Sons of God Ministry</span></a>
+        </div>
+        <nav>
+            <ul class="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about" class="active">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#media-preview">Media</a></li>
+                <li><a href="index.html#small-groups">Groups</a></li>
+                <li><a href="visit.html">Visit Us</a></li>
+                <li><a href="giving.html" class="btn-primary">Give</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </div>
+</header>
+
+<section class="about-hero">
+    <div class="container">
+        <h1>Our Leadership Team</h1>
+        <p>Serving with humility, vision, and faith</p>
+    </div>
+</section>
+
+<section class="team-roster">
+    <div class="container">
+        <!-- Existing team roster content -->
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Sons of God Ministry, Inc.</h3>
+                <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
             </div>
-            <!-- The Live Stream Indicator is an <a> tag that will be shown/hidden by JavaScript. -->
-            <!-- IMPORTANT: REPLACE "your-live-page.html" with the ACTUAL URL of your live stream page. -->
-            <!-- This <a> tag MUST be placed inside your website's main <header> tag. -->
-            <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator">
-                 <span class="live-dot"></span> LIVE
-            </a>
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="media.html">Media</a></li>
+            <div class="footer-section">
+                <h3>Service Times</h3>
+                <p>Sunday: 9:00 AM & 11:00 AM</p>
+                <p>Wednesday: 7:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#media-preview">Media</a></li>
+                    <li><a href="index.html#small-groups">Groups</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
-                    <li><a href="giving.html" class="btn-primary">Give</a></li>
+                    <li><a href="giving.html">Give</a></li>
                 </ul>
-                <div class="menu-toggle" aria-label="Toggle navigation menu" role="button" tabindex="0">
-                    <i class="fas fa-bars" aria-hidden="true"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Team Hero Section -->
-    <section class="team-hero">
-        <div class="container">
-            <h1>Meet Our Team</h1>
-            <p class="hero-subtitle">The dedicated servants who lead and support our ministry</p>
-        </div>
-    </section>
-
-    <!-- Team Navigation -->
-    <section class="team-navigation">
-        <div class="container">
-            <div class="team-nav-container">
-                <button class="team-nav-btn active" data-category="all">All</button>
-                <button class="team-nav-btn" data-category="leadership">Leadership</button>
-                <button class="team-nav-btn" data-category="worship">Worship</button>
-                <button class="team-nav-btn" data-category="youth">Youth & Children</button>
-                <button class="team-nav-btn" data-category="outreach">Outreach</button>
-                <button class="team-nav-btn" data-category="admin">Administration</button>
             </div>
-        </div>
-    </section>
-
-    <!-- Senior Leadership Team -->
-    <section class="team-section" id="leadership">
-        <div class="container">
-            <h2>Senior Leadership</h2>
-            <div class="team-grid">
-                <!-- Pastor Rose Nance -->
-                <div class="team-member" data-category="leadership">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Pastor Rose Nance">
-                    </div>
-                    <div class="member-info">
-                        <h3>Pastor Rose Nance</h3>
-                        <p class="member-title">Lead Pastor</p>
-                        <p class="member-bio">Pastor Rose has been leading The Sons of God Ministry since its founding in 2004. With over 30 years of ministry experience, she is passionate about teaching the Word of God and helping people discover their purpose in Christ. Her vision for the church is to create a community where everyone can experience God's love and grow in their faith journey.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Associate Pastor -->
-                <div class="team-member" data-category="leadership">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Pastor Michael Reynolds">
-                    </div>
-                    <div class="member-info">
-                        <h3>Pastor Michael Reynolds</h3>
-                        <p class="member-title">Associate Pastor</p>
-                        <p class="member-bio">Pastor Michael serves as our Associate Pastor, working closely with Pastor Rose to shepherd our congregation. With a background in counseling and a heart for discipleship, he oversees our small groups ministry and provides pastoral care. His gentle approach and wisdom have helped countless members navigate life's challenges through a biblical perspective.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Executive Director -->
-                <div class="team-member" data-category="leadership admin">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Jennifer Williams">
-                    </div>
-                    <div class="member-info">
-                        <h3>Jennifer Williams</h3>
-                        <p class="member-title">Executive Director</p>
-                        <p class="member-bio">Jennifer oversees the administrative and operational aspects of our ministry. With a background in business management and a heart for service, she ensures that our church runs smoothly so that our pastoral team can focus on spiritual leadership. Her organizational skills and strategic thinking have been instrumental in our church's growth and development.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Worship Team -->
-    <section class="team-section" id="worship">
-        <div class="container">
-            <h2>Worship Ministry</h2>
-            <div class="team-grid">
-                <!-- Sarah Johnson -->
-                <div class="team-member" data-category="worship">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Sarah Johnson">
-                    </div>
-                    <div class="member-info">
-                        <h3>Sarah Johnson</h3>
-                        <p class="member-title">Worship Pastor</p>
-                        <p class="member-bio">Sarah leads our worship ministry with a heart for creating authentic worship experiences that draw people into God's presence. She has been serving at The Sons of God Ministry for over 10 years and has a gift for developing worship leaders and musicians. Her passion is to see people encounter God through worship and experience transformation.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Music Director -->
-                <div class="team-member" data-category="worship">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Marcus Davis">
-                    </div>
-                    <div class="member-info">
-                        <h3>Marcus Davis</h3>
-                        <p class="member-title">Music Director</p>
-                        <p class="member-bio">Marcus brings over 15 years of musical experience to our worship team. With a background in gospel music and formal training in music theory, he works with our musicians to create a sound that is both excellent and anointed. His arrangements and original compositions have become beloved parts of our worship experience.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Choir Director -->
-                <div class="team-member" data-category="worship">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Alicia Martinez">
-                    </div>
-                    <div class="member-info">
-                        <h3>Alicia Martinez</h3>
-                        <p class="member-title">Choir Director</p>
-                        <p class="member-bio">Alicia leads our church choir with passion and excellence. Her background in vocal performance and choral direction has elevated our choir ministry to new heights. She believes in the power of corporate worship and works tirelessly to train and develop the vocal gifts within our congregation.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Youth & Children's Ministry -->
-    <section class="team-section" id="youth">
-        <div class="container">
-            <h2>Youth & Children's Ministry</h2>
-            <div class="team-grid">
-                <!-- David Thompson -->
-                <div class="team-member" data-category="youth">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="David Thompson">
-                    </div>
-                    <div class="member-info">
-                        <h3>David Thompson</h3>
-                        <p class="member-title">Youth Pastor</p>
-                        <p class="member-bio">David has a passion for helping young people grow in their faith and discover their God-given potential. He has been leading our youth ministry for 8 years and has developed innovative programs that engage teens in meaningful ways. His approach combines biblical teaching with relevant application to the challenges young people face today.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Children's Director -->
-                <div class="team-member" data-category="youth">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580894908361-967195033215?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Rebecca Wilson">
-                    </div>
-                    <div class="member-info">
-                        <h3>Rebecca Wilson</h3>
-                        <p class="member-title">Children's Ministry Director</p>
-                        <p class="member-bio">Rebecca leads our children's ministry with creativity and enthusiasm. With a background in early childhood education, she creates age-appropriate programs that make biblical truths accessible and exciting for children. Her team of dedicated volunteers provides a safe, nurturing environment where children can learn about God's love.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-pinterest"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- College Ministry -->
-                <div class="team-member" data-category="youth">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Jason Rodriguez">
-                    </div>
-                    <div class="member-info">
-                        <h3>Jason Rodriguez</h3>
-                        <p class="member-title">College Ministry Coordinator</p>
-                        <p class="member-bio">Jason bridges the gap between our youth and adult ministries by leading our college and young adult programs. His relatable teaching style and genuine approach to mentorship have created a thriving community for those navigating the critical years of early adulthood. He organizes weekly gatherings, retreats, and service opportunities.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Outreach & Missions -->
-    <section class="team-section" id="outreach">
-        <div class="container">
-            <h2>Outreach & Missions</h2>
-            <div class="team-grid">
-                <!-- Outreach Director -->
-                <div class="team-member" data-category="outreach">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1542206395-9feb3edaa68d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="James Wilson">
-                    </div>
-                    <div class="member-info">
-                        <h3>James Wilson</h3>
-                        <p class="member-title">Outreach Director</p>
-                        <p class="member-bio">James leads our community outreach initiatives with a heart for serving the Pittsburgh area. His background in social work and his passion for justice drive our ministry's efforts to address practical needs in our community. Under his leadership, we've developed partnerships with local organizations to maximize our impact.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Missions Coordinator -->
-                <div class="team-member" data-category="outreach">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Grace Chen">
-                    </div>
-                    <div class="member-info">
-                        <h3>Grace Chen</h3>
-                        <p class="member-title">Missions Coordinator</p>
-                        <p class="member-bio">Grace coordinates our global missions efforts, maintaining relationships with our missionary partners around the world. Having served as a missionary herself for 5 years, she brings valuable experience and cultural sensitivity to our missions program. She organizes our short-term mission trips and keeps our congregation connected to our global impact.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Community Service -->
-                <div class="team-member" data-category="outreach">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Robert Jackson">
-                    </div>
-                    <div class="member-info">
-                        <h3>Robert Jackson</h3>
-                        <p class="member-title">Community Service Coordinator</p>
-                        <p class="member-bio">Robert organizes our local service projects and volunteer opportunities. His background in nonprofit management helps him identify meaningful ways for our congregation to serve the community. From food drives to home repairs for the elderly, he connects our members' skills with community needs.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Administration & Support -->
-    <section class="team-section" id="admin">
-        <div class="container">
-            <h2>Administration & Support</h2>
-            <div class="team-grid">
-                <!-- Office Manager -->
-                <div class="team-member" data-category="admin">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Patricia Adams">
-                    </div>
-                    <div class="member-info">
-                        <h3>Patricia Adams</h3>
-                        <p class="member-title">Office Manager</p>
-                        <p class="member-bio">Patricia keeps our church operations running smoothly with her exceptional organizational skills. She manages our church calendar, coordinates facility use, and serves as the first point of contact for many visitors. Her warm personality and efficiency make her an invaluable part of our administrative team.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Media Director -->
-                <div class="team-member" data-category="admin">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Thomas Lee">
-                    </div>
-                    <div class="member-info">
-                        <h3>Thomas Lee</h3>
-                        <p class="member-title">Media & Technology Director</p>
-                        <p class="member-bio">Thomas oversees our media ministry, including our live streaming, sound system, and website. With a background in IT and a passion for using technology to spread the gospel, he ensures that our message reaches beyond our physical walls. His team of volunteers works behind the scenes to create a seamless worship experience.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Facilities Manager -->
-                <div class="team-member" data-category="admin">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Daniel Brown">
-                    </div>
-                    <div class="member-info">
-                        <h3>Daniel Brown</h3>
-                        <p class="member-title">Facilities Manager</p>
-                        <p class="member-bio">Daniel ensures that our church building is well-maintained and ready for all ministry activities. His attention to detail and proactive approach keep our facilities in excellent condition. From coordinating repairs to overseeing our custodial team, he creates a welcoming environment for worship and fellowship.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Our Team Section -->
-    <section class="join-team-section">
-        <div class="container">
-            <div class="join-team-content">
-                <h2>Join Our Team</h2>
-                <p>We believe that every member of the body of Christ has gifts and talents to contribute. If you're interested in serving at The Sons of God Ministry, we'd love to help you find your place.</p>
-                <div class="join-team-buttons">
-                    <a href="volunteer.html" class="btn-primary">Volunteer Opportunities</a>
-                    <a href="contact.html" class="btn-secondary">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>The Sons of God Ministry, Inc.</h3>
-                    <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Email: info@sonsofgodministry.org</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Service Times</h3>
-                    <p>Sunday: 9:00 AM & 11:00 AM</p>
-                    <p>Wednesday: 7:00 PM</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="media.html">Media</a></li>
-                        <li><a href="visit.html">Visit Us</a></li>
-                        <li><a href="giving.html">Give</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-spotify"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                    <div class="app-links">
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
-                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
-                    </div>
-                </div>
-                <div class="footer-section">
+            <div class="footer-section">
                 <h3>Stay Updated</h3>
-                <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
                 <form action="https://formspree.io/f/xdklnnbg" method="POST">
                     <input type="email" name="email" placeholder="Your Email Address" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
-            </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
-            </div>
         </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-    <script src="js/team.js"></script>
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get a reference to the live stream indicator element using its ID.
-        const liveStreamIndicator = document.getElementById('liveStreamIndicator');
-
-        /**
-         * Checks the current day and time against the scheduled live stream times
-         * and updates the visibility of the live stream indicator.
-         */
-        function checkLiveStatus() {
-            const now = new Date();
-            const day = now.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-            const hour = now.getHours();
-            const minutes = now.getMinutes();
-
-            // Convert current time to a single comparable minute value for the day
-            // This simplifies time range checks.
-            const currentMinutesOfDay = hour * 60 + minutes;
-
-            let isLive = false; // Flag to track if the current time is within a live window
-
-            // --- Check for Sunday live stream ---
-            // Sunday: 10:00 AM (600 minutes) - 5:00 PM (1020 minutes)
-            if (day === 0) { // Sunday is day 0
-                const sundayStartTime = 10 * 60; // 10:00 AM
-                const sundayEndTime = 17 * 60;   // 5:00 PM (17:00 in 24-hour format)
-                if (currentMinutesOfDay >= sundayStartTime && currentMinutesOfDay <= sundayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Tuesday live stream ---
-            // Tuesday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 2) { // Tuesday is day 2
-                const tuesdayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const tuesdayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= tuesdayStartTime && currentMinutesOfDay <= tuesdayEndTime) {
-                    isLive = true;
-                }
-            }
-            // --- Check for Friday live stream ---
-            // Friday: 7:00 PM (1140 minutes) - 10:30 PM (1230 minutes)
-            else if (day === 5) { // Friday is day 5
-                const fridayStartTime = 19 * 60;     // 7:00 PM (19:00)
-                const fridayEndTime = 22 * 60 + 30; // 10:30 PM (22:30)
-                if (currentMinutesOfDay >= fridayStartTime && currentMinutesOfDay <= fridayEndTime) {
-                    isLive = true;
-                }
-            }
-
-            // Update the display style of the live indicator based on the 'isLive' flag.
-            // Using 'flex' instead of 'block' ensures the dot and text are aligned horizontally.
-            if (liveStreamIndicator) {
-                liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
-            }
-        }
-
-        // --- Execution Flow ---
-
-        // 1. Run the check immediately when the page finishes loading.
-        checkLiveStatus();
-
-        // 2. Set up an interval to re-check the live status every minute.
-        // This ensures the indicator appears/disappears automatically without page refresh
-        // as the time crosses the scheduled boundaries.
-        setInterval(checkLiveStatus, 60 * 1000); // 60 * 1000 milliseconds = 1 minute
-    });
-</script>    
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="js/script.js"></script>
 </body>
 </html>
