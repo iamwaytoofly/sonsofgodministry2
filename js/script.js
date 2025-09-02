@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to change slides
     function changeSlide() {
+        if (!slides.length) return;
         // Remove active class from current slide
         slides[currentSlide].classList.remove('active');
         
@@ -39,18 +40,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Change slide every 5 seconds
-    setInterval(changeSlide, 5000);
+    if (slides.length) setInterval(changeSlide, 5000);
     
     // Mobile menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
-    menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-    });
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+    }
     
     // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.main-nav a');
+    const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -58,28 +61,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Smooth scrolling for anchor links
+    // Helper to safely get banner height (banner may not exist)
+    function getBannerHeight() {
+        const banner = document.querySelector('.live-stream-banner');
+        return banner ? banner.offsetHeight : 0;
+    }
+
+    // Smooth scrolling for anchor links (internal only)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const liveStreamHeight = document.querySelector('.live-stream-banner').offsetHeight;
-                const totalOffset = headerHeight + liveStreamHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            if (targetId === '#' || targetId === '#top') {
+                // Allow default for #top so native behavior triggers, then adjust manually
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
             }
+            // Only handle in-page anchors that actually exist
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return; // let browser handle (maybe external hash)
+            e.preventDefault();
+            const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
+            const totalOffset = headerHeight + getBannerHeight();
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         });
     });
     
@@ -89,26 +97,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (visitForm) {
         visitForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form data
             const formData = new FormData(visitForm);
             const formDataObj = {};
-            
-            formData.forEach((value, key) => {
-                formDataObj[key] = value;
-            });
-            
-            // In a real application, you would send this data to a server
+            formData.forEach((value, key) => { formDataObj[key] = value; });
             console.log('Form submitted with data:', formDataObj);
-            
-            // Show success message
             const successMessage = document.createElement('div');
             successMessage.classList.add('success-message');
             successMessage.innerHTML = `
                 <p>Thank you for planning your visit, ${formDataObj.name || 'friend'}! We look forward to seeing you soon.</p>
                 <p>A confirmation has been sent to ${formDataObj.email}.</p>
             `;
-            
             visitForm.innerHTML = '';
             visitForm.appendChild(successMessage);
         });
@@ -116,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Header scroll effect
     const header = document.querySelector('header');
-    
     window.addEventListener('scroll', function() {
+        if (!header) return;
         if (window.scrollY > 50) {
             header.style.padding = '0.5rem 0';
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
@@ -127,64 +125,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Media Tabs
+    // Media Tabs (robust & accessible)
     const mediaTabs = document.querySelectorAll('.media-tab');
     const mediaContents = document.querySelectorAll('.media-content');
     
+    function activateMediaTab(tab) {
+        const target = tab.getAttribute('data-tab');
+        mediaTabs.forEach(b => {
+            b.classList.toggle('active', b === tab);
+            b.setAttribute('aria-selected', b === tab ? 'true' : 'false');
+            b.tabIndex = b === tab ? 0 : -1;
+        });
+        mediaContents.forEach(panel => {
+            const match = panel.id === `${target}-content`;
+            panel.classList.toggle('active', match);
+            if (match) {
+                panel.removeAttribute('hidden');
+            } else {
+                panel.setAttribute('hidden', 'hidden');
+            }
+        });
+    }
+    
     mediaTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs
-            mediaTabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            this.classList.add('active');
-            
-            // Hide all content
-            mediaContents.forEach(content => content.classList.remove('active'));
-            
-            // Show content corresponding to clicked tab
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(`${tabId}-content`).classList.add('active');
+        tab.addEventListener('click', () => activateMediaTab(tab));
+        tab.addEventListener('keydown', (e) => {
+            const currentIndex = Array.from(mediaTabs).indexOf(tab);
+            if (['ArrowRight','ArrowLeft','Home','End'].includes(e.key)) {
+                e.preventDefault();
+                let newIndex = currentIndex;
+                if (e.key === 'ArrowRight') newIndex = (currentIndex + 1) % mediaTabs.length;
+                if (e.key === 'ArrowLeft') newIndex = (currentIndex - 1 + mediaTabs.length) % mediaTabs.length;
+                if (e.key === 'Home') newIndex = 0;
+                if (e.key === 'End') newIndex = mediaTabs.length - 1;
+                mediaTabs[newIndex].focus();
+                activateMediaTab(mediaTabs[newIndex]);
+            }
         });
     });
     
     // Media Play Button Effect
     const mediaItems = document.querySelectorAll('.media-item');
-    
     mediaItems.forEach(item => {
         item.addEventListener('click', function() {
-            // In a real application, this would open a modal or play the media
             console.log('Media item clicked:', this);
         });
     });
     
-    // Check if live stream is active
+    // Check if live stream is active (demo)
     function checkLiveStream() {
-        // This would typically be an API call to check if a stream is live
-        const isLive = true; // For demo purposes
+        const isLive = true; // Replace with real logic/API
         const liveStreamBanner = document.querySelector('.live-stream-banner');
-        
-        if (isLive) {
-            liveStreamBanner.style.display = 'block';
-        } else {
-            liveStreamBanner.style.display = 'none';
-            // Adjust hero margin when banner is hidden
-            document.querySelector('.hero').style.marginTop = '70px';
+        if (liveStreamBanner) {
+            liveStreamBanner.style.display = isLive ? 'block' : 'none';
         }
     }
-    
-    // Call the function to check live stream status
     checkLiveStream();
-    
-    // Adjust hero margin based on banner height
+
+    // Adjust hero margin based on header + optional banner
     function adjustHeroMargin() {
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const bannerHeight = document.querySelector('.live-stream-banner').offsetHeight;
-        document.querySelector('.hero').style.marginTop = `${headerHeight + bannerHeight}px`;
+        const hero = document.querySelector('.hero');
+        if (!hero) return;
+        const headerHeight = header ? header.offsetHeight : 0;
+        hero.style.marginTop = `${headerHeight + getBannerHeight()}px`;
     }
-    
-    // Call on load and resize
     adjustHeroMargin();
     window.addEventListener('resize', adjustHeroMargin);
-    
 });
