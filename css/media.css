@@ -1,4 +1,10 @@
-/* Media Page Specific Styles */
+/* Media Page Specific Styles
+   This version implements OPTION 2:
+   - Navigation bar moved directly under the header in HTML
+   - Hero now appears BELOW the navigation (so no artificial top margin)
+   - Hero padding reduced (was 8rem 0 4rem)
+   - Navigation + tabs made more compact (reduced padding)
+*/
 
 /* Media Hero */
 .media-hero {
@@ -7,8 +13,8 @@
     background-position: center;
     color: var(--white-color);
     text-align: center;
-    padding: 8rem 0 4rem;
-    margin-top: 110px; /* Adjusted for header + live stream banner */
+    padding: 5rem 0 2.25rem; /* reduced bottom padding for tighter layout */
+    margin-top: 0; /* hero is now below nav, so no compensating margin */
 }
 
 .media-hero h1 {
@@ -23,36 +29,37 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Media Navigation */
+/* Media Navigation (now sits directly under header in the HTML) */
 .media-navigation {
     background-color: var(--white-color);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     position: sticky;
-    top: 110px;
+    top: 110px; /* keep aligned with combined header/banner height */
     z-index: 100;
 }
 
 .media-nav-tabs {
     display: flex;
     justify-content: center;
-    padding: 0.25rem 0;
+    padding: 0.25rem 0.5rem; /* tightened horizontal padding */
     border-bottom: 1px solid #eee;
     background-color: var(--light-color);
+    gap: 0.25rem;
 }
 
 .media-nav-tab {
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 0.65rem; /* reduced from 0.5rem 1rem */
     color: var(--dark-color);
     transition: var(--transition);
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent; /* slimmer underline */
     font-size: 0.9rem;
 }
 
 .media-nav-tab i {
-    font-size: 1rem;
-    margin-right: 0.25rem;
+    font-size: 0.85rem; /* slightly smaller icon */
+    margin-right: 0.35rem;
 }
 
 .media-nav-tab:hover {
@@ -61,7 +68,7 @@
 
 .media-nav-tab.active {
     color: var(--primary-color);
-    border-bottom: 3px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color); /* reduced from 3px */
 }
 
 /* Media Content Sections */
@@ -722,4 +729,245 @@
     box-shadow: var(--box-shadow);
 }
 
-/* Media Player
+/* Media Player Modal */
+.media-player-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.player-content {
+    background-color: var(--dark-color);
+    margin: 5% auto;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.player-header h3 {
+    color: var(--white-color);
+    margin: 0;
+}
+
+.close-player {
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-player:hover {
+    color: var(--primary-color);
+}
+
+.player-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+}
+
+.video-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.player-controls {
+    padding: 1rem 1.5rem;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 30%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.control-btn:hover {
+    color: var(--primary-color);
+}
+
+.play-pause {
+    font-size: 1.5rem;
+}
+
+.time-display {
+    color: var(--white-color);
+    margin-right: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .featured-media {
+        flex-direction: column;
+    }
+    
+    .app-promo-content {
+        flex-direction: column;
+    }
+    
+    .devotional-card {
+        flex-direction: column;
+    }
+    
+    .devotional-date {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .media-hero {
+        padding: 4rem 0 2rem;
+    }
+    
+    .media-navigation {
+        top: 140px; /* adjust if header gets taller on small screens */
+    }
+    
+    .media-nav-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .media-nav-tab {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.65rem 0.65rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-filter {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+    
+    .filter-dropdown select {
+        width: 100%;
+    }
+    
+    .featured-actions {
+        flex-direction: column;
+    }
+    
+    .featured-actions a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .episode-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .episode-number {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .episode-actions {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .subscription-form {
+        flex-direction: column;
+    }
+    
+    .subscription-form input {
+        border-radius: 30px;
+        margin-bottom: 1rem;
+    }
+    
+    .subscription-form button {
+        border-radius: 30px;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .media-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .player-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+    
+    .control-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .time-display {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
