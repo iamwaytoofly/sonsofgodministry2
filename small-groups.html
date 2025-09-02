@@ -2,18 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Small Groups - The Sons of God Ministry, Inc.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Groups - The Sons of God Ministry, Inc.</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap"
+          rel="stylesheet">
+    <style>
+        .groups-hero {
+            background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+                        url("https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1350&q=80")
+                        center/cover no-repeat;
+            color:#fff;
+            padding:100px 0 80px;
+            text-align:center;
+        }
+        .groups-hero h1 { font-size:2.5rem; margin-bottom: .5rem; }
+        .groups-hero p { font-size:1.1rem; max-width:700px; margin:0 auto; }
+        .groups-filter-bar { margin:40px 0 10px; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+        .groups-filter-bar input, .groups-filter-bar select {
+            padding:.65rem .85rem;border:1px solid #ddd;border-radius:6px;font:inherit;
+        }
+        .groups-grid { display:grid; gap:1.75rem; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+        .group-card {
+            background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08);
+            display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease;
+        }
+        .group-card:hover { transform:translateY(-4px); box-shadow:0 8px 22px rgba(0,0,0,.12); }
+        .group-image img { width:100%;height:160px;object-fit:cover;display:block; }
+        .group-content { padding:1rem 1.1rem 1.25rem; display:flex; flex-direction:column; gap:.5rem; }
+        .group-meta { font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:#6366f1; font-weight:600; }
+        .group-times { font-size:.85rem; color:#444; }
+        .tag-row { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.35rem; }
+        .tag-row span {
+            font-size:.65rem; background:#eef2ff; color:#4338ca; padding:.35rem .55rem;
+            border-radius:999px; font-weight:600; letter-spacing:.05em;
+        }
+        .placeholder { opacity:.75; }
+        .add-more-hint { margin:2.5rem 0 1rem; text-align:center; font-size:.9rem; color:#555; }
+        .info-note { background:#f1f5f9; padding:1rem 1.25rem; border-left:4px solid #6366f1; border-radius:8px; font-size:.85rem; margin:2.5rem 0; }
+        .cta-bar { text-align:center; margin:3rem 0 1rem; }
+        .cta-bar a { margin:.4rem .5rem; }
+        .search-empty { display:none; text-align:center; padding:2rem 1rem; font-size:1rem; color:#555; }
+        @media (max-width:640px){
+            .groups-filter-bar { flex-direction:column; align-items:stretch; }
+        }
+        /* Instruction comment is placed in HTML below for maintainers */
+    </style>
 </head>
 <body>
 <header>
     <div class="container">
         <div class="logo">
-            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"><span class="logo-text">The Sons of God Ministry</span></a>
+            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img">
+                <span class="logo-text">The Sons of God Ministry</span></a>
         </div>
         <nav>
             <ul class="main-nav">
@@ -25,7 +68,9 @@
                 <li><a href="visit.html">Visit Us</a></li>
                 <li><a href="giving.html" class="btn-primary">Give</a></li>
             </ul>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </div>
 </header>
@@ -33,34 +78,253 @@
 <section class="groups-hero">
     <div class="container">
         <h1>Small Groups</h1>
-        <p>Grow in community and faith together</p>
+        <p>Grow in faith, build authentic relationships, and discover your purpose in community.</p>
     </div>
 </section>
 
-<!-- Existing small-groups content -->
+<section class="groups-directory">
+    <div class="container">
+        <div class="groups-filter-bar">
+            <input type="text" id="groupSearch" placeholder="Search groups (topic, day, leader)...">
+            <select id="dayFilter">
+                <option value="">All Days</option>
+                <option>Sunday</option><option>Monday</option><option>Tuesday</option>
+                <option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option>
+            </select>
+            <select id="typeFilter">
+                <option value="">All Types</option>
+                <option value="study">Bible Study</option>
+                <option value="fellowship">Fellowship</option>
+                <option value="prayer">Prayer</option>
+                <option value="outreach">Outreach</option>
+                <option value="youth">Youth</option>
+            </select>
+        </div>
+
+        <div id="noResults" class="search-empty">No groups match your search yet. Try different filters.</div>
+
+        <!--
+          MAINTAINER INSTRUCTIONS:
+          To add a new group card:
+          1. Copy one of the .group-card blocks below.
+          2. Update title, description, day/time, and tags.
+          3. Keep tags semantic (e.g., "Study", "Prayer", "Men", "Women", "Young Adults").
+          4. Ensure an accessible alt attribute for the image.
+        -->
+
+        <div class="groups-grid" id="groupsGrid">
+            <!-- Core Existing Groups -->
+            <div class="group-card" data-day="Tuesday" data-type="study">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Young Adults Group">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Young Adults</span>
+                    <h3>Young Adults Community</h3>
+                    <p>Faith, purpose, and community for ages 18–30.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Tuesdays • 7:00 PM</p>
+                    <div class="tag-row">
+                        <span>Study</span><span>Young Adults</span><span>Fellowship</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-card" data-day="Saturday" data-type="fellowship">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" alt="Married Couples Group">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Married Couples</span>
+                    <h3>Couples Fellowship</h3>
+                    <p>Strengthen marriages through Biblical wisdom.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Alt. Saturdays • 6:00 PM</p>
+                    <div class="tag-row">
+                        <span>Marriage</span><span>Fellowship</span><span>Study</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-card" data-day="Thursday" data-type="study">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1536337005238-94b997371b40?auto=format&fit=crop&w=800&q=80" alt="Women's Bible Study">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Women</span>
+                    <h3>Women's Bible Study</h3>
+                    <p>Scripture, prayer, and authentic community.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Thursdays • 10:00 AM</p>
+                    <div class="tag-row">
+                        <span>Women</span><span>Study</span><span>Prayer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholders -->
+            <div class="group-card placeholder" data-day="Wednesday" data-type="prayer">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=800&q=80" alt="Prayer Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>Midweek Prayer Circle</h3>
+                    <p>Interceding for needs of the church & city.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Wednesdays • 7:30 PM</p>
+                    <div class="tag-row"><span>Prayer</span><span>Intercession</span></div>
+                </div>
+            </div>
+
+            <div class="group-card placeholder" data-day="Sunday" data-type="youth">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Youth Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>High School Discipleship</h3>
+                    <p>Growing bold faith in the next generation.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Sundays • 11:30 AM</p>
+                    <div class="tag-row"><span>Youth</span><span>Discipleship</span></div>
+                </div>
+            </div>
+
+            <div class="group-card placeholder" data-day="Monday" data-type="study">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Men's Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>Men of Purpose</h3>
+                    <p>Accountability, growth & servant leadership.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Mondays • 7:00 PM</p>
+                    <div class="tag-row"><span>Men</span><span>Study</span></div>
+                </div>
+            </div>
+
+            <div class="group-card placeholder" data-day="Friday" data-type="outreach">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" alt="Outreach Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>Community Outreach Team</h3>
+                    <p>Hands-on service & local mission projects.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Fridays • 6:30 PM</p>
+                    <div class="tag-row"><span>Outreach</span><span>Service</span></div>
+                </div>
+            </div>
+
+            <div class="group-card placeholder" data-day="Thursday" data-type="fellowship">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="College Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>College Connection</h3>
+                    <p>Faith & friendship for university students.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Thursdays • 8:00 PM</p>
+                    <div class="tag-row"><span>College</span><span>Fellowship</span></div>
+                </div>
+            </div>
+
+            <div class="group-card placeholder" data-day="Tuesday" data-type="study">
+                <div class="group-image">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Foundations Group Placeholder">
+                </div>
+                <div class="group-content">
+                    <span class="group-meta">Coming Soon</span>
+                    <h3>Foundations of Faith</h3>
+                    <p>Essential doctrines for growing believers.</p>
+                    <p class="group-times"><i class="far fa-calendar-alt"></i> Tuesdays • 6:30 PM</p>
+                    <div class="tag-row"><span>Foundations</span><span>Study</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-note">
+            Interested in launching a new group? Contact our leadership team to begin the simple onboarding process.
+        </div>
+
+        <div class="cta-bar">
+            <a href="index.html#small-groups" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <a href="contact.html" class="btn-primary">Start a Group</a>
+        </div>
+    </div>
+</section>
 
 <footer>
     <div class="container">
         <div class="footer-content">
-            <div class="footer-section"><h3>The Sons of God Ministry, Inc.</h3><p>200 Tabor St.<br>Pittsburgh, PA 15204</p></div>
-            <div class="footer-section"><h3>Service Times</h3><p>Sunday: 9:00 AM & 11:00 AM</p><p>Wednesday: 7:00 PM</p></div>
+            <div class="footer-section">
+                <h3>The Sons of God Ministry, Inc.</h3>
+                <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: info@sonsofgodministry.org</p>
+            </div>
+            <div class="footer-section">
+                <h3>Service Times</h3>
+                <p>Sunday: 9:00 AM & 11:00 AM</p>
+                <p>Wednesday: 7:00 PM</p>
+            </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="index.html#media-preview">Media</a></li>
-                    <li><a href="index.html#small-groups">Groups</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html">Give</a></li>
                 </ul>
             </div>
-            <div class="footer-section"><h3>Connect</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
-            <div class="footer-section"><h3>Stay Updated</h3><form action="https://formspree.io/f/xdklnnbg" method="POST"><input type="email" name="email" placeholder="Your Email Address" required><button type="submit">Subscribe</button></form></div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
+                <form action="https://formspree.io/f/xdklnnbg" method="POST">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p></div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
+        </div>
     </div>
 </footer>
 <script src="js/script.js"></script>
+<script>
+const searchInput = document.getElementById('groupSearch');
+const dayFilter = document.getElementById('dayFilter');
+const typeFilter = document.getElementById('typeFilter');
+const grid = document.getElementById('groupsGrid');
+const noResults = document.getElementById('noResults');
+
+function filterGroups() {
+    const term = (searchInput.value || '').toLowerCase();
+    const day = dayFilter.value;
+    const type = typeFilter.value;
+    let visible = 0;
+    [...grid.querySelectorAll('.group-card')].forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const cardDay = card.getAttribute('data-day');
+        const cardType = card.getAttribute('data-type');
+        const matchTerm = !term || text.includes(term);
+        const matchDay = !day || day === cardDay;
+        const matchType = !type || type === cardType;
+        const show = matchTerm && matchDay && matchType;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+    });
+    noResults.style.display = visible ? 'none' : 'block';
+}
+[searchInput, dayFilter, typeFilter].forEach(el => el.addEventListener('input', filterGroups));
+</script>
 </body>
 </html>
