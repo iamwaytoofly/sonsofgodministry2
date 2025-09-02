@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Media - The Sons of God Ministry, Inc.</title>
+    <meta charset="UTF-8">
+    <title>Media Archive | The Sons of God Ministry</title>
+    <meta name="description" content="Browse sermons, praise dance presentations, podcasts and blog posts from The Sons of God Ministry.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap"
+          rel="stylesheet">
+    <style>
+        body { background:#fff; }
+        header { position:sticky; top:0; }
+        .archive-header { text-align:center; margin-top:150px; margin-bottom:2rem; }
+        .media-archive-section h2 { text-align:left; font-size:2rem; margin-bottom:1rem; }
+        .media-archive-section + .media-archive-section { border-top:1px solid #eee; margin-top:3rem; padding-top:3rem; }
+        .media-meta { font-size:.8rem; color:#666; margin-top:.5rem; }
+        .actions { margin-top:.75rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+        .actions a { font-size:.7rem; padding:.4rem .7rem; border:1px solid var(--primary-color); border-radius:20px; text-transform:uppercase; letter-spacing:.05em; }
+        .actions a:hover { background:var(--primary-color); color:#fff; }
+        .toc { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+        .toc a { font-weight:600; }
+        .pagination { text-align:center; margin-top:1.5rem; }
+        .pagination a { margin:0 .25rem; padding:.5rem .85rem; border:1px solid #ccc; border-radius:6px; font-size:.85rem; }
+        .pagination a.active { background:var(--primary-color); color:#fff; border-color:var(--primary-color); }
+        .back-top { margin-top:2rem; text-align:center; }
+    </style>
 </head>
 <body>
 <header>
@@ -18,83 +37,248 @@
                 <span class="logo-text">The Sons of God Ministry</span>
             </a>
         </div>
-        <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator" style="display:none;">
-            <span class="live-dot" style="width:8px;height:8px;background:#fca5a5;border-radius:50%;display:inline-block;"></span> LIVE
-        </a>
         <nav>
             <ul class="main-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#media-preview" class="active">Media</a></li>
+                <li><a href="media.html" class="active">Media</a></li>
                 <li><a href="index.html#small-groups">Groups</a></li>
                 <li><a href="visit.html">Visit Us</a></li>
                 <li><a href="giving.html" class="btn-primary">Give</a></li>
             </ul>
-            <div class="menu-toggle">
+            <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="media-navigation">
-    <div class="container">
-        <div class="media-nav-tabs">
-            <a href="#sermons" class="media-nav-tab active" data-tab="sermons"><i class="fas fa-video"></i><span>Sermons</span></a>
-            <a href="#music" class="media-nav-tab" data-tab="music"><i class="fas fa-music"></i><span>Praise Dance</span></a>
-            <a href="#podcasts" class="media-nav-tab" data-tab="podcasts"><i class="fas fa-microphone-alt"></i><span>Podcasts and Blogs</span></a>
-        </div>
+<main class="container">
+    <div class="archive-header">
+        <h1>Media Archive</h1>
+        <p>Explore our full library of sermons, praise dance presentations, podcasts, and blogs.</p>
     </div>
-</section>
 
-<!-- (Content below unchanged except for nav/footer links modernization) -->
-<section id="sermons" class="media-content-section active">
-    <div class="container">
-        <!-- Sermons section content (unchanged) -->
-        <!-- ... existing sermon blocks ... -->
-    </div>
-</section>
+    <nav class="toc" aria-label="Media sections">
+        <a href="#sermons">Sermons</a>
+        <a href="#praise-dance">Praise Dance</a>
+        <a href="#podcasts">Podcasts & Blogs</a>
+    </nav>
 
-<section id="music" class="media-content-section">
-    <div class="container">
-        <!-- Music section content (unchanged) -->
-    </div>
-</section>
-
-<section id="podcasts" class="media-content-section">
-    <div class="container">
-        <!-- Podcasts section content (unchanged) -->
-    </div>
-</section>
-
-<section id="devotionals" class="media-content-section">
-    <div class="container">
-        <!-- Devotionals section content (unchanged) -->
-    </div>
-</section>
-
-<section class="app-promo">
-    <div class="container">
-        <div class="app-promo-content">
-            <div class="app-promo-text">
-                <h2>Take Our Media With You</h2>
-                <p>Download our mobile app to access sermons, music, podcasts, and devotionals on the go.</p>
-                <div class="app-buttons">
-                    <a href="#" class="app-button">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
-                    </a>
-                    <a href="#" class="app-button">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-                    </a>
+    <!-- SERMONS -->
+    <section id="sermons" class="media-archive-section" aria-labelledby="sermons-heading">
+        <h2 id="sermons-heading"><i class="fas fa-book-open"></i> Sermons</h2>
+        <div class="media-grid">
+            <!-- 6 placeholder sermon items -->
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Sermon: Lifted by Grace">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Lifted by Grace</h3>
+                    <p>Jan 19, 2025 · Pastor John Doe</p>
+                    <div class="media-meta">Series: Grace Foundations · 42m</div>
+                    <div class="actions">
+                        <a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a>
+                    </div>
                 </div>
             </div>
-            <div class="app-promo-image">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1350&q=80" alt="Mobile App">
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=800&q=80" alt="Sermon: Unshakable Hope">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Unshakable Hope</h3>
+                    <p>Jan 12, 2025 · Guest Speaker</p>
+                    <div class="media-meta">Series: Hope Anchors · 38m</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a></div>
+                </div>
+            </div>
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1590608897129-79da98d15969?auto=format&fit=crop&w=800&q=80" alt="Sermon: The Power of Prayer">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>The Power of Prayer</h3>
+                    <p>Jan 5, 2025 · Pastor Jane Smith</p>
+                    <div class="media-meta">Standalone · 50m</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a></div>
+                </div>
+            </div>
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1470740702009-6bf55dd3687b?auto=format&fit=crop&w=800&q=80" alt="Sermon: Faith that Moves">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Faith that Moves</h3>
+                    <p>Dec 29, 2024 · Pastor John Doe</p>
+                    <div class="media-meta">Series: Mountain Mover · 44m</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a></div>
+                </div>
+            </div>
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Sermon: Living the Word">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Living the Word</h3>
+                    <p>Dec 22, 2024 · Pastor Jane Smith</p>
+                    <div class="media-meta">Series: Word Alive · 41m</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a></div>
+                </div>
+            </div>
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1462212210333-335063b676d7?auto=format&fit=crop&w=800&q=80" alt="Sermon: Advent Hope">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Advent Hope</h3>
+                    <p>Dec 15, 2024 · Pastor John Doe</p>
+                    <div class="media-meta">Advent Series · 36m</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Listen</a><a href="#">Notes</a><a href="#">Download</a></div>
+                </div>
             </div>
         </div>
+        <div class="pagination" aria-label="Sermons pages">
+            <a href="#" class="active">1</a><a href="#">2</a><a href="#">3</a><a href="#sermons" aria-label="Next sermons page">Next »</a>
+        </div>
+    </section>
+
+    <!-- PRAISE DANCE -->
+    <section id="praise-dance" class="media-archive-section" aria-labelledby="praise-dance-heading">
+        <h2 id="praise-dance-heading"><i class="fas fa-music"></i> Praise Dance</h2>
+        <div class="media-grid">
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: Glory Rising">
+                    <div class="play-button"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Glory Rising</h3>
+                    <p>Jan 2025 · Team A</p>
+                    <div class="media-meta">Length: 6m 12s</div>
+                    <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+                </div>
+            </div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: Morning Praise">
+                <div class="play-button"><i class="fas fa-play"></i></div>
+            </div><div class="media-details">
+                <h3>Morning Praise</h3><p>Dec 2024 · Youth</p><div class="media-meta">Length: 5m 40s</div>
+                <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1464375117522-1311d0b83b48?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: Ever Faithful">
+                <div class="play-button"><i class="fas fa-play"></i></div>
+            </div><div class="media-details">
+                <h3>Ever Faithful</h3><p>Nov 2024 · Team B</p><div class="media-meta">Length: 7m 05s</div>
+                <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: River Flow">
+                <div class="play-button"><i class="fas fa-play"></i></div>
+            </div><div class="media-details">
+                <h3>River Flow</h3><p>Oct 2024 · Team A</p><div class="media-meta">Length: 4m 58s</div>
+                <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: Everlasting Light">
+                <div class="play-button"><i class="fas fa-play"></i></div>
+            </div><div class="media-details">
+                <h3>Everlasting Light</h3><p>Sep 2024 · Youth</p><div class="media-meta">Length: 5m 10s</div>
+                <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1529625052565-3541a1801267?auto=format&fit=crop&w=800&q=80" alt="Praise Dance: Joyful Steps">
+                <div class="play-button"><i class="fas fa-play"></i></div>
+            </div><div class="media-details">
+                <h3>Joyful Steps</h3><p>Aug 2024 · Team C</p><div class="media-meta">Length: 6m 00s</div>
+                <div class="actions"><a href="#">Watch</a><a href="#">Download</a><a href="#">Music</a><a href="#">Choreo PDF</a></div>
+            </div></div>
+        </div>
+        <div class="pagination" aria-label="Praise Dance pages">
+            <a href="#" class="active">1</a><a href="#">2</a><a href="#">Next »</a>
+        </div>
+    </section>
+
+    <!-- PODCASTS & BLOGS -->
+    <section id="podcasts" class="media-archive-section" aria-labelledby="podcasts-heading">
+        <h2 id="podcasts-heading"><i class="fas fa-podcast"></i> Podcasts & Blogs</h2>
+        <div class="media-grid">
+            <div class="media-item">
+                <div class="media-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18d83?auto=format&fit=crop&w=800&q=80" alt="Podcast: Renewed Minds Ep 14">
+                    <div class="play-button"><i class="fas fa-podcast"></i></div>
+                </div>
+                <div class="media-details">
+                    <h3>Renewed Minds (Ep 14)</h3>
+                    <p>Jan 18, 2025 · 32 min</p>
+                    <div class="media-meta">Topic: Transformation</div>
+                    <div class="actions"><a href="#">Listen</a><a href="#">Show Notes</a><a href="#">Download</a><a href="#">Share</a></div>
+                </div>
+            </div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=800&q=80" alt="Blog: Fasting & Focus">
+                <div class="play-button"><i class="fas fa-book-open"></i></div>
+            </div><div class="media-details">
+                <h3>Fasting & Focus</h3>
+                <p>Blog · Jan 15, 2025</p>
+                <div class="media-meta">Reading Time: 6 min</div>
+                <div class="actions"><a href="#">Read</a><a href="#">PDF</a><a href="#">Download</a><a href="#">Share</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Podcast: Purpose in Waiting Ep 13">
+                <div class="play-button"><i class="fas fa-podcast"></i></div>
+            </div><div class="media-details">
+                <h3>Purpose in Waiting (Ep 13)</h3>
+                <p>Jan 8, 2025 · 28 min</p>
+                <div class="media-meta">Topic: Patience</div>
+                <div class="actions"><a href="#">Listen</a><a href="#">Show Notes</a><a href="#">Download</a><a href="#">Share</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1517414204284-fb7e99fc1d91?auto=format&fit=crop&w=800&q=80" alt="Blog: Daily Devotion Reset">
+                <div class="play-button"><i class="fas fa-book-open"></i></div>
+            </div><div class="media-details">
+                <h3>Daily Devotion Reset</h3>
+                <p>Blog · Jan 3, 2025</p>
+                <div class="media-meta">Reading Time: 5 min</div>
+                <div class="actions"><a href="#">Read</a><a href="#">PDF</a><a href="#">Download</a><a href="#">Share</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1498598453639-3e61b90e2d73?auto=format&fit=crop&w=800&q=80" alt="Podcast: Seasons of Growth Ep 12">
+                <div class="play-button"><i class="fas fa-podcast"></i></div>
+            </div><div class="media-details">
+                <h3>Seasons of Growth (Ep 12)</h3>
+                <p>Dec 28, 2024 · 30 min</p>
+                <div class="media-meta">Topic: Spiritual Growth</div>
+                <div class="actions"><a href="#">Listen</a><a href="#">Show Notes</a><a href="#">Download</a><a href="#">Share</a></div>
+            </div></div>
+            <div class="media-item"><div class="media-thumbnail">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Blog: Community Impact">
+                <div class="play-button"><i class="fas fa-book-open"></i></div>
+            </div><div class="media-details">
+                <h3>Community Impact</h3>
+                <p>Blog · Dec 22, 2024</p>
+                <div class="media-meta">Reading Time: 7 min</div>
+                <div class="actions"><a href="#">Read</a><a href="#">PDF</a><a href="#">Download</a><a href="#">Share</a></div>
+            </div></div>
+        </div>
+        <div class="pagination" aria-label="Podcasts & Blogs pages">
+            <a href="#" class="active">1</a><a href="#">2</a><a href="#">Next »</a>
+        </div>
+    </section>
+
+    <div class="back-top">
+        <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i> Back to Top</a>
     </div>
-</section>
+</main>
 
 <footer>
     <div class="container">
@@ -115,7 +299,7 @@
                 <ul>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#media-preview">Media</a></li>
+                    <li><a href="media.html">Media</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html">Give</a></li>
                 </ul>
@@ -137,9 +321,9 @@
             <div class="footer-section">
                 <h3>Stay Updated</h3>
                 <p>Subscribe to our newsletter for weekly updates and devotionals.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your Email Address" required>
-                    <button type="submit" class="btn-primary">Subscribe</button>
+                <form action="https://formspree.io/f/xdklnnbg" method="POST">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -149,51 +333,13 @@
     </div>
 </footer>
 
-<div class="media-player-modal" id="media-player">
-    <div class="player-content">
-        <div class="player-header">
-            <h3 id="player-title">Media Title</h3>
-            <button class="close-player">&times;</button>
-        </div>
-        <div class="player-video">
-            <div class="video-placeholder">
-                <i class="fas fa-play-circle"></i>
-                <p>Video would play here in a real implementation</p>
-            </div>
-        </div>
-        <div class="player-controls">
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            <div class="control-buttons">
-                <button class="control-btn"><i class="fas fa-step-backward"></i></button>
-                <button class="control-btn play-pause"><i class="fas fa-play"></i></button>
-                <button class="control-btn"><i class="fas fa-step-forward"></i></button>
-                <div class="time-display">00:00 / 00:00</div>
-                <button class="control-btn"><i class="fas fa-volume-up"></i></button>
-                <button class="control-btn"><i class="fas fa-expand"></i></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="js/script.js"></script>
-<script src="js/media.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const liveStreamIndicator = document.getElementById('liveStreamIndicator');
-    function checkLiveStatus() {
-        const now = new Date();
-        const day = now.getDay();
-        const minutesToday = now.getHours() * 60 + now.getMinutes();
-        let isLive = false;
-        if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;
-        if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
-        if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
-        if (liveStreamIndicator) liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
     }
-    checkLiveStatus();
-    setInterval(checkLiveStatus, 60000);
 });
 </script>
 </body>
