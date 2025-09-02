@@ -17,37 +17,40 @@
     <meta property="twitter:title" content="The Sons of God Ministry, Inc. | Pittsburgh, PA">
     <meta property="twitter:description" content="A place to belong, believe, and become. Join our vibrant faith community in Pittsburgh.">
     <meta property="twitter:image" content="images/logo/logo.png">
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap"
           rel="stylesheet">
+
     <style>
         html { scroll-behavior: smooth; }
+        /* Ensures sections aren’t hidden under fixed header + live banner */
         #about, #services, #media-preview, #small-groups, #events, #verse-of-day {
-            scroll-margin-top: 120px;
+            scroll-margin-top: 130px;
         }
         @keyframes blink {0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
         .live-indicator {
             display:none;background-color:#ef4444;color:#fff;padding:0.35rem 0.75rem;border-radius:9999px;
-            font-weight:bold;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;
+            font-weight:bold;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;
             position:absolute;top:50%;right:1rem;transform:translateY(-50%);z-index:1000;
             box-shadow:0 2px 8px rgba(0,0,0,.2);animation:blink 1.5s infinite;
-            display:flex;align-items:center;gap:.3rem;font-family:"Inter",sans-serif;text-decoration:none;
+            display:flex;align-items:center;gap:.35rem;font-family:"Inter",sans-serif;text-decoration:none;
             cursor:pointer;transition:background-color .3s ease;
         }
         .live-indicator:hover { background:#dc2626; }
         .live-dot {width:8px;height:8px;background:#fca5a5;border-radius:50%;display:inline-block;}
         @media (max-width:640px){
-            .live-indicator{padding:.25rem .5rem;font-size:.75rem;right:.5rem;top:1rem;transform:translateY(0);}
+            .live-indicator{padding:.25rem .55rem;font-size:.65rem;right:.5rem;top:1rem;transform:translateY(0);}
         }
     </style>
 </head>
-<body>
+<body id="top">
 <header>
     <div class="container">
         <div class="logo">
-            <a href="index.html">
+            <a href="#top" aria-label="Go to top of page">
                 <img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img">
                 <span class="logo-text">The Sons of God Ministry</span>
             </a>
@@ -57,7 +60,8 @@
         </a>
         <nav>
             <ul class="main-nav">
-                <li><a href="index.html" class="active">Home</a></li>
+                <!-- Internal anchors use just # so smooth scroll script works -->
+                <li><a href="#top" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#media-preview">Media</a></li>
@@ -73,7 +77,9 @@
 </header>
 
 <section class="hero">
-    <div class="slideshow-container"></div>
+    <div class="slideshow-container">
+        <!-- Slides inserted by JS -->
+    </div>
     <div class="hero-content">
         <div class="hero-logo">
             <img src="images/logo/logo.png" alt="The Sons of God Ministry Logo">
@@ -372,9 +378,10 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#media-preview">Media</a></li>
+                    <!-- Use in-page anchors here for smooth scroll since this IS index.html -->
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#media-preview">Media</a></li>
                     <li><a href="visit.html">Visit Us</a></li>
                     <li><a href="giving.html">Give</a></li>
                 </ul>
@@ -409,6 +416,33 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "The Sons of God Ministry, Inc.",
+  "url": "https://www.sonsofgodministry.org",
+  "logo": "https://www.sonsofgodministry.org/images/logo/logo.png",
+  "image": "https://www.sonsofgodministry.org/images/slideshow/church-1.jpg",
+  "description": "The Sons of God Ministry is a vibrant, Spirit-filled community where people from all walks of life come together to experience God's love and grow in their faith journey.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "200 Tabor St.",
+    "addressLocality": "Pittsburgh",
+    "addressRegion": "PA",
+    "postalCode": "15204",
+    "addressCountry": "US"
+  },
+  "telephone": "(555) 123-4567",
+  "email": "info@sonsofgodministry.org",
+  "openingHours": ["Su 09:00-12:30","Tu 19:00-22:30","Fr 19:00-22:30"],
+  "sameAs": [
+    "https://www.facebook.com/sonsofgodministry",
+    "https://www.instagram.com/sonsofgodministry",
+    "https://www.youtube.com/sonsofgodministry"
+  ]
+}
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const liveStreamIndicator = document.getElementById('liveStreamIndicator');
