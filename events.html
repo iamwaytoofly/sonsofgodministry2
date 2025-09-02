@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - The Sons of God Ministry, Inc.</title>
-    <meta name="description" content="Church events calendar for The Sons of God Ministry: worship services, Bible studies, youth gatherings, outreach and special events.">
+    <meta name="description" content="Church events calendar for The Sons of God Ministry: worship services, Bible studies, youth gatherings, outreach and special events. Includes Google Calendar integration.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/events.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -12,20 +12,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/main.min.css">
     <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
     <style>
-        main { max-width:1200px; margin:140px auto 3rem; padding:0 1.25rem 3rem; }
         header { position:fixed; top:0; left:0; width:100%; background:#fff; z-index:1000; }
-        .events-hero { text-align:center; padding:4.5rem 0 2rem; background:linear-gradient(135deg,#0f172a,#1e3a8a); color:#fff; margin-top:70px; }
+        main { max-width:1200px; margin:140px auto 3rem; padding:0 1.25rem 3rem; }
+        .events-hero { text-align:center; padding:4.5rem 0 2.2rem; background:linear-gradient(135deg,#0f172a,#1e3a8a); color:#fff; margin-top:70px; }
         .events-hero h1 { margin:0 0 .65rem; font-size:2.4rem; }
         .events-hero p { margin:0; font-weight:300; letter-spacing:.5px; }
-        #calendar-shell { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1rem 1rem 1.5rem; box-shadow:0 6px 24px -10px rgba(0,0,0,.15); }
-        #calendar { display:none; }
+        #calendar-shell { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1rem 1rem 1.4rem; box-shadow:0 6px 24px -10px rgba(0,0,0,.15); }
         #calendar-status { text-align:center; padding:2rem; color:#555; }
+        #calendar { display:none; }
         .legend { display:flex; flex-wrap:wrap; gap:.75rem; margin:1.1rem 0 .3rem; font-size:.7rem; letter-spacing:.05em; text-transform:uppercase; }
         .legend span { display:inline-flex; align-items:center; gap:.4rem; }
         .legend i { width:14px; height:14px; border-radius:4px; display:inline-block; }
-        .cat-worship { background:#2563eb; } .cat-study { background:#16a34a; } .cat-youth { background:#db2777; } .cat-outreach { background:#d97706; } .cat-special { background:#7c3aed; }
+        .cat-worship { background:#2563eb; } .cat-study { background:#16a34a; } .cat-youth { background:#db2777; } .cat-outreach { background:#d97706; } .cat-special { background:#7c3aed; } .cat-google { background:#0d9488; }
         .fc-toolbar-title { font-weight:600; font-family:Poppins, sans-serif; }
         .fc-daygrid-event { font-size:.68rem; font-weight:500; }
+        .calendar-controls { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; justify-content:space-between; margin:.4rem 0 1rem; }
+        .source-filters { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .source-filters button { background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a; padding:.45rem .85rem; font-size:.72rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; border-radius:8px; cursor:pointer; }
+        .source-filters button.active, .source-filters button:hover { background:#1d4ed8; color:#fff; border-color:#1d4ed8; }
+        .sync-note { font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; color:#64748b; }
         .event-modal-backdrop { position:fixed; inset:0; background:rgba(15,23,42,.55); display:flex; align-items:center; justify-content:center; z-index:3000; padding:1rem; }
         .event-modal { background:#fff; border-radius:16px; max-width:500px; width:100%; padding:1.4rem 1.5rem 1.9rem; position:relative; box-shadow:0 12px 40px -12px rgba(0,0,0,.4); }
         .event-modal h2 { margin:0 0 .4rem; font-size:1.4rem; }
@@ -33,15 +38,17 @@
         .event-desc { font-size:.9rem; line-height:1.55; }
         .close-btn { position:absolute; top:.6rem; right:.6rem; width:38px; height:38px; background:#f1f5f9; border:none; border-radius:50%; font-size:1.1rem; cursor:pointer; display:grid; place-items:center; }
         .close-btn:hover { background:#e2e8f0; }
-        #local-add-panel { margin-top:2.5rem; border-top:1px dashed #cbd5e1; padding-top:1.4rem; }
-        #local-add-panel h3 { margin:0 0 .9rem; font-size:1rem; letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
-        #local-add-panel form { display:grid; gap:.7rem; max-width:560px; }
+        #local-add-panel { margin-top:2rem; border-top:1px dashed #cbd5e1; padding-top:1.2rem; }
+        #local-add-panel h3 { margin:0 0 .8rem; font-size:.95rem; letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
+        #local-add-panel form { display:grid; gap:.65rem; max-width:560px; }
         #local-add-panel input, #local-add-panel select, #local-add-panel textarea { width:100%; padding:.6rem .7rem; font:inherit; border:1px solid #cbd5e1; border-radius:8px; }
-        #local-add-panel button { background:#1d4ed8; color:#fff; border:none; padding:.7rem 1rem; font-weight:600; border-radius:10px; cursor:pointer; }
+        #local-add-panel button { background:#1d4ed8; color:#fff; border:none; padding:.65rem 1rem; font-weight:600; border-radius:10px; cursor:pointer; }
         #local-add-panel button:hover { background:#1e40af; }
-        .local-note { font-size:.68rem; line-height:1.35; color:#555; }
-        .disclaimer { font-size:.65rem; letter-spacing:.05em; text-transform:uppercase; color:#64748b; margin-top:1rem; }
-        @media (max-width:680px){ .events-hero h1 { font-size:2rem; } .legend { font-size:.58rem; } }
+        .local-note { font-size:.66rem; line-height:1.3; color:#555; }
+        .disclaimer { font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; color:#64748b; margin:.8rem 0 0; }
+        /* Hide classes for filtering */
+        .hide-internal .source-internal, .hide-google .source-google { display:none !important; }
+        @media (max-width:680px){ .events-hero h1 { font-size:2rem; } .legend { font-size:.58rem; } .source-filters button { font-size:.6rem; } }
     </style>
 </head>
 <body>
@@ -69,12 +76,20 @@
 <section class="events-hero">
     <div class="container">
         <h1>Church Events & Calendar</h1>
-        <p>Gatherings, worship, discipleship, youth, outreach & special services</p>
+        <p>Internal ministry schedule + Google Calendar feed</p>
     </div>
 </section>
 
 <main>
     <div id="calendar-shell">
+        <div class="calendar-controls">
+            <div class="source-filters" aria-label="Filter event sources">
+                <button type="button" data-filter="all" class="active">All</button>
+                <button type="button" data-filter="internal">Internal</button>
+                <button type="button" data-filter="google">Google</button>
+            </div>
+            <div class="sync-note">Google events sync automatically (public feed may cache ~5–15 min).</div>
+        </div>
         <div id="calendar-status" aria-live="polite">Loading calendar…</div>
         <div id="calendar"></div>
         <div class="legend" aria-hidden="true">
@@ -83,8 +98,9 @@
             <span><i class="cat-youth"></i> Youth</span>
             <span><i class="cat-outreach"></i> Outreach</span>
             <span><i class="cat-special"></i> Special</span>
+            <span><i class="cat-google"></i> Google Feed</span>
         </div>
-        <div class="disclaimer">Official events are maintained in events.json. Local additions below are only visible in your browser.</div>
+        <div class="disclaimer">Official internal events are maintained in events.json. Google feed comes from your public Google Calendar.</div>
         <div id="local-add-panel">
             <h3>Quick Add (Local Preview Only)</h3>
             <form id="local-add-form">
@@ -104,7 +120,7 @@
                 </select>
                 <textarea id="local-desc" rows="3" placeholder="Description (optional)"></textarea>
                 <button type="submit">Add Local Event</button>
-                <p class="local-note">Local events are stored in your browser (localStorage). To make an event official, edit <code>events.json</code> in the repository.</p>
+                <p class="local-note">Local events are stored only in your browser. To publish, edit <code>events.json</code>.</p>
             </form>
         </div>
     </div>
@@ -154,6 +170,7 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@6.1.14/index.global.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/events.js"></script>
 </body>
