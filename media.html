@@ -11,99 +11,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <!-- Compact overrides (keep hero, tighten nav spacing) -->
     <style>
-        /* -------------------------------------------------
-           Live Indicator (unchanged)
-        -------------------------------------------------- */
-        @keyframes blink {0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
-        .live-indicator {
-            display:none;
-            background:#ef4444;
-            color:#fff;
-            padding:.35rem .75rem;
-            border-radius:9999px;
-            font-weight:600;
-            font-size:.75rem;
-            letter-spacing:.05em;
-            position:absolute;
-            top:50%;
-            right:1rem;
-            transform:translateY(-50%);
-            z-index:1000;
-            box-shadow:0 2px 8px rgba(0,0,0,.2);
-            animation:blink 1.5s infinite;
-            display:flex;
-            align-items:center;
-            gap:.3rem;
-            font-family:Inter,sans-serif;
-            text-decoration:none;
-            cursor:pointer;
-            transition:background-color .3s;
-        }
-        .live-indicator:hover{background:#dc2626}
-        .live-dot{width:8px;height:8px;background:#fca5a5;border-radius:50%}
-        @media (max-width:640px){
-            .live-indicator{padding:.25rem .5rem;font-size:.65rem;right:.5rem;top:1rem;transform:translateY(0)}
+        /* Hero: keep height but reduce bottom padding so nav sits closer */
+        .media-hero {
+            padding: 8rem 0 1.75rem; /* was 8rem 0 4rem */
         }
 
-        /* -------------------------------------------------
-           ULTRA COMPACT MEDIA NAV BAR
-           - Removes hero (gap)
-           - Minimal padding around menu
-           - Neutralizes JS positioning
-        -------------------------------------------------- */
-        .media-hero { display:none !important; }
-
-        header + .media-navigation,
+        /* Navigation section: remove extra vertical padding (none in base, but be explicit) */
         .media-navigation {
-            margin:0 !important;
-            padding:0 !important;
-            position:static !important;
-            top:auto !important;
-            border:none;
+            padding-top: 0;
+            padding-bottom: 0;
+            box-shadow: 0 3px 10px -4px rgba(0,0,0,0.08);
         }
 
-        .media-navigation .container {
-            margin:0 !important;
-            padding:0 !important;
-        }
-
+        /* Tabs container: tighter horizontal padding */
         .media-nav-tabs {
-            padding:0.25rem 0.75rem !important; /* very small vertical padding */
-            gap:1.25rem;
-            background:#f9f9f9;
-            border:1px solid #e6e6e6;
+            padding: 0.25rem 0.5rem;          /* was 0.25rem 0 */
+            background-color: var(--white-color);
+            border-bottom: 1px solid #e5e5e5;
+            gap: 0.25rem;
         }
 
+        /* Individual tabs: reduce internal padding */
         .media-nav-tab {
-            padding:0.30rem 0.55rem !important;
-            font-size:0.9rem;
-            line-height:1.1;
-            border-radius:4px;
+            padding: 0.35rem 0.65rem;         /* was 0.5rem 1rem */
+            font-size: 0.9rem;
+            border-bottom-width: 2px;         /* slimmer active underline (base style sets width) */
         }
 
         .media-nav-tab i {
-            font-size:0.85rem;
-            margin-right:0.30rem;
+            font-size: 0.85rem;
+            margin-right: 0.35rem;
         }
 
-        .media-nav-tab.active::after {
-            bottom:-3px !important;
-            height:2px;
+        /* Active underline closer (optional aesthetic tweak) */
+        .media-nav-tab.active {
+            border-bottom-width: 2px;
         }
 
-        /* Optional: tighten top of first content section a little */
-        #sermons.media-content-section { padding-top:1.25rem; }
-
-        /* If global sections add large top margins, ensure none here */
-        .media-content-section:first-of-type { margin-top:0 !important; }
-
-        /* Slightly reduce vertical space before Past Sermons grid if needed */
-        .past-media { margin-top:2rem; }
-
-        /* You can remove the subtle border if undesired:
-           .media-nav-tabs { border:none; }
-        */
+        /* If header height changed and sticky offset feels off, adjust: */
+        @media (min-width: 769px) {
+            .media-navigation {
+                top: 110px; /* keep in sync with media.css hero margin-top */
+            }
+        }
     </style>
 
     <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
@@ -118,8 +70,8 @@
                     <span class="logo-text">The Sons of God Ministry</span>
                 </a>
             </div>
-            <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator">
-                <span class="live-dot"></span> LIVE
+            <a href="your-live-page.html" id="liveStreamIndicator" class="live-indicator" style="display:none;">
+                <span class="live-dot" style="width:8px;height:8px;background:#fca5a5;border-radius:50%;display:inline-block;"></span> LIVE
             </a>
             <nav>
                 <ul class="main-nav">
@@ -137,23 +89,33 @@
         </div>
     </header>
 
-    <!-- Hero intentionally removed to eliminate gap -->
+    <!-- Media Hero (retained, compact bottom) -->
+    <section class="media-hero">
+        <div class="container">
+            <h1>Media Resources</h1>
+            <p>Watch, listen, and grow in your faith</p>
+        </div>
+    </section>
 
-    <!-- Ultra Compact Media Navigation -->
+    <!-- Media Navigation (compact) -->
     <section class="media-navigation">
         <div class="container">
             <div class="media-nav-tabs">
                 <a href="#sermons" class="media-nav-tab active" data-tab="sermons">
-                    <i class="fas fa-video"></i><span>Sermons</span>
+                    <i class="fas fa-video"></i>
+                    <span>Sermons</span>
                 </a>
                 <a href="#music" class="media-nav-tab" data-tab="music">
-                    <i class="fas fa-music"></i><span>Praise Dance</span>
+                    <i class="fas fa-music"></i>
+                    <span>Praise Dance</span>
                 </a>
                 <a href="#podcasts" class="media-nav-tab" data-tab="podcasts">
-                    <i class="fas fa-microphone-alt"></i><span>Podcasts</span>
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>Podcasts</span>
                 </a>
                 <a href="#devotionals" class="media-nav-tab" data-tab="devotionals">
-                    <i class="fas fa-book-open"></i><span>Devotionals</span>
+                    <i class="fas fa-book-open"></i>
+                    <span>Devotionals</span>
                 </a>
             </div>
         </div>
@@ -623,7 +585,7 @@
                 </div>
             </div>
 
-            <!-- Past Devotionals -->
+            <!-- Recent Devotionals -->
             <div class="past-devotionals">
                 <h3>Recent Devotionals</h3>
                 <div class="devotionals-grid">
@@ -793,7 +755,7 @@
     <script src="js/script.js"></script>
     <script src="js/media.js"></script>
     <script>
-        /* Live indicator script */
+        // Live indicator script
         document.addEventListener('DOMContentLoaded', function() {
             const liveStreamIndicator = document.getElementById('liveStreamIndicator');
             function checkLiveStatus() {
@@ -801,22 +763,31 @@
                 const day = now.getDay();
                 const minutesToday = now.getHours() * 60 + now.getMinutes();
                 let isLive = false;
-                // Sunday 10:00 - 17:00
-                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;
-                // Tuesday 19:00 - 22:30
-                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
-                // Friday 19:00 - 22:30
-                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;
+                if (day === 0 && minutesToday >= 600 && minutesToday <= 1020) isLive = true;      // Sunday 10:00-17:00
+                if (day === 2 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Tuesday 19:00-22:30
+                if (day === 5 && minutesToday >= 1140 && minutesToday <= 1350) isLive = true;     // Friday 19:00-22:30
                 if (liveStreamIndicator) liveStreamIndicator.style.display = isLive ? 'flex' : 'none';
             }
             checkLiveStatus();
             setInterval(checkLiveStatus, 60000);
+        });
 
-            /* Neutralize any JS that might attempt to offset nav based on a hero/banner */
+        // Simple tab switching if not already handled in media.js
+        document.addEventListener('click', function(e) {
+            const tab = e.target.closest('.media-nav-tab');
+            if (!tab) return;
+            e.preventDefault();
+            const target = tab.getAttribute('data-tab');
+            document.querySelectorAll('.media-nav-tab').forEach(el => el.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.media-content-section').forEach(sec => {
+                sec.classList.toggle('active', sec.id === target);
+            });
+            // Scroll into view slightly below sticky header if switching
             const nav = document.querySelector('.media-navigation');
             if (nav) {
-                nav.style.top = 'auto';
-                nav.style.position = 'static';
+                const offset = nav.getBoundingClientRect().height + 20;
+                window.scrollTo({ top: nav.offsetTop - offset, behavior: 'smooth' });
             }
         });
     </script>
