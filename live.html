@@ -1,88 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Live Stream - The Sons of God Ministry, Inc.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/live.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+  <meta charset="UTF-8">
+  <title>Live Stream - The Sons of God Ministry, Inc.</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Join The Sons of God Ministry live via YouTube or participate through Zoom.">
+  <!-- Global / Existing Site Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/live.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Page‑specific (move to live.css if desired) -->
+  <style>
+    :root {
+      /* Ensure these exist in main styles; keep here as fallback */
+      --primary-color:#2d4a8a;
+      --secondary-color:#e63946;
+      --light-color:#f5f7fa;
+      --white-color:#ffffff;
+      --box-shadow:0 6px 18px -4px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.06);
+    }
+
+    main.live-main {
+      display:block;
+      width:100%;
+    }
+
+    .live-hero {
+      padding:4rem 0 2.5rem;
+      background:var(--light-color);
+    }
+
+    .live-header h1 {
+      margin:0 0 .75rem;
+      font-size:2.25rem;
+      line-height:1.1;
+    }
+    .live-subtitle {
+      margin:0 0 1.5rem;
+      max-width:760px;
+      color:#555;
+      line-height:1.55;
+    }
+
+    .live-status-row {
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .live-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.45rem .9rem;
+      background:#222;
+      color:#fff;
+      border-radius:999px;
+      font-size:.7rem;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .live-badge.active { background:var(--secondary-color); }
+
+    .source-tabs {
+      display:flex;
+      gap:.65rem;
+      margin-top:2rem;
+      flex-wrap:wrap;
+    }
+    .source-tab {
+      border:1px solid #d6d9df;
+      background:var(--white-color);
+      padding:.65rem 1.05rem;
+      border-radius:8px;
+      font-size:.8rem;
+      font-weight:600;
+      letter-spacing:.04em;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      transition:.25s;
+      box-shadow:0 1px 2px rgba(0,0,0,.05);
+    }
+    .source-tab:focus-visible { outline:2px solid var(--primary-color); outline-offset:2px; }
+    .source-tab.active {
+      background:var(--primary-color);
+      color:#fff;
+      border-color:var(--primary-color);
+      box-shadow:0 3px 10px -2px rgba(0,0,0,.18);
+    }
+
+    .stream-panels {
+      position:relative;
+      margin-top:1.75rem;
+    }
+    .stream-panel {
+      display:none;
+      animation:fadeIn .35s ease;
+    }
+    .stream-panel.active { display:block; }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(8px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    .player-shell {
+      position:relative;
+      width:100%;
+      background:#000;
+      border-radius:14px;
+      overflow:hidden;
+      padding-top:56.25%; /* 16:9 */
+      box-shadow:var(--box-shadow);
+    }
+    .player-shell iframe {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+
+    .panel-card {
+      background:var(--white-color);
+      border:1px solid #e5e7eb;
+      border-radius:14px;
+      box-shadow:var(--box-shadow);
+      padding:2rem 1.75rem;
+    }
+
+    .zoom-info h2 {
+      margin:0 0 .75rem;
+      font-size:1.4rem;
+    }
+    .zoom-info p {
+      margin:.5rem 0;
+      line-height:1.5;
+      color:#555;
+    }
+
+    .zoom-join-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      margin:1rem 0 0;
+      background:var(--primary-color);
+      color:#fff;
+      padding:.85rem 1.35rem;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:.04em;
+      font-size:.85rem;
+      box-shadow:0 4px 14px -4px rgba(0,0,0,.25);
+      transition:background .25s, transform .25s;
+    }
+    .zoom-join-btn:hover { background:var(--secondary-color); }
+    .zoom-join-btn:active { transform:translateY(1px); }
+
+    .support-note {
+      margin:1rem 0 0;
+      font-size:.75rem;
+      color:#666;
+      letter-spacing:.03em;
+    }
+
+    .schedule-section {
+      margin-top:3.25rem;
+      display:grid;
+      gap:1.75rem;
+    }
+
+    .mini-schedule {
+      background:var(--white-color);
+      border:1px solid #ececec;
+      border-radius:14px;
+      box-shadow:var(--box-shadow);
+      padding:1.65rem 1.4rem 1.9rem;
+    }
+    .mini-schedule h2 {
+      margin:0 0 1rem;
+      font-size:1.25rem;
+    }
+    .svc-list {
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:.75rem;
+    }
+    .svc-item {
+      display:flex;
+      justify-content:space-between;
+      gap:.75rem;
+      align-items:center;
+      background:var(--light-color);
+      padding:.85rem 1rem;
+      border-radius:10px;
+      font-size:.85rem;
+    }
+    .svc-item .svc-time {
+      font-weight:600;
+      color:var(--primary-color);
+      letter-spacing:.04em;
+    }
+
+    .offline-hint {
+      margin-top:1rem;
+      font-size:.75rem;
+      color:#777;
+    }
+
+    @media (max-width:840px) {
+      .zoom-info h2 { font-size:1.25rem; }
+    }
+    @media (max-width:640px) {
+      .live-hero { padding:3rem 0 2rem; }
+      .live-header h1 { font-size:1.95rem; }
+      .panel-card, .mini-schedule { padding:1.4rem 1.15rem 1.6rem; }
+    }
+  </style>
 </head>
 <body>
 <header>
-    <div class="container">
-        <div class="logo">
-            <a href="index.html"><img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img"> <span class="logo-text">The Sons of God Ministry</span></a>
-        </div>
-        <nav>
-            <ul class="main-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#media-preview">Media</a></li>
-                <li><a href="index.html#small-groups">Groups</a></li>
-                <li><a href="visit.html">Visit Us</a></li>
-                <li><a href="giving.html" class="btn-primary">Give</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
+  <div class="container">
+    <div class="logo">
+      <a href="index.html" aria-label="Return to Home">
+        <img src="images/logo/logo.png" alt="The Sons of God Ministry" class="logo-img">
+        <span class="logo-text">The Sons of God Ministry</span>
+      </a>
     </div>
+    <nav>
+      <ul class="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#media-preview">Media</a></li>
+        <li><a href="index.html#small-groups">Groups</a></li>
+        <li><a href="visit.html">Visit Us</a></li>
+        <li><a href="giving.html" class="btn-primary">Give</a></li>
+      </ul>
+      <div class="menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </div>
 </header>
 
-<section class="live-stream-section">
+<main class="live-main" role="main">
+  <section class="live-hero" id="live">
     <div class="container">
-        <!-- Existing live stream content unchanged -->
+      <div class="live-header">
+        <h1>Live Stream</h1>
+        <p class="live-subtitle">
+          Welcome to our online worship experience. Watch the broadcast on YouTube or join our interactive Zoom service.
+        </p>
+        <div class="live-status-row">
+          <span id="liveStatusBadge" class="live-badge">
+            <i class="fas fa-circle" style="color:#aaa;"></i> Checking Status
+          </span>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="source-tabs" role="tablist" aria-label="Select stream source">
+        <button class="source-tab active" role="tab" aria-selected="true" data-target="youtubePanel">
+          <i class="fas fa-video"></i> YouTube
+        </button>
+        <button class="source-tab" role="tab" aria-selected="false" data-target="zoomPanel">
+          <i class="fas fa-users"></i> Zoom
+        </button>
+      </div>
+
+      <!-- Panels -->
+      <div class="stream-panels">
+        <!-- YouTube Panel -->
+        <div id="youtubePanel" class="stream-panel active" role="tabpanel" aria-label="YouTube Live Stream">
+          <div class="player-shell" aria-live="off">
+            <!-- Replace YOUR_YOUTUBE_CHANNEL_ID or use embed/VIDEO_ID if you prefer a specific video -->
+            <iframe
+              src="https://www.youtube.com/embed/live_stream?channel=YOUR_YOUTUBE_CHANNEL_ID&autoplay=1"
+              title="YouTube Live Stream"
+              frameborder="0"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+          <p class="offline-hint">If you see a placeholder, the stream may not be live yet. Refresh shortly before start time.</p>
+        </div>
+
+        <!-- Zoom Panel -->
+        <div id="zoomPanel" class="stream-panel" role="tabpanel" aria-label="Zoom Live Service">
+          <div class="panel-card zoom-info">
+            <h2>Join via Zoom</h2>
+            <p>Engage face-to-face with our church family. Participate in prayer, responses, and fellowship.</p>
+            <!-- Replace the meeting link below -->
+            <a class="zoom-join-btn" href="https://zoom.us/j/your-meeting-id" target="_blank" rel="noopener">
+              <i class="fas fa-external-link-alt"></i> Join Zoom Service
+            </a>
+            <p class="support-note">
+              Join a few minutes early to test audio/video. A host may admit you from the waiting room.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simple Schedule / Upcoming -->
+      <div class="schedule-section">
+        <div class="mini-schedule">
+          <h2>Service Times</h2>
+            <ul class="svc-list">
+              <li class="svc-item">
+                <span>Sunday Celebration</span>
+                <span class="svc-time">10:00 AM</span>
+              </li>
+              <li class="svc-item">
+                <span>Tuesday Evening</span>
+                <span class="svc-time">7:00 PM</span>
+              </li>
+              <li class="svc-item">
+                <span>Friday Fire Night</span>
+                <span class="svc-time">7:00 PM</span>
+              </li>
+            </ul>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+</main>
 
 <footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>The Sons of God Ministry, Inc.</h3>
-                <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
-            </div>
-            <div class="footer-section">
-                <h3>Service Times</h3>
-                <p>Sunday: 9:00 AM & 11:00 AM</p>
-                <p>Wednesday: 7:00 PM</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#media-preview">Media</a></li>
-                    <li><a href="index.html#small-groups">Groups</a></li>
-                    <li><a href="visit.html">Visit Us</a></li>
-                    <li><a href="giving.html">Give</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Stay Updated</h3>
-                <form action="https://formspree.io/f/xdklnnbg" method="POST">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>The Sons of God Ministry, Inc.</h3>
+        <p>200 Tabor St.<br>Pittsburgh, PA 15204</p>
+        <p>Email: <a href="mailto:info@sonsofgodministry.org">info@sonsofgodministry.org</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>Service Times</h3>
+        <p>Sunday: 10:00 AM</p>
+        <p>Tuesday: 7:00 PM</p>
+        <p>Friday: 7:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#media-preview">Media</a></li>
+          <li><a href="index.html#small-groups">Groups</a></li>
+          <li><a href="visit.html">Visit Us</a></li>
+          <li><a href="giving.html">Give</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
-        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <form action="https://formspree.io/f/xdklnnbg" method="POST">
+          <label class="sr-only" for="newsletterEmail">Email</label>
+          <input id="newsletterEmail" type="email" name="email" placeholder="Your Email Address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Sons of God Ministry, Inc. All Rights Reserved.</p>
+    </div>
+  </div>
 </footer>
+
+<!-- Core scripts -->
 <script src="js/script.js"></script>
-<script src="js/live.js"></script>
+
+<script>
+/* Tab Switching */
+document.querySelectorAll('.source-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-target');
+    // tabs
+    document.querySelectorAll('.source-tab').forEach(t => {
+      const active = t === btn;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true':'false');
+    });
+    // panels
+    document.querySelectorAll('.stream-panel').forEach(p => {
+      p.classList.toggle('active', p.id === target);
+    });
+    if (window.innerWidth < 720) {
+      document.querySelector('.stream-panels')?.scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
+
+/* Simple Live Status (adjust schedule windows as needed)
+   Sunday: 10:00–17:00
+   Tuesday: 19:00–22:30
+   Friday: 19:00–22:30
+*/
+(function(){
+  const badge = document.getElementById('liveStatusBadge');
+  function isLiveNow() {
+    const now = new Date();
+    const d = now.getDay();        // 0=Sun
+    const mins = now.getHours()*60 + now.getMinutes();
+    if (d === 0 && mins >= 600 && mins <= 1020) return true;     // Sun
+    if (d === 2 && mins >= 1140 && mins <= 1350) return true;    // Tue
+    if (d === 5 && mins >= 1140 && mins <= 1350) return true;    // Fri
+    return false;
+  }
+  function updateBadge() {
+    if (!badge) return;
+    if (isLiveNow()) {
+      badge.innerHTML = '<i class="fas fa-circle" style="color:#2fff68;"></i> Live Now';
+      badge.classList.add('active');
+    } else {
+      badge.innerHTML = '<i class="fas fa-circle" style="color:#ffb347;"></i> Offline';
+      badge.classList.remove('active');
+    }
+  }
+  updateBadge();
+  setInterval(updateBadge, 60000);
+})();
+
+/* Optional: Auto-detect if YouTube iframe fails (basic) */
+(function(){
+  const iframe = document.querySelector('#youtubePanel iframe');
+  if (!iframe) return;
+  // After a timeout, we could show a note (YouTube rarely blocks, so light fallback)
+  setTimeout(() => {
+    // Could add logic if needed
+  }, 8000);
+})();
+</script>
 </body>
 </html>
