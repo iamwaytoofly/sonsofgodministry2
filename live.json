@@ -1,0 +1,13 @@
+{
+  "override": "auto",
+  "timezone": "America/New_York",
+  "schedule": [
+    { "day": "Sunday", "start": "10:00", "end": "17:00" },
+    { "day": "Tuesday", "start": "19:00", "end": "22:30" },
+    { "day": "Friday", "start": "19:00", "end": "22:30" }
+  ],
+  "label": "LIVE",
+  "target": "live.html",
+  "pollMinutes": 5,
+  "version": 1
+}
